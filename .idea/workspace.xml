@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0d944f9b-4fc0-455e-aec5-221c9fef8bc9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,6 +133,9 @@
     <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\nirsa\onClickJob\public\images" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\nirsa\onClickJob\resources\views\student" />
     </key>
@@ -154,7 +158,7 @@
       <updated>1586340412211</updated>
       <workItem from="1586340413894" duration="40646000" />
       <workItem from="1586628980067" duration="338000" />
-      <workItem from="1586700491779" duration="14367000" />
+      <workItem from="1586700491779" duration="15017000" />
     </task>
     <servers />
   </component>
