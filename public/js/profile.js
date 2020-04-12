@@ -174,7 +174,7 @@ class Profile{
     }
 
     update(id,item,value){
-        axios({method:'post',url:`http://127.0.0.1:8000/profile/${id}`,
+        axios({method:'post',url:`http://127.0.0.1:8000/profile/update`,
             data:{
                 item:item,
                 id:id,
@@ -196,19 +196,25 @@ function edit(data){
 function update(data){
     profile.takeValue(data);
 }
+$("body").on("click",".upload-image",function(e){
+    $(this).parents("form").ajaxForm(options);
+});
 
-function cv(data){
-    $("#fileForm").on('submit', function(e){
-        e.preventDefault();
-        let value = document.getElementById("file-path").files[0].name;
-        axios({method:'post',url:'edit-profil.php',
-            data:{
-                item:item,
-                id:id,
-                value:value
-            }}).then(({data})=>{
-            console.log(data)
-        });
-        update(data,cv)
+var options = {
+    complete: function(response)
+    {
+        if($.isEmptyObject(response.responseJSON.error)){
+            $("input[name='name']").val('');
+            alert('Image Upload Successfully.');
+        }else{
+            printErrorMsg(response.responseJSON.error);
+        }
+    }
+};
+function printErrorMsg (msg) {
+    $(".print-error-msg").find("ul").html('');
+    $(".print-error-msg").css('display','block');
+    $.each( msg, function( key, value ) {
+        $(".print-error-msg").find("ul").append('<li>'+value+'</li>');
     });
 }

@@ -23,5 +23,7 @@ Auth::routes();
 Route::get('/student','PagesController@studentHome');
 Route::get('/placement','PagesController@placementHome');
 Route::get('/employer','PagesController@employerHome');
-Route::post('profile/{id}','ProfileController@update');
+Route::post('profile/update','ProfileController@update');
 Route::get('/profile/{id}','ProfileController@show');
+Route::post('image-upload', 'ProfileController@imageUploadPost')->name('image.upload.post');
+
