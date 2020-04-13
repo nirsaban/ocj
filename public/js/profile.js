@@ -4,6 +4,7 @@ class Profile{
     editDom(data){
         if(data['col'] == 'category_id'){
             let select = document.querySelector('.cat');
+
             select.style.display = 'block';
         }else if(data['col'] == 'about_me'){
             $(editAbout).prop("onclick", null).off("click");
@@ -14,6 +15,9 @@ class Profile{
             let inputAbout = document.createElement('TEXTAREA');
             inputAbout.setAttribute('type','text');
             inputAbout.setAttribute('id','inputAbout');
+            inputAbout.setAttribute('class','textArea');
+            inputAbout.setAttribute('rows','4');
+
             inputAbout.value = ValpAbout;
             console.log(pAbout)
             parentAbout.appendChild(inputAbout)
@@ -29,24 +33,26 @@ class Profile{
             let plusEdu = document.createElement('button');
             let plusAllEdu = document.createElement('button')
             plusEdu.innerText = '+ '
-            plusEdu.classList = ' plusEdu col-sm-1';
+            plusEdu.classList = ' plusEdu  buttonNew-change  thirdNew col-xs-1';
             plusAllEdu.innerText = 'V'
-            plusAllEdu.classList = ' plusEduAll col-xs-1'
+            plusAllEdu.classList = ' plusEduAll  buttonNew-change thirdNew col-xs-1 '
+            plusAllEdu.style.color = 'red';
             parentEducation.appendChild(plusEdu)
             parentEducation.appendChild(plusAllEdu)
-            let allEdu = document.querySelectorAll('.pEdu')
+            let allEdu = document.querySelectorAll('.pEdu');
             pEdu.style.display = 'none';
             allEdu.forEach(edu =>{
                 let inputEdu = document.createElement('input');
                 inputEdu.setAttribute('type','text')
-                inputEdu.classList = 'eduInput form-control col-4';
+                inputEdu.placeholder = 'add new aducation'
+                inputEdu.classList = 'eduInput  col-6 field form__field';
                 inputEdu.setAttribute('value',edu.textContent)
                 parentEducation.appendChild(inputEdu)
             })
             plusEdu.addEventListener('click',()=>{
                 let inputEducation = document.createElement('input');
                 inputEducation.setAttribute('type','text');
-                inputEducation.classList = 'eduInput form-control col-4'
+                inputEducation.classList = 'eduInput  col-6 field  form__field'
                 parentEducation.appendChild(inputEducation)
             })
             const arrEd = []
@@ -73,9 +79,9 @@ class Profile{
             let plusEx = document.createElement('button');
             let plusAllEx = document.createElement('button')
             plusEx.innerText = '+'
-            plusEx.classList = 'plusEx col-sm-1';
+            plusEx.classList = 'plusEx buttonNew-change  thirdNew col-sm-1';
             plusAllEx.innerText = 'V'
-            plusAllEx.classList = ' plusExAll col-xs-1'
+            plusAllEx.classList = ' plusExAll buttonNew-change text-danger thirdNew col-sm-1'
             parentExperience.appendChild(plusEx)
             parentExperience.appendChild(plusAllEx)
             let allEx = document.querySelectorAll('.pEx')
@@ -83,14 +89,14 @@ class Profile{
             allEx.forEach(ex =>{
                 let inputEx = document.createElement('input');
                 inputEx.setAttribute('type','text')
-                inputEx.classList = 'exInput form-control col-4';
+                inputEx.classList = 'exInput field  form__field col-4';
                 inputEx.setAttribute('value',ex.textContent)
                 parentExperience.appendChild(inputEx)
             })
             plusEx.addEventListener('click',()=>{
                 let inputEx = document.createElement('input');
                 inputEx.setAttribute('type','text');
-                inputEx.classList = 'exInput form-control col-4'
+                inputEx.classList = 'exInput field  form__field col-4'
                 parentExperience.appendChild(inputEx)
             })
             const arrEx = []
@@ -114,14 +120,18 @@ class Profile{
             const parentSkills = document.querySelector('.skillsParent');
             let plusSkill = document.createElement("button");
             plusSkill.innerHTML += '+';
+            plusSkill.classList = 'buttonNew-change  thirdNew'
             let plusSkillAll = document.createElement("button");
             plusSkillAll.innerHTML += 'V';
+            plusSkillAll.classList ='buttonNew-change  thirdNew'
+            plusSkillAll.style.color = 'red';
             parentSkills.appendChild(plusSkill);
             parentSkills.appendChild(plusSkillAll);
+
             plusSkill.addEventListener('click',()=>{
                 let inputSkills = document.createElement('input');
                 inputSkills.setAttribute('type','text');
-                inputSkills.classList = 'skillsInput form-control col-md-2'
+                inputSkills.classList = 'skillsInput field  form__field col-md-3'
                 parentSkills.appendChild(inputSkills);
             })
             let allSkills = document.querySelectorAll('.tags')
@@ -129,7 +139,8 @@ class Profile{
             allSkills.forEach(skill =>{
                 let inputSkill = document.createElement('input');
                 inputSkill.setAttribute('type','text')
-                inputSkill.classList = 'skillsInput form-control col-md-2';
+                inputSkill.placeholder = "add skill..";
+                inputSkill.classList = 'skillsInput field  form__field col-md-3';
                 inputSkill.setAttribute('value',skill.textContent)
                 parentSkills.appendChild(inputSkill)
             })
@@ -157,23 +168,24 @@ class Profile{
             let plusLinks = document.createElement('button');
             let plusAllLinks = document.createElement('button')
             plusLinks.innerText = '+ '
-            plusLinks.classList = 'col-sm-1'
+            plusLinks.classList = ' buttonNew-change  thirdNew col-sm-1'
             plusAllLinks.innerText = 'V'
-            plusAllLinks.classList = 'col-xs-1'
+            plusAllLinks.classList = 'buttonNew-change text-danger thirdNew col-sm-1'
             parentLinks.appendChild(plusLinks)
             parentLinks.appendChild(plusAllLinks)
             let allLinks = document.querySelectorAll('.linksA')
             allLinks.forEach(link =>{
                 let inputlink = document.createElement('input');
                 inputlink.setAttribute('type','text')
-                inputlink.classList = 'linkInput form-control col-md-5';
+                inputlink.classList = 'linkInput col-6 field form__field';
                 inputlink.setAttribute('value',link.textContent)
                 parentLinks.appendChild(inputlink)
             })
             plusLinks.addEventListener('click',()=>{
                 let inputLinks = document.createElement('input');
                 inputLinks.setAttribute('type','text');
-                inputLinks.classList = 'linkInput form-control col-md-5'
+                inputLinks.classList = 'linkInput col-6 field form__field'
+                inputLinks.placeholder = ' add your project link'
                 parentLinks.appendChild(inputLinks)
             })
             const arrLi = []
