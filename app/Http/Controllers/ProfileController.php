@@ -17,8 +17,19 @@ class ProfileController extends Controller
         $profile = [];
         $profile['name'] = User::find($id)->name;
         $profile['cat_name'] = Category::select('cat_name')->where('id',User::find($id)->profile()->value('category_id'))->value('cat_name');
-        $profile['allData'] = Profile::where('user_id',$id)->get();
         $profile['categories'] = Category::all()->toArray();
+        $profile['allData'] = Profile::where('user_id',$id)->get();
+        $presentAll = Profile::where('user_id',$id)->get(['category_id','about_me', 'education', 'my_skills', 'links','work_experience','image'])->toArray();
+        if (isset($presentAll[0])){
+            foreach ($presentAll[0] as $key => $value){
+                if($value != null){
+                    $present[$key] = $value;
+                }
+            }
+     $profile['present'] = $present;
+        }
+
+
         return view('student.profile',$profile);
     }
     public function update(Request $request){

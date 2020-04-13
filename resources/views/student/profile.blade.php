@@ -45,7 +45,7 @@
                             @endforeach
                         </select>
 
-                        <i class="fas fa-edit "  id="editAbout" data-col="about_me" onclick="edit(this.dataset)" id="edit"></i><i data-id="{{Auth::id()}}" data-col ="about_me" class=" fas fa-check-square" onclick= "update(this.dataset)" id="update"></i><br>
+                        <i class="fas fa-edit "  id="editAbout" data-col="about_me" onclick="edit(this.dataset)" id="edit"></i><i data-id="{{Auth::id()}}" data-col ="about_me" class=" fas fa-check-square updateAbout" onclick= "update(this.dataset)" id="update"></i><br>
                         <strong>
                             About:
                         </strong>
@@ -56,8 +56,25 @@
                             @endif
                             </p>
                         </div>
-                        <i data-col="education" class="fas fa-edit"  onclick="edit(this.dataset)"   id="editEd"></i><i  data-id="<?=Auth::id()?>" data-col ="education" class=" fas fa-check-square updateEd" onclick="update(this.dataset)"></i><br>
 
+                        <i data-col="work_experience" class="fas fa-edit"  onclick="edit(this.dataset)"   id="editEx"></i><i  data-id="<?=Auth::id()?>" data-col ="work_experience" class=" fas fa-check-square updateEx" onclick="update(this.dataset)"></i><br>
+                        <strong>
+                            Work Experience
+                        </strong>
+                        <div class="ExperienceParent">
+                            <div id="pEx">
+                                <?php $count = 0 ?>
+                                    @if(isset($allData[0]->work_experience))
+                                @foreach(json_decode($allData[0]->work_experience) as $work)
+                                    <?php $count++ ; ?>
+                                    @if(strlen($work) > 2)
+                                        <span>{{$count .'. '}}</span><p style="display: inline-block" class="h6 pEdu">{{$work}}</p><br>
+                                    @endif
+                                @endforeach
+                              @endif
+                            </div>
+                        </div>
+                        <i data-col="education" class="fas fa-edit"  onclick="edit(this.dataset)"   id="editEd"></i><i  data-id="<?=Auth::id()?>" data-col ="education" class=" fas fa-check-square updateEd" onclick="update(this.dataset)"></i><br>
                         <strong>
                             education:
                         </strong>
@@ -65,14 +82,14 @@
 
                             <div id="pEdu">
                                 <?php $count = 0 ?>
-                                    @if(isset($allData[0]->education))
-                                @foreach(json_decode($allData[0]->education) as $edu)
-                                    <?php $count++ ; ?>
-                                    @if(strlen($edu) > 2)
-                                        <span>{{$count .'. '}}</span><p style="display: inline-block" class="h6 pEdu">{{$edu}}</p><br>
-                                    @endif
-                                @endforeach
-                              @endif
+                                @if(isset($allData[0]->education))
+                                    @foreach(json_decode($allData[0]->education) as $edu)
+                                        <?php $count++ ; ?>
+                                        @if(strlen($edu) > 2)
+                                            <span>{{$count .'. '}}</span><p style="display: inline-block" class="h6 pEdu">{{$edu}}</p><br>
+                                        @endif
+                                    @endforeach
+                                @endif
                             </div>
                         </div>
                         <strong>
@@ -106,7 +123,22 @@
                               </div>
                            </div>
                         </div>
+                    <div class="compliteProf">
+                        <div data-color = "rgba(255, 0, 0, 0.2)" class="category_id item">Category</div>
+                        <div data-color = "rgba(255, 0, 0, 0.4)" class="about_me item">about</div>
+                        <div data-color = "rgba(255, 0, 0, 0.5)" class="education item">education</div>
+                        <div data-color = "rgba(255, 0, 0, 0.6)" class="my_skills item">skills</div>
+                        <div data-color = "rgba(255, 0, 0, 0.7)" class="links item">links</div>
+                        <div data-color = "rgba(255, 0, 0, 0.8)" class="work_experience item" >works</div>
+                        <div  data-color = "rgba(255, 0, 0, 0.9)" class="image item">image</div>
+                        <div class="present item">present</div>
+                    </div>
 
+@if(isset($present))
+                    <script>
+                        const PRESENT =  <?php print_r(json_encode($present));?>
+                    </script>
+@endif
 @endsection
 
 

@@ -1,10 +1,21 @@
 window.onload = function init(){
 
-    // const id = document.getElementById('idUser').value;
-    //        axios({method:'get',url:`http://127.0.0.1:8000/profileOnLoad/${id}`}).then(({data})=>{
-    //        document.getElementById('cat_name').innerText += data.cat_name
-    //   });
+    function present(PRESENT) {
+        console.log( PRESENT)
+        let count = []
+   for (const [key, value] of Object.entries(PRESENT)) {
+       count.push(key)
+       console.log(count);
+       let div = document.querySelector(`.${key}`);
+       let color = $(div).data("color");
+       $(div).css("background", color)
+       div.style.transition = 'background 0.5s ease-in-out'
+   }
+   let pre =  document.querySelector('.present').innerHTML = count.length* 14 + '% ' ;
+     pre.style.fontSize = " 2rem"
+}
 
+    present(PRESENT)
 }
 
 

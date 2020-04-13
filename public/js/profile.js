@@ -66,6 +66,49 @@ class Profile{
                 up.id = 'rotate-scale-up-diag-1'
             })
 
+        }else if(data['col'] == 'work_experience'){
+            $(editEx).prop("onclick", null).off("click");
+            editEx.removeAttribute('onclick');
+            const parentExperience = document.querySelector('.ExperienceParent')
+            let plusEx = document.createElement('button');
+            let plusAllEx = document.createElement('button')
+            plusEx.innerText = '+'
+            plusEx.classList = 'plusEx col-sm-1';
+            plusAllEx.innerText = 'V'
+            plusAllEx.classList = ' plusExAll col-xs-1'
+            parentExperience.appendChild(plusEx)
+            parentExperience.appendChild(plusAllEx)
+            let allEx = document.querySelectorAll('.pEx')
+            pEx.style.display = 'none';
+            allEx.forEach(ex =>{
+                let inputEx = document.createElement('input');
+                inputEx.setAttribute('type','text')
+                inputEx.classList = 'exInput form-control col-4';
+                inputEx.setAttribute('value',ex.textContent)
+                parentExperience.appendChild(inputEx)
+            })
+            plusEx.addEventListener('click',()=>{
+                let inputEx = document.createElement('input');
+                inputEx.setAttribute('type','text');
+                inputEx.classList = 'exInput form-control col-4'
+                parentExperience.appendChild(inputEx)
+            })
+            const arrEx = []
+            plusAllEx.addEventListener('click',()=>{
+                document.querySelectorAll('.exInput').forEach(ex =>{
+                    arrEx.push(ex.value)
+                });
+                let jsonValue = JSON.stringify(arrEx);
+                let inputHidden = document.createElement('input');
+                inputHidden.setAttribute('type','hidden');
+                inputHidden.classList = 'inputExHidden';
+                inputHidden.value = jsonValue;
+                parentExperience.appendChild(inputHidden)
+                plusEx.disabled = true;
+                let up = document.querySelector('.updateEx');
+                up.id = 'rotate-scale-up-diag-1'
+            })
+
         }else if(data['col'] == 'my_skills'){
             editSk.removeAttribute('onclick');
             const parentSkills = document.querySelector('.skillsParent');
@@ -164,6 +207,9 @@ class Profile{
         }else if(data['col'] == 'education'){
             let value = document.querySelector('.inputEdHidden').value;
             this.update(id,item,value)
+        }else if(data['col'] == 'work_experience'){
+            let value = document.querySelector('.inputExHidden').value;
+            this.update(id,item,value)
         }else if(data['col'] == 'my_skills'){
             let value = document.querySelector('.inputSkHidden').value;
             this.update(id,item,value)
@@ -183,10 +229,6 @@ class Profile{
        location.reload()
         });
     }
-    color(item){
-        let itemCom = document.querySelector(`.${item}comp`);
-        itemCom.style.color ='red';
-    }
 }
 //the global object from class
 const profile = new Profile;
@@ -196,25 +238,4 @@ function edit(data){
 function update(data){
     profile.takeValue(data);
 }
-$("body").on("click",".upload-image",function(e){
-    $(this).parents("form").ajaxForm(options);
-});
 
-var options = {
-    complete: function(response)
-    {
-        if($.isEmptyObject(response.responseJSON.error)){
-            $("input[name='name']").val('');
-            alert('Image Upload Successfully.');
-        }else{
-            printErrorMsg(response.responseJSON.error);
-        }
-    }
-};
-function printErrorMsg (msg) {
-    $(".print-error-msg").find("ul").html('');
-    $(".print-error-msg").css('display','block');
-    $.each( msg, function( key, value ) {
-        $(".print-error-msg").find("ul").append('<li>'+value+'</li>');
-    });
-}

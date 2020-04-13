@@ -239,6 +239,24 @@ span.tags
     float:left;
     margin-right:8px;
 }
+.compliteProf{
+    display: flex;
+    width: 11rem;
+
+}
+.compliteProf > .item{
+    padding: 0.5rem;
+    color:black;
+    font-weight: bold;
+    border: 1px solid black;
+    border-radius:5px ;
+    text-align: center;
+    align-self: center;
+}
+.present{
+    font-size: 1rem;
+    background-color: rgb(252, 229, 26);
+}
 #rotate-scale-up-diag-1{
 
     -webkit-animation: rotate-scale-up-diag-1 0.7s linear both;

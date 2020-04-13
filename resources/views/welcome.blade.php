@@ -32,7 +32,7 @@
                             <div class="card-body">
                                 {{-- <h1 class="card-title pricing-card-title">$0 <small class="text-muted">/ mo</small></h1> --}}
                                 <ul class="list-unstyled mt-3 mb-4">
-                                    <li>Bulid your best profil   <img src="{{asset('images/vstu.png')}}" width="15px" height="20px"></li>
+                                    <li>Build your best profile   <img src="{{asset('images/vstu.png')}}" width="15px" height="20px"></li>
                                     <li>Find the dream job  <img src="{{asset('images/vstu.png')}}" width="15px" height="20px"></li>
                                     <li>Get important information  <img src="{{asset('images/vstu.png')}}" width="15px" height="20px"></li>
                                     <li>Feedback for  course content  <img src="{{asset('images/vstu.png')}}" width="15px" height="20px"></li>
