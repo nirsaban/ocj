@@ -4,7 +4,6 @@ class Profile{
     editDom(data){
         if(data['col'] == 'category_id'){
             let select = document.querySelector('.cat');
-
             select.style.display = 'block';
         }else if(data['col'] == 'about_me'){
             $(editAbout).prop("onclick", null).off("click");
@@ -17,7 +16,6 @@ class Profile{
             inputAbout.setAttribute('id','inputAbout');
             inputAbout.setAttribute('class','textArea');
             inputAbout.setAttribute('rows','4');
-
             inputAbout.value = ValpAbout;
             console.log(pAbout)
             parentAbout.appendChild(inputAbout)
@@ -44,8 +42,8 @@ class Profile{
             allEdu.forEach(edu =>{
                 let inputEdu = document.createElement('input');
                 inputEdu.setAttribute('type','text')
-                inputEdu.placeholder = 'add new aducation'
                 inputEdu.classList = 'eduInput  col-6 field form__field';
+
                 inputEdu.setAttribute('value',edu.textContent)
                 parentEducation.appendChild(inputEdu)
             })
@@ -53,6 +51,7 @@ class Profile{
                 let inputEducation = document.createElement('input');
                 inputEducation.setAttribute('type','text');
                 inputEducation.classList = 'eduInput  col-6 field  form__field'
+                inputEducation.placeholder = 'add new education'
                 parentEducation.appendChild(inputEducation)
             })
             const arrEd = []
@@ -90,6 +89,7 @@ class Profile{
                 let inputEx = document.createElement('input');
                 inputEx.setAttribute('type','text')
                 inputEx.classList = 'exInput field  form__field col-4';
+
                 inputEx.setAttribute('value',ex.textContent)
                 parentExperience.appendChild(inputEx)
             })
@@ -97,6 +97,7 @@ class Profile{
                 let inputEx = document.createElement('input');
                 inputEx.setAttribute('type','text');
                 inputEx.classList = 'exInput field  form__field col-4'
+                inputEx.placeholder = ' Add new work'
                 parentExperience.appendChild(inputEx)
             })
             const arrEx = []
@@ -132,6 +133,7 @@ class Profile{
                 let inputSkills = document.createElement('input');
                 inputSkills.setAttribute('type','text');
                 inputSkills.classList = 'skillsInput field  form__field col-md-3'
+                inputSkills.placeholder = "add skill..";
                 parentSkills.appendChild(inputSkills);
             })
             let allSkills = document.querySelectorAll('.tags')
@@ -139,7 +141,7 @@ class Profile{
             allSkills.forEach(skill =>{
                 let inputSkill = document.createElement('input');
                 inputSkill.setAttribute('type','text')
-                inputSkill.placeholder = "add skill..";
+
                 inputSkill.classList = 'skillsInput field  form__field col-md-3';
                 inputSkill.setAttribute('value',skill.textContent)
                 parentSkills.appendChild(inputSkill)
@@ -175,6 +177,7 @@ class Profile{
             parentLinks.appendChild(plusAllLinks)
             let allLinks = document.querySelectorAll('.linksA')
             allLinks.forEach(link =>{
+                console.log(link)
                 let inputlink = document.createElement('input');
                 inputlink.setAttribute('type','text')
                 inputlink.classList = 'linkInput col-6 field form__field';

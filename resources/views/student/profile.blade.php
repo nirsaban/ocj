@@ -1,9 +1,10 @@
 @extends('masters.studentMaster')
 @section('content')
+    <link rel="stylesheet" href="{{ URL::asset('css/profile.css') }}">
 <input type="hidden" id="idUser" value="{{Auth::id()}}" >
     <div class="container">
         <div class="main_title tracking-in-expand">{{$name}} Profile</div>
-        <div class="image_area item">
+        <div class="image_area ">
             @if(isset($allData[0]->image))
             <img src="{{asset('images/_'.Auth::id().'/'.$allData[0]->image)}}" class="profile_image"/>
             @else
@@ -12,15 +13,20 @@
             <form  action="{{ route('image.upload.post') }}"  method="POST" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" name="id" value="{{Auth::id()}}">
-            <div class="btn-change"><input type="file" name="image" class=" file btn " ></div>
-            <div class="btn-add-photo"><button style="color:red" class="button-change third ">add photo</button> </div>
+
+                    <div class="custom-file">
+                      <input type="file" name="image" class="custom-file-input" id="inputGroupFile04">
+                      <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
+                      <div class="btn-change"><button style="color:red" class="button-change third ">add photo</button> </div>
+                    </div>
         </form>
         </div>
+
         <div class="category_area item">
             <div class="change_category">
            <i class="fas fa-edit" data-col="category_id" onclick="edit(this.dataset)" id="edit"></i><i data-id="{{Auth::id()}}" data-col ="category_id" class=" fas fa-check-square" onclick= "update(this.dataset)" id="update"></i>
            <div class="default">my category</div>
-           <div class="category_name">{{$cat_name ?? 'Your category'}}</div>
+           <div class="category_name ">{{$cat_name ?? 'Your category'}}</div>
             </div>
                 <select name="category_id" id="" class="cat form-control col-6 form-control-sm"  style="display:none">
                     <option value="">choose your category</option>
@@ -46,22 +52,20 @@
         <div class="education_area item educationParent">
             <div class="change_education">
             <i data-col="education" class="fas fa-edit"  onclick="edit(this.dataset)" id="editEd"></i><i  data-id="<?=Auth::id()?>" data-col ="education" class=" fas fa-check-square updateEd" onclick="update(this.dataset)"></i><br>
+            </div>
             <div class="default">
                 my educations
             </div>
-        </div>
-            <div class="education_content" >
-                <div class="pEdu" id="pEdu">
+            <div class="education_content  " id="pEdu" >
                     <?php $count = 0 ?>
                     @if(isset($allData[0]->education))
                     @foreach(json_decode($allData[0]->education) as $edu)
                         <?php $count++ ; ?>
                         @if(strlen($edu) > 2)
-                            <span>{{$count .'. '}}</span><p style="display: inline-block" class="h6 pEdu">{{$edu}}</p><br>
+                            <span>{{$count .'. '}}</span><p style="display: inline-block" class="h6 pEdu ">{{$edu}}</p><br>
                         @endif
                     @endforeach
                 @endif
-                </div>
             </div>
         </div>
         <div class="my_skills_area item skillsParent">
@@ -92,7 +96,7 @@
                 @if(isset($allData[0]->links))
                 @foreach(json_decode($allData[0]->links)  as $link)
                     @if(strlen($link) > 7)
-                        <p class="text-primary col-md-4 linksA"  onclick='test({{json_encode($link)}})'>{{$link}}</p>
+                        <h6 class="linksA linkStyle">{{$link}}</h6><br>
                     @endif
                 @endforeach
                     @endif

@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>OnClickJob</title>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="https://malsup.github.com/jquery.form.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="{{mix('css/app.css')}}">
-    <link rel="stylesheet" href="{{url('css/profile.css')}}">
 </head>
 
 <body>
@@ -19,7 +19,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{url('/student')}}">
                     <i class="fa fa-home"></i>
                     Home
                 </a>

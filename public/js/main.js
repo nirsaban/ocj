@@ -1,6 +1,5 @@
 window.onload = function init(){
 
-
     function present(PRESENT) {
         let count = []
    for (const [key, value] of Object.entries(PRESENT)) {
@@ -11,7 +10,7 @@ window.onload = function init(){
        $(div).css("background", color)
        div.style.transition = 'background 0.5s ease-in-out'
        if(div.style.background != '#fff'){
-           div.style.order = '1'
+           div.style.order = 1
        };
    }
    let presentNum = Math.ceil(count.length * 14 + 2 )
@@ -23,7 +22,15 @@ window.onload = function init(){
   let colorPresentDiv = "rgba("+ r +","+g +"," + b + ","+ (count.length+2)/10+")";
   console.log(colorPresentDiv)
    $(presentDiv).css("background",  colorPresentDiv )
-
+   if(presentNum == 100){
+    swal({
+        position: 'top-center',
+        icon: 'success',
+        title: 'Your profile has been completed... Now find Job!',
+        showConfirmButton: false,
+        timer: 3000
+      })
+   }
 }
 
     present(PRESENT)
@@ -35,9 +42,6 @@ window.onload = function init(){
 function checkCategory(id){
     if (confirm("to view more please fill Your profile")) window.location = `profile/${id}`;
 }
-function test(link){
-    console.log(link)
-    window.open(`${link}`, '_blank');
-}
+
 
 
