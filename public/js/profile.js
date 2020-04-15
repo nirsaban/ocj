@@ -235,7 +235,8 @@ class Profile{
     }
 
     update(id,item,value){
-        axios({method:'post',url:`http://127.0.0.1:8000/profile/update`,
+        let url = location.origin + '/profile/update';
+        axios({method:'post',url: url,
             data:{
                 item:item,
                 id:id,
