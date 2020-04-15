@@ -22,6 +22,7 @@ window.onload = function init(){
   let colorPresentDiv = "rgba("+ r +","+g +"," + b + ","+ (count.length+2)/10+")";
   console.log(colorPresentDiv)
    $(presentDiv).css("background",  colorPresentDiv )
+
    if(presentNum == 100){
     swal({
         position: 'top-center',

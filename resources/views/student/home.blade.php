@@ -1,5 +1,7 @@
 @extends('masters.studentMaster')
 @section('content')
+
+
     <div class="container" style="margin-bottom: 8rem">
         <h1 class="display-3">Hello, {{Auth::user()->name}} {{$title}}</h1>
         <h3 class="display-4">{{$second_title}}</h3>

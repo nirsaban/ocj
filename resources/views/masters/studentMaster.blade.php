@@ -10,6 +10,7 @@
     <script src="https://malsup.github.com/jquery.form.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="{{mix('css/app.css')}}">
+
 </head>
 
 <body>
