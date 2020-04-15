@@ -96,7 +96,7 @@
                 @if(isset($allData[0]->links))
                 @foreach(json_decode($allData[0]->links)  as $link)
                     @if(strlen($link) > 7)
-                        <h6 class="linksA linkStyle">{{$link}}</h6><br>
+                        <a class="linksA linkStyle" href="{{$link}}">{{$link}}</a><br>
                     @endif
                 @endforeach
                     @endif
