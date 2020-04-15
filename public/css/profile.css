@@ -47,11 +47,12 @@ span.tags
 
 }
 .compliteProf > .item{
+    margin: 0.1rem;
+    border-radius: 0;
     padding: 0.5rem;
     color:black;
     font-weight: bold;
     border: 1px solid black;
-    border-radius:5px ;
     text-align: center;
     align-self: center;
 }
