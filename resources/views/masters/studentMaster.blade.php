@@ -7,7 +7,7 @@
     <title>OnClickJob</title>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="https://malsup.github.com/jquery.form.js"></script>
+    <script src="http://malsup.github.com/jquery.form.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="{{mix('css/app.css')}}">
 
