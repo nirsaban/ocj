@@ -2,7 +2,14 @@
 @section('content')
     <link rel="stylesheet" href="{{ URL::asset('css/profile.css') }}">
 <input type="hidden" id="idUser" value="{{Auth::id()}}" >
+
     <div class="container">
+        @if(isset($allData[0]))
+        <div class="reset" onclick="resetProfile({{Auth::id()}})">
+            reset
+            <div class="reset2" ></div>
+        </div>
+        @endif
         <div class="main_title tracking-in-expand">{{$name}} Profile</div>
         <div class="image_area ">
             @if(isset($allData[0]->image))
@@ -96,7 +103,7 @@
                 @if(isset($allData[0]->links))
                 @foreach(json_decode($allData[0]->links)  as $link)
                     @if(strlen($link) > 7)
-                        <a class="linksA linkStyle" href="{{$link}}">{{$link}}</a><br>
+                        <a class="linksA linkStyle" href="">{{$link}}</a><br>
                     @endif
                 @endforeach
                     @endif

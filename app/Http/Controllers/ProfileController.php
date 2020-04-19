@@ -60,4 +60,12 @@ class ProfileController extends Controller
         }
 
     }
+    public function reset(Request $request){
+        $id = json_decode($request->id);
+        if(Profile::where('user_id', $id)->delete()){
+          return response('success reset', 201)->header('Content-Type', 'text/plain');
+        }else{
+            return response('something failed', 500)->header('Content-Type', 'text/plain');
+        }
+    }
 }
