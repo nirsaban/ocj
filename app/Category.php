@@ -6,5 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-    //
+    public function job(){
+        return $this->hasMany(Job::Class);
+    }
+    public function course(){
+        return $this->belongsTo(Course::Class);
+}
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Course;
 use App\Job;
 use App\Profile;
@@ -19,10 +20,11 @@ class PagesController extends Controller
       return view('student.home', compact( 'allJobs',  'title','userCategory','second_title'));
   }
   public function employerHome(){
-    if(isset($_GET['id'])){
-        $jobs = Job::where('user_id',Auth::id())->where('course_id',$_GET['id'])->get();
-    }
-      $jobs = Job::where('user_id',Auth::id())->get();
+//    if(isset($_GET['id'])){
+//        $jobs = Job::where('user_id',Auth::id())->where('course_id',$_GET['id'])->get();
+//    }
+
+    $jobs = Job::with('category','course')->where('user_id',Auth::id())->get();
      $title = 'Find new student ';
      $second_title = 'sort by course';
      $courses = Job::join('courses', 'jobs.course_id', '=', 'courses.id')->select(['courses.name','courses.id'])->get()->toArray();

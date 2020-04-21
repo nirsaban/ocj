@@ -17,6 +17,8 @@ class JobController extends Controller
         return view('employer.create',compact('courses'));
     }
     public function create(JobRequest $request){
+        json_decode($request->category_id);
+        json_decode($request->course_id);
        Job::create(['user_id'=>Auth::id()] +  $request->all());
        return redirect('/employer');
     }

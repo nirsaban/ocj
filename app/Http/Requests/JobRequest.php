@@ -39,6 +39,8 @@ class JobRequest extends FormRequest
     public function messages()
     {
         return [
+            'course_id.numeric' => 'select the main subject',
+            'category_id.numeric'  => 'select the sub category',
             'course_id.required' => 'select the main subject',
             'category_id.required'  => 'select the sub category',
             'company.required' => 'fill the company input',

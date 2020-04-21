@@ -76,5 +76,5 @@
 
                         </div>
                     </div>
-
+                    <script> window.localStorage.clear() </script>
     @endsection

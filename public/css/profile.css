@@ -1,10 +1,12 @@
 body{
     display: block;
     position: relative;
+
     font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 body::after{
     background-image: url("/images/bgcProfile.jpg");
+     webkit-animation:kenburns-top 5s ease-out both;animation:kenburns-top 5s ease-out both;
     background-position: right; /* Center the image */
  /* Do not repeat the image */
     background-size: cover;
@@ -442,7 +444,7 @@ box-shadow: 0 0 10px 0 #3498db inset, 0 0 10px 4px #3498db;
     height :2rem;
     font-size :1.4rem;
     text-align :center;
-    line-height:2.5rem;
+    line-height:2rem;
     color :rgba(255,255,255,0.9);
     border-radius :50px;
     background-image: linear-gradient(-45deg, #FFA63D, #FF3D77, #338AFF, #3CF0C5);
@@ -474,5 +476,5 @@ box-shadow: 0 0 10px 0 #3498db inset, 0 0 10px 4px #3498db;
 }
 
 }
-
+@-webkit-keyframes kenburns-top{0%{-webkit-transform:scale(1) translateY(0);transform:scale(1) translateY(0);-webkit-transform-origin:50% 16%;transform-origin:50% 16%}100%{-webkit-transform:scale(1.25) translateY(-15px);transform:scale(1.25) translateY(-15px);-webkit-transform-origin:top;transform-origin:top}}@keyframes kenburns-top{0%{-webkit-transform:scale(1) translateY(0);transform:scale(1) translateY(0);-webkit-transform-origin:50% 16%;transform-origin:50% 16%}100%{-webkit-transform:scale(1.25) translateY(-15px);transform:scale(1.25) translateY(-15px);-webkit-transform-origin:top;transform-origin:top}}
 
