@@ -13,7 +13,7 @@
         <div class="main_title tracking-in-expand">{{$name}} Profile</div>
         <div class="image_area ">
             @if(isset($allData[0]->image))
-            <img src="{{asset('images/_'.Auth::id().'/'.$allData[0]->image)}}" class="profile_image"/>
+                <img src="{{asset('images/_'.Auth::id().'/'.$allData[0]->image)}}" class="profile_image"/>
             @else
             <img src="{{asset('images/avatar.jpg')}}"  alt="" class="profile_image">
             @endif

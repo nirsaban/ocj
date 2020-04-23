@@ -2,10 +2,7 @@ body {
     background: #2e22223a;
     font-family: 'Open Sans', sans-serif;
     background:#eeeeee;
-    background-image: url("/images/bgcEmp.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+
 }
 
 .anim{
@@ -38,12 +35,11 @@ form h1 {
 
 form {
     border-radius: 5px;
-    max-width:65%;
+    max-width:30%;
     width:100%;
     margin: 5% auto;
-    background-color: #FFFFFF;
+    background-color: rgba(168, 159, 142, 0.4);
     overflow: hidden;
-
 }
 
 p span {
@@ -55,8 +51,6 @@ p {
     font-weight: 500;
     line-height: 2;
     color:#333;
-
-    font-size: 2rem;
 }
 
 h1 {
@@ -114,7 +108,8 @@ i {
 }
 
 .contentform {
-    padding: 40px 30px;
+    padding: 15px 20px;
+    align-items: center;
 }
 
 .bouton-contact{
@@ -132,7 +127,8 @@ i {
 }
 
 .leftcontact {
-    width:49.5%;
+   justify-self: center;
+    width:100%;
     float:left;
     border-right: 1px dotted #CCC;
     box-sizing: border-box;
@@ -143,7 +139,7 @@ i {
     width:49.5%;
     float:right;
     box-sizing: border-box;
-    padding: 15px 0px 0px 15px;
+    padding: 0px 0px 0px 15px;
 
 
 }
@@ -231,7 +227,7 @@ i {
 .contentJob{
     display: grid;
     grid-template-columns: minmax(10rem ,3fr) minmax(1rem,0.5fr);
-    grid-template-rows: repeat(14,minmax(min-content ,15%));
+    grid-template-rows: repeat(14,minmax(4rem ,15%));
     grid-gap: 1rem;
     font-family:"Comic Sans MS", cursive, sans-serif;
     font-size: 20px;
@@ -259,7 +255,7 @@ i {
 }
 #subTitle{
     grid-row: 3/4;
-   animation:bounce-top .9s both;
+    animation:bounce-top .9s both;
 }
 #title{
     grid-row: 4/5;
@@ -273,7 +269,6 @@ i {
 }
 #requirements{
     grid-row: 8/10;
-    padding: 2rem;
 }
 #salary{
     grid-row: 10/11;

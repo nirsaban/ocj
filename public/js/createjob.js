@@ -1,4 +1,5 @@
 window.onload = function init() {
+
     trickCat.value = parseInt(localStorage.getItem('category_id'))
     if(localStorage.getItem('requirements') != null){
         trickReq.value = localStorage.getItem('requirements').replace('requirements- ','')
@@ -155,25 +156,24 @@ function addRequire(){
 
 }
 function saveAllRequire(button){
+    disabledPlus.style.display = 'none'
     button.style.cursor ='not-allowed'
     button.style.opacity = '0.6';
-    // let plus = document.getElementById('disabledPlus')
-    //     plus.innerHTML = '<i class="far fa-trash-alt"></i>';
-    // plus.addEventListener('click',()=>{
-    //     localStorage.removeItem('requirements');
-    //     location.reload()
-    // })
-
     const reqArr = []
     let allRequire = document.querySelectorAll('.require');
     allRequire.forEach(inputRequire =>{
         inputRequire.style.color = 'rgba(131, 125, 125, 0.24)';
+        inputRequire.disabled = true
         reqArr.push(inputRequire.value)
     })
     let jsonValue = JSON.stringify(reqArr);
     trickReq.value = jsonValue
     let requireDiv = document.getElementById('requirements');
+    if(requireDiv.textContent.length  > 2){
+        requireDiv.textContent = '';
+    }
     requireDiv.innerHTML += 'requirements - '+'<br>'
+
     reqArr.forEach(req=>{
         if(req.length >= 3) {
             requireDiv.innerHTML += '<li>' + req + '</li>';

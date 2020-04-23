@@ -1,108 +1,99 @@
-body,
+
+body {
+    font-family: 'Montserrat';
+    font-style: Italic;
+    background-image: url("https://images.pexels.com/photos/255379/pexels-photo-255379.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-size: 1.7rem;
+}
 html {
-    background-color: rgb(241, 248, 255);
-    font-family: arial;
-    color: #4C5769;
+    scroll-behavior:smooth;
 }
 
-.Jobs {
+.card-footer{
     display: flex;
-    position: relative;
+
+    justify-content: space-evenly;
+}
+#jobsDiv{
+    width: 70%;
+    display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    max-width: 1250px;
     margin: 0 auto;
 }
-
+.des{
+    height:10rem;
+    overflow: auto;
+}
 .JobsCard {
-    max-width: 350px;
-    margin: 2em auto;
+    opacity: 0.8;
+    filter: alpha(opacity=60);
+    width: 30%;
+    max-height: 25%;
+    margin: .4rem;
+
+}
+.card:hover{
+    transition: ease-in-out 0.1s;
+    transform: scale(1.02, 1.02);
+    box-shadow: 5px 5px 30px 15px rgba(0,0,0,0.25),
+    -5px -5px 30px 15px rgba(0,0,0,0.22);
+}
+.header {
+    text-align: center;
     padding: 20px;
-    margin: 20px;
-    background-color: #CECED1;
-    box-shadow: 0px 0px 3px #4C5769;
-    text-align:center;
-    flex: 1 1 auto;
-    box-sizing: border-box;
+
+}
+.mainTitle{
+    font-size: 4rem;
 }
 
-.JobsCard-active {
-    width: 50%;
-    max-width: 100%;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    z-index: 2;
-    transform: translate(-50%, -50%);
-    transition: max-width 0.2s ease-in;
+ /*Responsive layout - makes a two column-layout instead of four columns */
+@media (max-width: 800px) {
+    .column {
+        flex: 46%;
+        max-width: 46%;
+    }
 }
 
-.JobsCard-Title {
-    font-size: 1.2em;
-    /*text-transform: uppercase;*/
+
+.card-title {
+    font-weight:bold;
+    text-align: center;
+}
+.card-text {
+    text-align: justify;
 }
 
-.JobsCard-JobDescription {
-    margin: 20px auto;
-    word-wrap: break-word;
+.modal-header {
+    background-image: linear-gradient(#7FDBFF,white);
 }
-
-.JobsCard-Image {
-    display: inline-block;
+.modal-footer {
+    background-image: linear-gradient(white,#7FDBFF);
+}
+#left-panel-link {
     position: relative;
-    width: 110px;
-    height: 110px;
-    margin: 10px 0px;
-    border-radius: 100%;
-    background-color: #A9B0B7;
-    overflow: hidden;
-
-}
-
-.JobsCard-Image > .fa {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.JobsCard > .Button {
-    display: inline-block;
-    color: #4C5769;
-    padding: 10px 25px;
-    margin: 10px 0px;
-    background-color: #C0C0C5;
-    /*text-transform: uppercase;*/
-    font-size: 1em;
-    font-weight: 700;
-    transition: box-shadow .5s ease-in;
-}
-
-.JobsCard > .Button:hover {
-    box-shadow: 0px 0px 2px #4C5769;
-    transition: box-shadow 1s ease-out;
+    left: 5%;
+    background-color: #555;
+    color: white;
+    font-size: 16px;
+    padding: 12px 20px;
+    border: none;
     cursor: pointer;
+    border-radius: 5px;
 }
-
-.Overlayer {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    z-index: 1;
-    overflow: hidden;
-    background-color: rgba(0, 0, 0, 0.5);
+#left-panel-link:first-child{
+    background-color: #f19d9d;
 }
-
-.Overlayer-active {
-    display: inherit;
+#left-panel-link:last-child{
+background-color: #737ee5;
 }
-
-.none{
-    display: none;
+.fas{
+    margin-right:0.8rem
 }
-.block{
-    display: block;
+.sep {
+    height: 25px;
 }

@@ -16,7 +16,7 @@
                 <div id ="sub&main">
                 <div class="form-group">
                     <p>main title<span>*</span></p>
-                 <select  onchange="onChangeCourse(this)" class="course form-control form-control-sm mainTitle @error('course_id') is-invalid @enderror" id="courseRegister" name="course_id">
+                 <select  onchange="onChangeCourse(this)" class="course form-control col-md-5 form-control-lg mainTitle @error('course_id') is-invalid @enderror" id="courseRegister" name="course_id">
                      <option selected="true" disabled="disabled">main subject</option>
                      @foreach($courses as $course)
                      <option value="{{$course['id']}}">{{$course['name']}}</option>
@@ -129,7 +129,7 @@
                     </div>
                     <small style="letter-spacing: .4rem">live demo</small>
                     <h2 id="mainTitle" class="tracking-in-contract-bck"></h2>
-                    <h4 id="subTitle"></h4>
+                    <h3 id="subTitle"></h3>
                     <h6 id="title"></h6>
                     <p id="company"></p>
                     <p id="description"></p>

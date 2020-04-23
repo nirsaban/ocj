@@ -12,4 +12,7 @@ class Category extends Model
     public function course(){
         return $this->belongsTo(Course::Class);
 }
+public function profile(){
+        return $this->hasMany(Profile::class);
+}
 }

@@ -32,4 +32,8 @@ Route::post('/addLike','LikeController@insert');
 Route::get('/job/create','JobController@showForm');
 Route::post('/job/create','JobController@create');
 Route::post('/courseId','JobController@getCategory');
-
+Route::post('/getJobs','JobController@getAllJobs');
+Route::get('/editJob/{id}/course/{course_id}','JobController@editJob');
+Route::put('/job/update','JobController@updateJob');
+Route::get('studentCategory/{category_id}','JobController@studentByCategory');
+Route::get('job/delete/{id}', 'JobController@destroy');

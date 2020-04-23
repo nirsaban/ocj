@@ -20,16 +20,12 @@ class PagesController extends Controller
       return view('student.home', compact( 'allJobs',  'title','userCategory','second_title'));
   }
   public function employerHome(){
-//    if(isset($_GET['id'])){
-//        $jobs = Job::where('user_id',Auth::id())->where('course_id',$_GET['id'])->get();
-//    }
-
     $jobs = Job::with('category','course')->where('user_id',Auth::id())->get();
      $title = 'Find new student ';
      $second_title = 'sort by course';
      $courses = Job::join('courses', 'jobs.course_id', '=', 'courses.id')->select(['courses.name','courses.id'])->get()->toArray();
      $courses = array_unique($courses,SORT_REGULAR);
-     return view('employer.home', compact('jobs','title','second_title','courses'));
+     return view('employer.home', compact('title','second_title','courses'));
   }
 }
 
