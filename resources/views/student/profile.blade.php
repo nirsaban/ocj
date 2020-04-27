@@ -1,7 +1,7 @@
 @extends('masters.studentMaster')
 @section('content')
     <link rel="stylesheet" href="{{ URL::asset('css/profile.css') }}">
-<input type="hidden" id="idUser" value="{{Auth::id()}}" >
+    <input type="hidden" id="idUser" value="{{Auth::id()}}" >
 
     <div class="container">
         @if(isset($allData[0]))
@@ -103,7 +103,7 @@
                 @if(isset($allData[0]->links))
                 @foreach(json_decode($allData[0]->links)  as $link)
                     @if(strlen($link) > 7)
-                        <a class="linksA linkStyle" href="">{{$link}}</a><br>
+                        <a class="linksA linkStyle" href="www.{{$link}}">{{$link}}</a><br>
                     @endif
                 @endforeach
                     @endif

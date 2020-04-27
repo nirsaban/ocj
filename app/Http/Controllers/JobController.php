@@ -55,12 +55,15 @@ class JobController extends Controller
                 return redirect('/employer');
             }
     }
-    public function studentByCategory($category_id){
-        $id = json_decode($category_id);
+    public function studentByCategory(Request $request){
+
+        $id = json_decode($request->category_id);
         $students = Profile::with('user','category')->where('category_id',$id)->get();
-        return view('employer.studentsByCategory',compact('students'));
-    }
-    public function destroy($id)
+        $title = count($students) > 0 ? 'Find the best student for your job !' : 'Sorry, no students from this category have been found yet :( ';
+        $job_id = json_decode($request->job_id);
+        return view('employer.studentsByCategory',compact('students','title','job_id'));
+         }
+      public function destroy($id)
     {
        $job = Job::find($id)->delete();
         if($job){
@@ -68,5 +71,26 @@ class JobController extends Controller
         }else{
             return response('something warn', 500)->header('Content-Type', 'text/plain');
         }
+    }
+    public function showStudent(Request $request){
+        $profile = [];
+        $id = json_decode($request->id);
+        $profile['name'] = User::find($id)->name;
+        $profile['cat_name'] = Category::select('cat_name')->where('id',User::find($id)->profile()->value('category_id'))->value('cat_name');
+        $profile['categories'] = Category::all()->toArray();
+        $profile['allData'] = Profile::where('user_id',$id)->get();
+        $presentAll = Profile::where('user_id',$id)->get(['category_id','about_me', 'education', 'my_skills', 'links','work_experience','image'])->toArray();
+        if (isset($presentAll[0])){
+            foreach ($presentAll[0] as $key => $value){
+                if($value != null){
+                    $present[$key] = $value;
+                }
+            }
+            $profile['present'] = $present;
+        }
+        $profile['id'] = $id;
+        $profile['job_id'] = $request->job_id;
+
+        return view('employer.StudentByCategory',$profile);
     }
 }

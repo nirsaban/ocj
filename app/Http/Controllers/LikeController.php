@@ -13,6 +13,7 @@ public function insert(Request $request){
     $like = new Like;
     $like->love = $request->love;
     $like->beloved = $request->beloved;
+    $like->rilation = $request->rilation;
     if($like->save()){
         return response('your Like add successfully',201)->header('Content-Type', 'text/plain');
     }else{

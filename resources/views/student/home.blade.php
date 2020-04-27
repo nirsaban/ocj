@@ -9,29 +9,32 @@
     </div>
     </div>
 
-    <div class="Jobs">
+
+    <div class="JobsCard">
         @foreach($allJobs as $job)
-        <div class="JobsCard">
-        <h1 class="JobsCard-Title">{{$job->job_title}} <small>{{$job->company}}</small></h1>
-          <h2 class="JobsCard-Image">
-            <i class="fa fa-magic fa-3x"></i>
-          </h2>
-          <div class="JobsCard-JobDescription">
-            {{$job->description}}
-          </div>
-            <div class="none">
-          <div class="JobsCard-JobDescription">
-            salary: {{$job->salary}}$
-          </div>
-          <div class="JobsCard-JobDescription">
-          location: {{$job->location}}
-          </div>
-          <div  onClick="addLikeTojob('{{$job->id}}','{{Auth::id()}}')"><i class="far fa-thumbs-up fa-lg"></i></div>
-        </div>
-         <div class="Button" @if($userCategory == null) onclick="checkCategory({{Auth::id()}})" @else onClick="readMore(this)" @endif >View more</div>
-        </div>
-        @endforeach
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="card-title">{{$job->category['cat_name']}}</h1>
+                    <ul class="list-group">
+                        <li class="list-group-item list-group-item-success"><i class="fas fa-heading"></i> {{$job->title}}</li>
+                        <li class="list-group-item list-group-item-success"><i class="fa fa-briefcase"style="font-size:20px;"></i> {{$job->company}}</li>
+                        <li class="list-group-item none list-group-item-success"><i class="fa fa-map-marker"style="font-size:20px;"></i>{{$job->location}}</li>
+                         <li class="list-group-item  list-group-item-success des"><i class="fas fa-info"></i> {{$job->description}}</li>
+                        <li class="list-group-item none list-group-item-success"><i class="fas fa-hand-holding-usd"></i> {{$job->salary}}</li>
+                        </ul>
+                </div>
+                <div class="card-footer">
+                    <a class="none like" onClick="addLikeTojob(0,'{{$job->id}}','{{Auth::id()}}')"><i class="far fa-thumbs-up fa-lg"></i></a>
+                    <a @if($userCategory == null) onclick="checkCategory({{Auth::id()}})" @else onclick ="readMore(this)" @endif  type="button" class="btn col-5" id="left-panel-link" >View more</a>
+                </div>
+
+
+            </div>
+
+            @endforeach
+            <div class="Overlayer">
+            </div>
     </div>
-    <div class="Overlayer">
-    </div>
-@endsection
+
+     @endsection
+

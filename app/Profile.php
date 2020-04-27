@@ -13,4 +13,8 @@ class Profile extends Model
    public function category(){
        return $this->belongsTo(Category::class);
    }
+   public function userCourse(){
+       return $this->hasOneThrough(Course::class, User::class);
+
+   }
 }

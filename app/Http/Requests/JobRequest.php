@@ -33,7 +33,7 @@ class JobRequest extends FormRequest
             "salary"=>"required|min:2|max:10",
             "location"=>"required|min:5|max:50",
             "phone" =>"required|numeric|min:9",
-            "email" => "required|email",
+            "contact_email" => "required|email",
         ];
     }
     public function messages()
@@ -58,8 +58,8 @@ class JobRequest extends FormRequest
             'phone.required' => 'fill the phone input',
             'phone.min' => 'the location input must be minimum 9 chars',
             'phone.numeric'=>'the phone input must be numeric , string given',
-            "email.email" => 'this is no valid email',
-            "email.required"=>'fill the email input'
+            "contact_email.email" => 'this is no valid email',
+            "contact_email.required"=>'fill the email input'
         ];
     }
 }

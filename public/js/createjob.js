@@ -242,7 +242,7 @@ function addCategory(){
 function addInput(data) {
     let elm = document.getElementById(data.name)
     elm.classList = 'ease ';
-    if(data.value.length > 3){
+    if(data.value.length > 2){
         localStorage.setItem(data.name,data.name+'-'+data.value)
         elm.innerHTML = localStorage.getItem(data.name);
 

@@ -43,8 +43,8 @@ class User extends Authenticatable
     public function profile(){
         return $this->hasOne(Profile::class);
     }
-//    public function profileCategory(){
-//
-//        return $this->hasOneThrough('App\Category', 'App\Profile');
-//    }
+    public function job(){
+
+        return $this->hasMany(Job::class);
+    }
 }

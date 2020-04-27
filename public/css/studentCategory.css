@@ -1,12 +1,13 @@
-html, body {
-    background: white;
-    font-family: 'Titillium Web', serif;
-    line-height: 1.667;
-}
+
 body {
     color: #373231;
     font-size: 1.7rem;
     font-weight: normal;
+    width: 100%;
+    background: linear-gradient(90deg, rgba(0, 210, 255, 0.42) 0%, rgba(128, 131, 175, 0.25) 25%);
+    font-family: 'Titillium Web', serif;
+    line-height: 1.667;
+
 }
 h1, h2, h3, h4, h5, h6 {
     margin: 0;
@@ -44,7 +45,7 @@ hr {
     margin-top: 1em;
     margin-bottom: 1em;
     border: 0;
-    border-top: 1px solid #eee;
+    border-top: 1px solid #686868;
 }
 .align-left {
     float: left;
@@ -74,9 +75,10 @@ hr {
     opacity: 1;
 }
 .card {
-    max-width: 320px;
-    margin: 1em auto 3em;
-    border: 1px solid #d0cbca;
+    /*max-width:33%;*/
+
+    margin: 1rem;
+    border: 1px solid rgba(52, 49, 49, 0.4);
     background: #2196f3;
     transition: all 150ms ease-in-out;
 }
@@ -131,4 +133,25 @@ footer.closure {
     text-align: center;
     font-size: 12px;
     color: #868686;
+}
+.studentsContainer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 100%;
+    padding: 1.5rem;
+}
+.headerPage{
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0px;
+
+}
+.titlePage{
+    font-size: 2.5rem;
+ font-family: 'Montserrat';
+    font-style: Italic;
+    font-weight: bold;
 }

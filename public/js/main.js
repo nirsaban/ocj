@@ -97,12 +97,20 @@ function resetProfile(id) {
 
   const readMore = (e,) => {
     if(e.textContent == 'View more'){
-        e.textContent = 'X'
+        e.textContent = 'X';
+        e.classList = 'col-2';
+        e.style.textAlign = 'center'
+        e.style.backgroundColor = 'red';
+
+
     }else {
         e.textContent = 'View more'
+        e.classList = 'col-5';
+        e.style.backgroundColor = '#737ee5';
     }
     let parent = e.parentNode;
-    parent.classList.toggle('JobsCard-active');
+    let grendPa = parent.parentNode;
+      grendPa.classList.toggle('card-active');
     document.querySelector('.Overlayer').classList.toggle('Overlayer-active');
      let none = document.querySelectorAll('.none');
      none.forEach(details =>{
@@ -110,7 +118,7 @@ function resetProfile(id) {
      })
   };
 
-function addLikeTojob(beloved,love){
+function addLikeTojob(rilation,beloved,love){
     var form = this;
     swal({
         title: "Are you sure you like this job?",
@@ -127,7 +135,8 @@ function addLikeTojob(beloved,love){
             axios({method:'post',url: url,
                 data:{
                   beloved:beloved,
-                  love:love
+                  love:love,
+                    rilation:rilation
                 }}).then(({data})=>{
                   if(data.trim() == 'You dont can send more then 1 like'){
                     swal({
@@ -138,13 +147,11 @@ function addLikeTojob(beloved,love){
                   }
                else{
                 swal({title: 'Shortlisted!',text: `${data}!`,icon: 'success'})
-                like =  document.querySelector('.fa-thumbs-up')
-                like.style.color = 'red'
-                like.style.transform = 'rotate(15deg)';
                }
             });
         } else {
             swal("Cancelled", "You dont send any like:)", "error");
+
         }
     });
 

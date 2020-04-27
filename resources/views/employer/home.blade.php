@@ -13,15 +13,18 @@
             </select>
         </div>
     </div>
-
         <div id="jobsDiv"></div>
-
-
     </div>
+    <script>
+
+
+    </script>
         <script src="{{url('js/employer.js')}}"></script>
         <script>
             window.onload = function(){
               getData(courseId = null);
+
+
             }
             function getData(courseId = null){
                 const baseUrl = location.origin;
@@ -40,7 +43,7 @@
                         })
                     }
                     data.forEach(item => {
-
+                        const csrfToken=  '<?php print_r(@csrf_token());?>';
                         let div = document.createElement('div')
                         div.classList ='JobsCard'
                         div.innerHTML +=  ` <div class="card">`+
@@ -57,8 +60,12 @@
                                  ` <div class="card-footer">`+
                                   `<a href ="editJob/${item.id}/course/${item.course['id']}" type="button" class="btn" id="left-panel-link" >Edit </a>`+
                                  `<a href="job/delete/${item.id}"  type="button" class="btn button delete-confirm"data-toggle="modal" data-target="#exampleModal1" id="left-panel-link" onclick="deleteJob(this)" >Delete</a>`+
-
-                                 `<a href="${baseUrl}/studentCategory/${item.category['id']}" type="button" class="btn"  id="left-panel-link">All student</a>`+
+                                  `<form action="${baseUrl}/studentCategory" method="POST">`+
+                                  `<input type="hidden" name="_token" value="${csrfToken}">`+
+                                    `<input type="hidden"  name="job_id" value=${item.id}>`+
+                                    `<input type="hidden" name="category_id" value="${item.category['id']}">`+
+                                    `<input type="submit" class="btn" name="submit"  id="left-panel-link" value="All students">`+
+                                  `</form>`+
                                  `</div>`+
                                   `</div>`
                                 jobsDiv.appendChild(div)

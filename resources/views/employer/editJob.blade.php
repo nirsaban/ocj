@@ -110,8 +110,8 @@
                     <p>E-mail <span>*</span></p>
                     <span class="icon-case"><i class="fas fa-envelope"></i></span>
                     <div class="flex">
-                        <input type="email" value="{{$job->email}}"  name="email"  class="@error('location') is-invalid @enderror" />
-                        @error('email')
+                        <input type="email" value="{{$job->contact_email}}"  name="contact_email"  class="@error('location') is-invalid @enderror" />
+                        @error('contact_email')
                         <div class="validation">{{ $message }}</div>
                         @enderror
                     </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Course;
 use App\Profile;
 use App\User;
 use http\Exception;
@@ -11,13 +12,13 @@ use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
-    public function show(Request $request,$id)
+    public function show($id)
     {
 
         $profile = [];
         $profile['name'] = User::find($id)->name;
         $profile['cat_name'] = Category::select('cat_name')->where('id',User::find($id)->profile()->value('category_id'))->value('cat_name');
-        $profile['categories'] = Category::all()->toArray();
+        $profile['categories'] = Category::where('course_id',Auth::user()->course_id)->get()->toArray();
         $profile['allData'] = Profile::where('user_id',$id)->get();
         $presentAll = Profile::where('user_id',$id)->get(['category_id','about_me', 'education', 'my_skills', 'links','work_experience','image'])->toArray();
         if (isset($presentAll[0])){
@@ -26,7 +27,7 @@ class ProfileController extends Controller
                     $present[$key] = $value;
                 }
             }
-     $profile['present'] = $present;
+         $profile['present'] = $present;
         }
 
 
@@ -67,5 +68,14 @@ class ProfileController extends Controller
         }else{
             return response('something failed', 500)->header('Content-Type', 'text/plain');
         }
+    }
+    public function allStudent(){
+        $allStudent = User::with('course','profile')->where('role','student')->get()->toArray();
+        return view('placement.allStudent',compact('allStudent'));
+
+    }
+    public function getCategory(Request $request){
+        $category = Profile::with('category')->where('user_id',json_decode($request->id))->get()->toArray();
+        return $category[0]['category']['cat_name'];
     }
 }

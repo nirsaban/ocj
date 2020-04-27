@@ -107,8 +107,8 @@
                     <p>E-mail <span>*</span></p>
                     <span class="icon-case"><i class="fas fa-envelope"></i></span>
                     <div class="flex">
-                    <input type="email" onblur="addInput(this)" name="email"  class="@error('location') is-invalid @enderror" />
-                    @error('email')
+                    <input type="email" onblur="addInput(this)" name="contact_email"  class="@error('location') is-invalid @enderror" />
+                    @error('contact_email')
                     <div class="validation">{{ $message }}</div>
                     @enderror
                 </div>
@@ -137,7 +137,7 @@
                     <p id="salary"></p>
                     <p id="location"></p>
                     <p id="phone"></p>
-                    <p id="email"></p>
+                    <p id="contact_email"></p>
                 </div>
 
             </div>

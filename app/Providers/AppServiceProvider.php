@@ -33,5 +33,8 @@ class AppServiceProvider extends ServiceProvider
         Blade::if('placement', function () {
             return auth()->check() && auth()->user()->role === "placement";
         });
+        Blade::directive('continue', function($expression) {
+            return "<?php continue; ?>";
+        });
     }
 }
