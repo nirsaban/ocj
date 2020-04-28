@@ -78,7 +78,9 @@ function sendMessageToStudent(name,title,company,job_id,student_id,userSend) {
                         icon: 'error'
                     })
                 } else {
-                    Swal.fire({title: 'Shortlisted!', text: `${data}!`, icon: 'success'});
+                    Swal.fire({title: 'Shortlisted!', text: `${data}!`, icon: 'success'}).then(()=>{
+                        location.reload()
+                    });
                 }
             });
         } else {
@@ -91,4 +93,21 @@ function checkProfileAndGetCategory(id,div){
    axios({method:'post',url:url,data:{id:id}}).then(({data})=>{
    document.getElementById(`category_id${div}`).innerText += data;
    })
+}
+function sendErrorMessage(id,count){
+    let message = document.getElementById(`errorMessage_${count}`).value;
+    let url = location.origin + '/sendMessage'
+    axios({method:'post',url:url,data:{user_id:id,message:message}}).then(({data})=>{
+        Swal.fire({title: 'your message send!', text: `${data}!`, icon: 'success', position: 'top'}).then(()=>{
+            location.reload()
+        });
+    })
+}
+function confirm(id,elem) {
+    let url = location.origin + '/confirm'
+    axios({method:'post',url:url,data:{id:id,type:elem['type'],bool:elem['bool']}}).then(({data})=>{
+        Swal.fire({title: 'this profile confirmed now!', text: `${data}!`, icon: 'success', position: 'center'}).then(()=>{
+            location.reload()
+        });
+    })
 }

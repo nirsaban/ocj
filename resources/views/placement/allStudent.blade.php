@@ -1,12 +1,12 @@
 @extends('masters.placementMaster')
 @section('content')
     <link rel="stylesheet" href="{{ URL::asset('css/placementHome.css') }}">
-    <div class="container">
-        <div class="row">
+      <div class="container">
+            <div class="row">
             <h2>All student</h2>
             <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for match.." title="Type in a name">
-            <table id="myTable">
-                <tr class="header">
+                <table id="myTable">
+                    <tr  class="header">
                     <th style="width:10%">#</th>
                     <th style="width:30%;">course</th>
                     <th style="width:30%;">name</th>
@@ -18,18 +18,18 @@
                         @continue
                     @else
                     <?php $count++ ?>
-                    <tr>
+                    <tr @if($student['profile']['confirm'] == false) style="color:red;background-color: rgba(255,3,18,0.1)" @endif>
                         <td><?= $count ?></td>
                         <td>{{$student['course']['name']}}</td>
                         <td>{{$student['name']}}</td>
                         <td>
                                 <div class="col-1" >
                                     <center>
-                                        <a onclick="checkProfileAndGetCategory('{{$student['id']}}','{{$count}}')" href="#aboutModal" data-toggle="modal" data-target="#myModal_{{$count}}"><img @if(isset($student['profile']['image'])) src="{{asset('images/_'.$student['id'].'/'.$student['profile']['image'])}}" @else src="{{asset('images/avatar.jpg')}}" @endif name="aboutme" width="140" height="140" class="img-circle"></a>
+                                        <a onclick="checkProfileAndGetCategory('{{$student['id']}}','{{$count}}')" href="#aboutModal" data-toggle="modal" data-target="#myModal_{{$count}}"><img @if($student['profile']['confirm'] == false) style="border:2px solid red" @endif @if(isset($student['profile']['image'])) src="{{asset('images/_'.$student['id'].'/'.$student['profile']['image'])}}" @else src="{{asset('images/avatar.jpg')}}" @endif name="aboutme" width="140" height="140" class="img-circle"></a>
                                     </center>
                                 </div>
                                 <!-- Modal -->
-                                <div  class="modal fade " id="myModal_{{$count}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div style="color: black" class="modal fade " id="myModal_{{$count}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -71,6 +71,7 @@
                                                                     <a href="{{$link}}">{{$link}}</a><br>
                                                     @endif
                                                     @endforeach
+                                                        </p>
                                                     @endif
 
                                                 </center>
@@ -82,6 +83,7 @@
                                                                 {{$edu}}<br>
                                                             @endif
                                                         @endforeach
+                                                        </p>
                                                     @endif
                                                 </center>
                                                 <hr>
@@ -94,24 +96,51 @@
                                                                     {{$work}}<br>
                                                     @endif
                                                     @endforeach
+                                                        </p>
                                                     @endif
                                                 </center>
                                             <div class="modal-footer">
-                                            <button class="btn btn-success">Confirm this Profile</button>
-                                             <button class="btn btn-danger">Send message</button>
+                                                @if($student['profile']['confirm'] == false)
+                                                 <button class="btn btn-success" data-type ='student' data-bool = true onclick="confirm('{{$student['id']}}',this.dataset)">Confirm this Profile</button>
+                                                  @else
+                                                    <button class="btn btn-danger" data-type ='student' data-bool = false onclick="confirm('{{$student['id']}}',this.dataset)">Block this profile</button>
+                                                @endif
+                                                <button type="button" data-dismiss="modal" value="Decline" class="btn btn-warning"  data-toggle="modal"  data-target="#declineModal_{{$count}}">Send message</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
+                                </div>
                         </td>
                     </tr>
+
                     @endif
+
+     <div class="modal fade" id="declineModal_{{$count}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+         <div class="modal-dialog">
+             <div class="modal-content">
+                 <div class="modal-header">
+                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                     <h4 class="modal-title float-md-left" id="myModalLabel">Write notes to the student for  her profile</h4>
+                 </div>
+                 <div class="modal-body">
+                     <textarea id="errorMessage_{{$count}}" class="form-control"  rows="5" style="min-width: 100%"></textarea>
+                 </div>
+                 <div class="modal-footer">
+                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                     <button type="button" class="btn btn-primary" onclick="sendErrorMessage('{{$student['id']}}','{{$count}}')">send</button>
+                 </div>
+             </div>
+         </div>
+     </div>
                 @endforeach
             </table>
+            <!-- Modal -->
 
         </div>
     </div>
+
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -129,12 +158,10 @@
             for (i = 0; i < tr.length; i++) {
                 td = tr[i].getElementsByTagName("td")[1];
                 td2 = tr[i].getElementsByTagName("td")[2];
-                td3 = tr[i].getElementsByTagName('td')[5];
-                if (td || td2 || td3) {
+                if (td || td2 ) {
                     txtValue = td.textContent || td.innerText;
                     txtValue2 = td2.textContent || td2.innerText;
-                    txtValue3 = td3.textContent || td3.innerText;
-                    if (txtValue.toUpperCase().indexOf(filter) > -1 || txtValue2.toUpperCase().indexOf(filter)   > -1 || txtValue3.toUpperCase().indexOf(filter)   > -1) {
+                    if (txtValue.toUpperCase().indexOf(filter) > -1 || txtValue2.toUpperCase().indexOf(filter)   > -1 ) {
                         tr[i].style.display = "";
                     } else {
                         tr[i].style.display = "none";

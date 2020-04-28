@@ -40,4 +40,7 @@ Route::get('job/delete/{id}', 'JobController@destroy');
 Route::post('/profileStudent','JobController@showStudent');
 Route::post('/sendMessage','MessageController@sendMessage');
 Route::get('/allStudent','ProfileController@allStudent');
+Route::get('/allJobs','JobController@allJobs');
+Route::get('/allCourses','EditController@allCourses');
 Route::post('/getCategory','ProfileController@getCategory');
+Route::post('/confirm','MessageController@confirm');

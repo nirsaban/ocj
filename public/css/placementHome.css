@@ -184,3 +184,11 @@ display: flex;
 #myTable tr.header, #myTable tr:hover {
     background-color: #f1f1f1;
 }
+span.tags
+{
+    background: rgba(135, 187, 176, 0.18);
+    border-radius: 50%;
+    color: #0c0808;
+    font-weight: bold;
+    padding: 2px 4px;
+}

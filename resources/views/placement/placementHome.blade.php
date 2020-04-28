@@ -56,10 +56,10 @@
                     <th style="width:20%;">course</th>
                     <th style="width:20%;"> job</th>
                     <th style="width:10%;">send message</th>
-                    <th style="width:20%;"><3</th>
+                    <th style="width:10%;"><3</th>
                     <th style="width:20%;">student</th>
                     <th style="width:10%;">send message</th>
-
+                    <th style="width: 10%">status</th>
                 </tr>
                 <?php $count  = 0;?>
                 @foreach($perfectMatches as $match)
@@ -67,13 +67,13 @@
                 <tr>
                     <td><?= $count ?></td>
                     <td>{{$match[0]['course']['name']}}</td>
-                    <td>{{$match[1]['name']}}</td>
-                    <td><button onclick="sendMessageToStudent('{{$match[1]['name']}}','{{$match[0]['title']}}','{{$match[0]['company']}}','{{$match[0]['id']}}','{{$match[1]['id']}}','{{Auth::user()->name}}',)"  class="align-left share" ><i class="far fa-paper-plane"></i> </button>
+                    <td>{{$match[0]['title']}}<br><small>{{$match[0]['company']}}</small></td>
+                    <td> <button  class="align-left share" onclick="sendMessageToEmployer('{{$match[0]['user']['name']}}','{{$match[0]['title']}}','{{$match[1]['name']}}','{{Auth::user()->name}}','{{$match[0]['user']['id']}}','{{$match[1]['id']}}',{{$match[0]['id']}})" ><i class="far fa-paper-plane"></i>  </button>
                     </td>
                     <td><img   width="80px" height="70px"  src="{{asset('images/heart.svg')}}"></td>
                     <td>{{$match[1]['name']}}</td>
-                    <td> <button  class="align-left share" onclick="sendMessageToEmployer('{{$match[0]['user']['name']}}','{{$match[0]['title']}}','{{$match[1]['name']}}','{{Auth::user()->name}}','{{$match[0]['user']['id']}}','{{$match[1]['id']}}',{{$match[0]['id']}})" ><i class="far fa-paper-plane"></i>  </button>
-                    </td>
+                    <td><button onclick="sendMessageToStudent('{{$match[1]['name']}}','{{$match[0]['title']}}','{{$match[0]['company']}}','{{$match[0]['id']}}','{{$match[1]['id']}}','{{Auth::user()->name}}',)"  class="align-left share" ><i class="far fa-paper-plane"></i> </button></td>
+                    <td><i class="fas fa-thermometer-{{$match[0]['message']}} fa-2x" ></i></td>
                 </tr>
                 @endforeach
             </table>

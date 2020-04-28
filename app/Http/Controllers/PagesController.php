@@ -6,6 +6,7 @@ use App\Category;
 use App\Course;
 use App\Job;
 use App\Like;
+use App\Message;
 use App\Profile;
 use App\User;
 use Illuminate\Http\Request;
@@ -16,13 +17,13 @@ class PagesController extends Controller
 {
   public function studentHome(){
       $userCategory = Profile::whereUserId(Auth::id())->value('category_id');
-      $allJobs = $userCategory != null ? Job::with('category')->where('category_id',$userCategory)->get() : Job::where('course_id',Auth::user()->course_id)->get();
+      $allJobs = $userCategory != null ? Job::with('category')->where('category_id',$userCategory)->where('confirm','=',true)->get() : Job::where('course_id',Auth::user()->course_id)->where('confirm',true)->get();
       $title = 'Find your dream job';
       $second_title = User::find(Auth::id())->course()->value('name');
       return view('student.home', compact( 'allJobs',  'title','userCategory','second_title'));
   }
   public function employerHome(){
-    $jobs = Job::with('category','course')->where('user_id',Auth::id())->get();
+     $jobs = Job::with('category','course')->where('user_id',Auth::id())->get();
      $title = 'Find new student ';
      $second_title = 'sort by course';
      $courses = Job::join('courses', 'jobs.course_id', '=', 'courses.id')->where('user_id',Auth::id())->get()->toArray();
@@ -49,6 +50,17 @@ class PagesController extends Controller
 
        }
       $courses = array_unique($courses,SORT_REGULAR);
+       for ($i = 0;  $i < count($perfectMatches);  $i++){
+           $message =  Message::where('student_id',$perfectMatches[$i][1]['id'])->where('job_id',$perfectMatches[$i][0]['id'])->get();
+           if(count($message) == 2){
+               $perfectMatches[$i][0]['message'] = 'full';
+           }else if(count($message) == 1){
+               $perfectMatches[$i][0]['message'] = 'half';
+           }else if(count($message) == 0){
+               $perfectMatches[$i][0]['message'] = 'empty';
+           }
+
+       }
         return view('placement.placementHome',compact('perfectMatches','title','courses'));
   }
 }

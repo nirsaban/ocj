@@ -1,11 +1,11 @@
 body {
     background: #2e22223a;
     font-family: 'Open Sans', sans-serif;
-    background:#eeeeee;
-    background-image: url("/images/bgcEmp.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+    /*background:#eeeeee;*/
+    /*background-image: url("/images/bgcEmp.jpg");*/
+    /*background-repeat: no-repeat;*/
+    /*background-position: center;*/
+    /*background-size: cover;*/
 }
 
 .anim{
@@ -21,13 +21,13 @@ body {
 }
 
 .info i {
-    color:#F6AA93;
+    color: #151313;
 }
 form h1 {
 
 
     font-size: 1.8rem;
-    background: #F6AA93 none repeat scroll 0% 0%;
+    background: #090808 none repeat scroll 0% 0%;
     color: rgb(255, 255, 255);
     padding: 22px 25px;
     border-radius: 5px 5px 0px 0px;
@@ -118,7 +118,7 @@ i {
 }
 
 .bouton-contact{
-    background-color: #81BDA4;
+    background-color: #2ccb88;
     color: #FFF;
     text-align: center;
     width: 100%;

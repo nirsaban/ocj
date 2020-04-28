@@ -35,15 +35,17 @@
                     All student
                 </a>
             </li>
-
-            <li class="nav-item dropdown">
-                <a class="nav-link " href="{{url('/allJobs')}}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fas-envelope-o">
-                        <span class="badge badge-primary">11</span>
-                    </i>
-                    All jobs
+            <li class="nav-item">
+                <a class="nav-link" href='{{url('/allCourses')}}'>
+                    <i class="fas fa-users"></i>
+                    all courses
                 </a>
-
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{url('/allJobs')}}">
+                    <i class="fas fa-briefcase"></i>
+                    All Jobs
+                </a>
             </li>
         </ul>
         <ul class="navbar-nav ">

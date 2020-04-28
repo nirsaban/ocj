@@ -24,7 +24,7 @@ form h1 {
 
 
     font-size: 1.8rem;
-    background: #F6AA93 none repeat scroll 0% 0%;
+    background: rgba(0, 0, 0, 0.57) none repeat scroll 0% 0%;
     color: rgb(255, 255, 255);
     padding: 22px 25px;
     border-radius: 5px 5px 0px 0px;
@@ -113,7 +113,7 @@ i {
 }
 
 .bouton-contact{
-    background-color: #81BDA4;
+    background-color: #23e08f;
     color: #FFF;
     text-align: center;
     width: 100%;
@@ -149,7 +149,7 @@ i {
     margin: 0 0 10px;
     font-weight:400;
     font-size:.9rem;
-    color: #DE5959;
+    color: #de4141;
 }
 
 #sendmessage {

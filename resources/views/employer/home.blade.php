@@ -46,16 +46,16 @@
                         const csrfToken=  '<?php print_r(@csrf_token());?>';
                         let div = document.createElement('div')
                         div.classList ='JobsCard'
-                        div.innerHTML +=  ` <div class="card">`+
+                        div.innerHTML +=  ` <div class="card list-group-item-dark text-dark">`+
                             `<div class="card-body">`+
                             `<h1 class="card-title">${item.course["name"]}</h1>`+
                             `<h2 class="card-title">${item.category['cat_name']}</h2>`+
                             `<ul class="list-group">`+
-                            ` <li class="list-group-item list-group-item-success"><i class="fas fa-heading"></i>  ${item.title}</li>`+
-                            ` <li class="list-group-item list-group-item-success"><i class="fa fa-briefcase"style="font-size:20px;"></i> ${item.company}$</li>`+
-                            `<li class="list-group-item list-group-item-success"><i class="fa fa-map-marker"style="font-size:20px;"></i>${item.location}</li>`+
-                            ` <li class="list-group-item list-group-item-success des"><i class="fas fa-info"></i> ${item.description}</li>`+
-                            `<li class="list-group-item list-group-item-success"><i class="fas fa-hand-holding-usd"></i> ${item.salary} </li>`+
+                            ` <li class="list-group-item list-group-item-secondary "><i class="fas fa-heading"></i>  ${item.title}</li>`+
+                            ` <li class="list-group-item list-group-item-secondary"><i class="fa fa-briefcase"style="font-size:20px;"></i> ${item.company}$</li>`+
+                            `<li class="list-group-item list-group-item-secondary"><i class="fa fa-map-marker"style="font-size:20px;"></i>${item.location}</li>`+
+                            ` <li class="list-group-item list-group-item-secondary des"><i class="fas fa-info"></i> ${item.description}</li>`+
+                            `<li class="list-group-item list-group-item-secondary"><i class="fas fa-hand-holding-usd"></i> ${item.salary} </li>`+
                                  `</ul></div>`+
                                  ` <div class="card-footer">`+
                                   `<a href ="editJob/${item.id}/course/${item.course['id']}" type="button" class="btn" id="left-panel-link" >Edit </a>`+

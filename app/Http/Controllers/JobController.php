@@ -58,7 +58,7 @@ class JobController extends Controller
     public function studentByCategory(Request $request){
 
         $id = json_decode($request->category_id);
-        $students = Profile::with('user','category')->where('category_id',$id)->get();
+        $students = Profile::with('user','category')->where('category_id',$id)->where('confirm','=',true)->get();
         $title = count($students) > 0 ? 'Find the best student for your job !' : 'Sorry, no students from this category have been found yet :( ';
         $job_id = json_decode($request->job_id);
         return view('employer.studentsByCategory',compact('students','title','job_id'));
@@ -92,5 +92,9 @@ class JobController extends Controller
         $profile['job_id'] = $request->job_id;
 
         return view('employer.StudentByCategory',$profile);
+    }
+    public function allJobs(){
+        $jobs = Job::with('user','course','category')->get()->toArray();
+        return view('placement.allJobs',compact('jobs'));
     }
 }
