@@ -93,8 +93,5 @@ class JobController extends Controller
 
         return view('employer.StudentByCategory',$profile);
     }
-    public function allJobs(){
-        $jobs = Job::with('user','course','category')->get()->toArray();
-        return view('placement.allJobs',compact('jobs'));
-    }
+
 }

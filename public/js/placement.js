@@ -1,6 +1,5 @@
 
 function sortMatches(data) {
-    console.log(data.options[data.selectedIndex].text)
 let allMatches = document.querySelectorAll('.row');
 allMatches.forEach(match => {
  if(match.dataset.course != data.options[data.selectedIndex].text){
@@ -8,11 +7,9 @@ allMatches.forEach(match => {
  }else if(match.classList == 'row d-none'){
      match.classList.remove('d-none')
  }else if(data.options[data.selectedIndex].text == 'show all Matches'){
-
      match.classList.remove('d-none')
  }
 })
-
 }
 
 function sendMessageToEmployer(name,title,student,userSend,id,student_id,job_id) {
@@ -44,6 +41,7 @@ function sendMessageToEmployer(name,title,student,userSend,id,student_id,job_id)
                     })
                 } else {
                     Swal.fire({title: 'Shortlisted!', text: `${data}!`, icon: 'success'});
+                    location.reload()
                 }
             });
         } else {
@@ -84,7 +82,7 @@ function sendMessageToStudent(name,title,company,job_id,student_id,userSend) {
                 }
             });
         } else {
-            Swal.fire("Cancelled", "You dont send any like:)", "error");
+            Swal.fire("Cancelled", "You dont send any message:)", "error");
         }
     });
 }
@@ -109,5 +107,166 @@ function confirm(id,elem) {
         Swal.fire({title: 'this profile confirmed now!', text: `${data}!`, icon: 'success', position: 'center'}).then(()=>{
             location.reload()
         });
+    })
+}
+function editCourse(count){
+    let id = document.getElementById(`idCourse${count}`).value;
+    let inputEditCourse  = document.getElementById(`inputEditCourse_${count}`).value
+    let url = location.origin + '/editCourse';
+    axios({method:'post',url:url,data:{course:inputEditCourse,id:id}}).then(({data})=>{
+        if(data == 'you must give min 2 characters' || data == 'something faild'){
+
+            Swal.fire("Cancelled", `${data}`, "error");
+        }else{
+            Swal.fire({title: 'the course as been updated successfully', text: `${data}!`, icon: 'success', position: 'center'}).then(()=>{
+                location.reload()
+            });
+        }
+
+    })
+}
+function editCategory(count) {
+    let id = document.getElementById(`idCategory${count}`).value;
+    let inputEditCategory  = document.getElementById(`inputEditCategory_${count}`).value
+    let url = location.origin + '/editCategory';
+    axios({method:'post',url:url,data:{category:inputEditCategory,id:id}}).then(({data})=>{
+        if(data == 'you must give min 2 characters' || data == 'something faild'){
+            Swal.fire("Cancelled", `${data}`, "error");
+        }else{
+            Swal.fire({title: 'the course as been updated successfully', text: `${data}!`, icon: 'success', position: 'center'}).then(()=>{
+                location.reload()
+            });
+        }
+
+    })
+
+}
+// `Are you sure delete ${name['coursename']}?`,
+// if you delete ${name['coursename']} course all categories students and jobs from this course as been deleted also :( ! `,
+function deleteCourse(id,name) {
+    const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+            confirmButton: 'btn btn-success',
+            cancelButton: 'btn btn-danger'
+        },
+        buttonsStyling: false
+    })
+
+    swalWithBootstrapButtons.fire({
+        title: `Are you sure delete ${name['coursename']}?`,
+        text:  `if you delete ${name['coursename']} course all categories students and jobs from this course as been deleted also :( ! `,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, cancel!',
+        reverseButtons: true
+    }).then((result) => {
+        if (result.value) {
+            let url = location.origin + '/deleteCourse'
+            axios({method:'delete',url:url,data:{id:id}}).then(({data})=>{
+                // if(data === 'all as been deleted'){
+                    swalWithBootstrapButtons.fire(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success'
+                    )
+                location.reload()
+                // }
+            })
+        } else if (
+            /* Read more about handling dismissals below */
+            result.dismiss === Swal.DismissReason.cancel
+        ) {
+            swalWithBootstrapButtons.fire(
+                'Cancelled',
+                'Your imaginary file is safe :)',
+                'error'
+            )
+        }
+    })
+}
+function addCategory(elem){
+   let input =  document.createElement('input');
+    input.setAttribute('type','text')
+    input.placeholder = 'add Category...'
+    input.style.marginTop = '1rem';
+    input.classList = 'category'
+    document.getElementById('parentCategories').appendChild(input)
+}
+function animatePluse() {
+document.querySelector('.fa-plus-square').classList += 'wobble-hor-bottom';
+}
+function createNewCourse() {
+    const err = document.querySelector('.errorMessage');
+    err.textContent = '';
+    const allCategories = document.querySelectorAll('.category');
+    const categories = [];
+     allCategories.forEach((category,key) => {
+       if(category.value.length  > 1 ){
+           categories[key] = category.value
+       }
+   })
+    const courseName = document.getElementById('course');
+
+    if(categories.length < 2 ){
+        err.textContent = 'you must add minimum 2 categories'
+    }else if(courseName.value.length < 2 ){
+        err.textContent = 'you must add  2 characters to course name'
+    }else{
+        let url = location.origin + '/createCourse';
+        let courseNameValue = document.getElementById('course').value;
+        axios({method:'post',url:url,data:{course:courseNameValue,categories:categories}}).then(({data})=>{
+         if(data === 'something faild'){
+             Swal.fire("Error 500", "something faild please try again :(", "error");
+         }else{
+             Swal.fire("success Creating", "good job :)", "success").then(()=>{
+                 location.reload();
+             });
+         }
+        })
+    }
+
+}
+
+function deleteCategory(id,name){
+    const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+            confirmButton: 'btn btn-success',
+            cancelButton: 'btn btn-danger'
+        },
+        buttonsStyling: false
+    })
+
+    swalWithBootstrapButtons.fire({
+        title: `Are you sure delete ${name}?`,
+        text:  `if you delete ${name} category all  students and jobs from this category as been deleted also :( ! `,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, cancel!',
+        reverseButtons: true
+    }).then((result) => {
+        if (result.value) {
+            let url = location.origin + '/deleteCategory'
+            axios({method:'delete',url:url,data:{id:id}}).then(({data})=>{
+                // if(data === 'all as been deleted'){
+                swalWithBootstrapButtons.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                )
+                location.reload()
+                // }
+            })
+        } else if (
+            /* Read more about handling dismissals below */
+            result.dismiss === Swal.DismissReason.cancel
+        ) {
+            swalWithBootstrapButtons.fire(
+                'Cancelled',
+                'Your category is safe :)',
+                'error'
+            )
+        }
     })
 }

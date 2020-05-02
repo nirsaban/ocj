@@ -15,7 +15,121 @@
     <script src="{{asset('https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js')}}"></script>
     <link rel="stylesheet" href="{{mix('css/app.css')}}">
 
+    <style>
+        .navbar-icon-top .navbar-nav .nav-link > .fa {
+            position: relative;
+            width: 36px;
+            font-size: 24px;
+        }
 
+        .navbar-icon-top .navbar-nav .nav-link > .fa > .badge {
+            font-size: 0.75rem;
+            position: absolute;
+            right: 0;
+            font-family: sans-serif;
+        }
+
+        .navbar-icon-top .navbar-nav .nav-link > .fa {
+            top: 3px;
+            line-height: 12px;
+        }
+
+        .navbar-icon-top .navbar-nav .nav-link > .fa > .badge {
+            top: -10px;
+        }
+        @media (min-width: 576px) {
+            .navbar-icon-top.navbar-expand-sm .navbar-nav .nav-link {
+                text-align: center;
+                display: table-cell;
+                height: 70px;
+                vertical-align: middle;
+                padding-top: 0;
+                padding-bottom: 0;
+            }
+
+            .navbar-icon-top.navbar-expand-sm .navbar-nav .nav-link > .fa {
+                display: block;
+                width: 48px;
+                margin: 2px auto 4px auto;
+                top: 0;
+                line-height: 24px;
+            }
+
+            .navbar-icon-top.navbar-expand-sm .navbar-nav .nav-link > .fa > .badge {
+                top: -7px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .navbar-icon-top.navbar-expand-md .navbar-nav .nav-link {
+                text-align: center;
+                display: table-cell;
+                height: 70px;
+                vertical-align: middle;
+                padding-top: 0;
+                padding-bottom: 0;
+            }
+
+            .navbar-icon-top.navbar-expand-md .navbar-nav .nav-link > .fa {
+                display: block;
+                width: 48px;
+                margin: 2px auto 4px auto;
+                top: 0;
+                line-height: 24px;
+            }
+
+            .navbar-icon-top.navbar-expand-md .navbar-nav .nav-link > .fa > .badge {
+                top: -7px;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .navbar-icon-top.navbar-expand-lg .navbar-nav .nav-link {
+                text-align: center;
+                display: table-cell;
+                height: 70px;
+                vertical-align: middle;
+                padding-top: 0;
+                padding-bottom: 0;
+            }
+
+            .navbar-icon-top.navbar-expand-lg .navbar-nav .nav-link > .fa {
+                display: block;
+                width: 48px;
+                margin: 2px auto 4px auto;
+                top: 0;
+                line-height: 24px;
+            }
+
+            .navbar-icon-top.navbar-expand-lg .navbar-nav .nav-link > .fa > .badge {
+                top: -7px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .navbar-icon-top.navbar-expand-xl .navbar-nav .nav-link {
+                text-align: center;
+                display: table-cell;
+                height: 70px;
+                vertical-align: middle;
+                padding-top: 0;
+                padding-bottom: 0;
+            }
+
+            .navbar-icon-top.navbar-expand-xl .navbar-nav .nav-link > .fa {
+                display: block;
+                width: 48px;
+                margin: 2px auto 4px auto;
+                top: 0;
+                line-height: 24px;
+            }
+
+            .navbar-icon-top.navbar-expand-xl .navbar-nav .nav-link > .fa > .badge {
+                top: -7px;
+            }
+        }
+
+    </style>
 
 <body>
 <nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark">
@@ -35,10 +149,18 @@
                     All student
                 </a>
             </li>
+            @checkCourses
             <li class="nav-item">
                 <a class="nav-link" href='{{url('/allCourses')}}'>
                     <i class="fas fa-users"></i>
                     all courses
+                </a>
+            </li>
+            @endcheckCourses
+            <li class="nav-item">
+                <a class="nav-link" href='{{url('/createCourse')}}'>
+                    <i class="fas fa-users"></i>
+                   create new Course
                 </a>
             </li>
             <li class="nav-item">
@@ -72,23 +194,23 @@
 
         </ul>
     </div>
-    <li class="nav-item dropdown">
-        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-            {{ Auth::user()->name }} <span class="caret"></span>
-        </a>
+{{--    <li class="nav-item dropdown">--}}
+{{--        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>--}}
+{{--            {{ Auth::user()->name }} <span class="caret"></span>--}}
+{{--        </a>--}}
 
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="{{ route('logout') }}"
-               onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                {{ __('Logout') }}
-            </a>
+{{--        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">--}}
+{{--            <a class="dropdown-item" href="{{ route('logout') }}"--}}
+{{--               onclick="event.preventDefault();--}}
+{{--                                                     document.getElementById('logout-form').submit();">--}}
+{{--                {{ __('Logout') }}--}}
+{{--            </a>--}}
 
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                @csrf
-            </form>
-        </div>
-    </li>
+{{--            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">--}}
+{{--                @csrf--}}
+{{--            </form>--}}
+{{--        </div>--}}
+{{--    </li>--}}
 </nav>
 
 @yield('content')

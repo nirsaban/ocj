@@ -61,7 +61,8 @@ class PagesController extends Controller
            }
 
        }
-        return view('placement.placementHome',compact('perfectMatches','title','courses'));
+       $checkCourses = Course::with('category','user','job')->get()->toArray();
+        return view('placement.placementHome',compact('perfectMatches','title','courses','checkCourses'));
   }
 }
 

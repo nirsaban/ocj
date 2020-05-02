@@ -69,13 +69,5 @@ class ProfileController extends Controller
             return response('something failed', 500)->header('Content-Type', 'text/plain');
         }
     }
-    public function allStudent(){
-        $allStudent = User::with('course','profile')->where('role','student')->get()->toArray();
-        return view('placement.allStudent',compact('allStudent'));
 
-    }
-    public function getCategory(Request $request){
-        $category = Profile::with('category')->where('user_id',json_decode($request->id))->get()->toArray();
-        return $category[0]['category']['cat_name'];
-    }
 }

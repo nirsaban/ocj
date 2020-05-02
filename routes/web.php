@@ -39,8 +39,15 @@ Route::post('/studentCategory','JobController@studentByCategory');
 Route::get('job/delete/{id}', 'JobController@destroy');
 Route::post('/profileStudent','JobController@showStudent');
 Route::post('/sendMessage','MessageController@sendMessage');
-Route::get('/allStudent','ProfileController@allStudent');
-Route::get('/allJobs','JobController@allJobs');
+Route::get('/allStudent','EditController@allStudent');
+Route::get('/allJobs','EditController@allJobs');
 Route::get('/allCourses','EditController@allCourses');
-Route::post('/getCategory','ProfileController@getCategory');
+Route::post('/getCategory','EditController@getCategory');
 Route::post('/confirm','MessageController@confirm');
+Route::post('/editCourse','EditController@editCourse');
+Route::post('/editCategory','EditController@editCategory');
+Route::delete('/deleteCourse','EditController@deleteCourse');
+Route::delete('/deleteCategory','EditController@deleteCategory');
+Route::get('/createCourse','EditController@createCourseIndex');
+Route::post('/createCourse','EditController@createCourse');
+

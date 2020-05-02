@@ -174,7 +174,7 @@ display: flex;
 
 #myTable th, #myTable td {
     text-align: left;
-    padding: 12px;
+    padding: 2px;
 }
 
 #myTable tr {
@@ -184,11 +184,15 @@ display: flex;
 #myTable tr.header, #myTable tr:hover {
     background-color: #f1f1f1;
 }
-span.tags
+.tags
 {
-    background: rgba(135, 187, 176, 0.18);
-    border-radius: 50%;
+
+    /*background: rgba(189, 16, 16, 0.25);*/
+
     color: #0c0808;
     font-weight: bold;
     padding: 2px 4px;
+    border-bottom:1px solid rgba(0, 0, 0, 0.2);
+
 }
+

@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Course;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
@@ -35,6 +36,9 @@ class AppServiceProvider extends ServiceProvider
         });
         Blade::directive('continue', function($expression) {
             return "<?php continue; ?>";
+        });
+        Blade::if('checkCourses',function (){
+           return Course::with('category','user','job')->get()->toArray() != null;
         });
     }
 }

@@ -1,141 +1,127 @@
-
-
 @extends('masters.placementMaster')
 @section('content')
     <link rel="stylesheet" href="{{ URL::asset('css/placementHome.css') }}">
-    <div class="container">
+    <div class="container ">
         <div class="row">
             <h2>All Courses</h2>
-            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for match.." title="Type in a name">
-            <table id="myTable">
-                <tr  class="header">
-                    <th style="width:10%">#</th>
-                    <th style="width:20%;">Course name</th>
-                    <th style="width:40%;">categories</th>
-                    <th style="width:5%;">students</th>
-                    <th style="width:5%;">jobs</th>
-                    <th style="width:10%;">edit</th>
+            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for match.."
+                   title="Type in a name">
+            <table id="myTable" border="1px solid black" class="align-content-center">
+                <tr class="header ">
+                    <th class="text-center" style="width:5%">#</th>
+                    <th class="text-center" style="width:10%;">Course name</th>
+                    <th class="text-center" style="width:15%;">categories</th>
+                    <th class="text-center" style="width:5%;">students</th>
+                    <th class="text-center" style="width:5%;">jobs</th>
                 </tr>
-                <?php $count  = 0;?>
+                <?php $count = 0;?>
                 @foreach($courses as $course)
                     <?php $count++ ?>
                     <tr>
-                        <td><?= $count ?></td>
-                        <td>{{$course['name']}}</td>
-                        <td>
+                        <td class="text-center font-weight-bold"><?= $count ?></td>
+                        <td class="text-center font-weight-bolder ">{{$course['name']}} <i data-toggle="modal"
+                                                                                           data-target="#exampleModal_{{$count}}"
+                                                                                           class="far fa-edit"></i>
+                            <i class="fas fa-trash-alt" onclick="deleteCourse('{{$course['id']}}',this.dataset)"
+                               data-courseName='{{$course['name']}}'></i></td>
+                        <td class="text-center " id="flexText">
+                            <?php $countCat = 0;?>
                             @foreach($course['category'] as $category)
                                 @foreach($countCategoryUser as $key => $counter)
-                                    @if($key ==  $category['cat_name'])
-                                        {{$category['cat_name'].' '}}<span class="tags">{{$counter}}</span><br>
-                                 @endif
+                                    @foreach($countCategoryJob as $name => $num)
+                                        @if($key ==  $category['cat_name'] && $name ==  $category['cat_name'] )
+                                            <?php $countCat++; ?>
+                                            {{$category['cat_name'].' '}}<i data-toggle="modal"
+                                                                            data-target="#exampleModalCategory_{{$countCat}}"
+                                                                            class="far fa-edit"></i> <i
+                                                class="fas fa-trash-alt"
+                                                onclick="deleteCategory('{{$category['id']}}','{{$category['cat_name']}}')"></i>
+                                            <div class="tags"><i class="fas fa-user-graduate "></i>{{$counter}} ,<i
+                                                    class="fas fa-briefcase "></i> {{$num}}</div><br>
+                                            <div class="modal fade" id="exampleModalCategory_{{$countCat}}"
+                                                 tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                                 aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">edit</h5>
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                    aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <input type="text" class="form-control"
+                                                                   value="{{$category['cat_name']}}"
+                                                                   id="inputEditCategory_{{$countCat}}">
+                                                            <input type="hidden" value="{{$category['id']}}"
+                                                                   id="idCategory{{$countCat}}">
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                    data-dismiss="modal">Close
+                                                            </button>
+                                                            <button type="button" class="btn btn-primary"
+                                                                    onclick="editCategory('{{$countCat}}')">Save changes
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endif
+                                    @endforeach
                                 @endforeach
                             @endforeach
+
+
                         </td>
-                        <td><i class="fas fa-user-graduate fa-2x"></i><span class="tags">{{$countCourseUser[$course['name']]}}</span></td>
-                        <td><i class="fas fa-briefcase fa-2x"></i><span class="tags">{{$countCourseJob[$course['name']]}}</span></td>
-                        <td>
-                            <div class="col-1" >
-                                <center>
-                                    <a  href="#aboutModal" data-toggle="modal" data-target="#myModal_{{$count}}">edit</a>
-                                </center>
-                            </div>
-                            <!-- Modal -->
-{{--                            <div style="color: black" class="modal fade " id="myModal_{{$count}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">--}}
-{{--                                <div class="modal-dialog">--}}
-{{--                                    <div class="modal-content">--}}
-{{--                                        <div class="modal-header">--}}
-{{--                                            <center>--}}
-{{--                                                <button type="button" class="btn btn-default" data-dismiss="modal">x</button>--}}
-{{--                                            </center>--}}
-{{--                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>--}}
-{{--                                            <h4 class="modal-title" id="myModalLabel">More About {{$job['title']}}</h4>--}}
+                        <td class="text-center"><i class="fas fa-user-graduate fa-2x"></i><span
+                                class="tags">{{$countCourseUser[$course['name']]}}</span></td>
+                        <td class="text-center"><i class="fas fa-briefcase fa-2x"></i><span
+                                class="tags">{{$countCourseJob[$course['name']]}}</span></td>
 
-{{--                                        </div>--}}
-{{--                                        <div class="modal-body">--}}
-{{--                                            <center>--}}
-{{--                                                <img  src="{{asset('images/jobImg.jpg')}}"  name="aboutme" width="140" height="140" class="img-circle">--}}
-{{--                                                <h3 class="media-heading">{{$job['title']}}</h3>--}}
-{{--                                                <h4 class="media-heading">{{$job['category']['cat_name']}}</h4>--}}
-{{--                                                <h5 class="media-heading" >{{$job['company']}}</h5>--}}
-{{--                                                <hr>--}}
-{{--                                            </center>--}}
-{{--                                            <center>--}}
-{{--                                                <p class="text-left"><strong>description: </strong><br>--}}
-{{--                                                    {{$job['description']}}</p>--}}
-{{--                                                <br>--}}
-{{--                                            </center>--}}
-{{--                                            <hr>--}}
-{{--                                            <center>--}}
-{{--                                                <p class="text-left"><strong>requirements: </strong><br>--}}
-{{--                                                    @foreach(json_decode($job['requirements']) as $require)--}}
-{{--                                                        @if(strlen($require) > 2)--}}
-{{--                                                            {{$require}}<br>--}}
-{{--                                                        @endif--}}
-{{--                                                    @endforeach--}}
-{{--                                                </p>--}}
-{{--                                            </center>--}}
-{{--                                            <hr>--}}
-{{--                                            <center>--}}
-{{--                                                <p class="text-left"><strong>Location: </strong><br>--}}
-{{--                                                    {{$job['location']}}<br>--}}
-{{--                                                </p>--}}
-{{--                                            </center>--}}
-{{--                                            <hr>--}}
-{{--                                            <center>--}}
-{{--                                                <p class="text-left"><strong>salary: </strong><br>--}}
-{{--                                                    {{$job['salary']}}<br>--}}
-{{--                                                </p>--}}
-{{--                                            </center>--}}
-
-{{--                                            <hr>--}}
-{{--                                            <div class="modal-footer">--}}
-{{--                                                @if($job['confirm'] == false)--}}
-{{--                                                    <button class="btn btn-success" data-type="job" data-bool = true onclick="confirm('{{$job['id']}}',this.dataset)">Confirm this Profile</button>--}}
-{{--                                                @else--}}
-{{--                                                    <button class="btn btn-danger" data-type="job" data-bool = false onclick="confirm('{{$job['id']}}',this.dataset)">Block this profile</button>--}}
-{{--                                                @endif--}}
-{{--                                                <button type="button" data-dismiss="modal" value="Decline" class="btn btn-warning"  data-toggle="modal"  data-target="#declineModal_{{$count}}">Send message</button>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-
-{{--                            </div>--}}
-{{--                        </td>--}}
                     </tr>
 
 
-{{--                    <div class="modal fade" id="declineModal_{{$count}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">--}}
-{{--                        <div class="modal-dialog">--}}
-{{--                            <div class="modal-content">--}}
-{{--                                <div class="modal-header">--}}
-{{--                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>--}}
-{{--                                    <h4 class="modal-title float-md-left" id="myModalLabel">Write notes to the Employer for  her ad</h4>--}}
-{{--                                </div>--}}
-{{--                                <div class="modal-body">--}}
-{{--                                    <textarea id="errorMessage_{{$count}}" class="form-control"  rows="5" style="min-width: 100%"></textarea>--}}
-{{--                                </div>--}}
-{{--                                <div class="modal-footer">--}}
-{{--                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>--}}
-{{--                                    <button type="button" class="btn btn-primary" onclick="sendErrorMessage('{{$job['user']['id']}}','{{$count}}')">send</button>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal_{{$count}}" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">edit</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <input type="text" class="form-control" value="{{$course['name']}}"
+                                           id="inputEditCourse_{{$count}}">
+                                    <input type="hidden" value="{{$course['id']}}" id="idCourse{{$count}}">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary" onclick="editCourse('{{$count}}')">
+                                        Save changes
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        <!-- Modal -->
+
                 @endforeach
             </table>
-            <!-- Modal -->
-
         </div>
     </div>
 
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    {{--    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">--}}
+    {{--    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>--}}
+    {{--    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>--}}
     <!------ Include the above in your HEAD tag ---------->
 
 
-    <script >
+    <script>
 
         function myFunction() {
             var input, filter, table, tr, td, i, txtValue;
@@ -146,11 +132,11 @@
             for (i = 0; i < tr.length; i++) {
                 td = tr[i].getElementsByTagName("td")[1];
                 td2 = tr[i].getElementsByTagName("td")[2];
-                if (td || td2 || td3 || td4) {
+                if (td || td2) {
                     txtValue = td.textContent || td.innerText;
                     txtValue2 = td2.textContent || td2.innerText;
 
-                    if (txtValue.toUpperCase().indexOf(filter) > -1 || txtValue2.toUpperCase().indexOf(filter)   > -1 ) {
+                    if (txtValue.toUpperCase().indexOf(filter) > -1 || txtValue2.toUpperCase().indexOf(filter) > -1) {
                         tr[i].style.display = "";
                     } else {
                         tr[i].style.display = "none";
@@ -160,9 +146,8 @@
         }
 
 
-
     </script>
-    <script src="{{asset('js/sweet.js')}}"></script>
+
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="{{asset('js/placement.js')}}"></script>
 
