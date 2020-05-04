@@ -7,6 +7,7 @@ use App\Course;
 use App\Http\Requests\JobRequest;
 use App\Http\Requests\UpdateJobRequest;
 use App\Job;
+use App\Message;
 use App\Profile;
 use App\User;
 use Illuminate\Http\Request;
@@ -17,7 +18,9 @@ class JobController extends Controller
 {
     public function showForm(){
         $courses = Course::all();
-        return view('employer.create',compact('courses'));
+        $message = Message::where('user_id',Auth::id())->where('read',false)->get();
+        $counter = count($message);
+        return view('employer.create',compact('courses','counter'));
     }
     public function create(JobRequest $request){
         json_decode($request->category_id);
@@ -44,7 +47,9 @@ class JobController extends Controller
 
         $job = Job::find($id);
         $categories =  Category::where('course_id',json_decode($courseId))->get();
-        return view('employer.editJob',compact('job','categories'));
+        $message = Message::where('user_id',Auth::id())->where('read',false)->get();
+        $counter = count($message);
+        return view('employer.editJob',compact('job','categories','counter'));
     }
     public  function updateJob(UpdateJobRequest $request){
              $updated =  Job::where('id',json_decode($request->id))->update(['category_id' => json_decode($request->category_id),
@@ -61,7 +66,9 @@ class JobController extends Controller
         $students = Profile::with('user','category')->where('category_id',$id)->where('confirm','=',true)->get();
         $title = count($students) > 0 ? 'Find the best student for your job !' : 'Sorry, no students from this category have been found yet :( ';
         $job_id = json_decode($request->job_id);
-        return view('employer.studentsByCategory',compact('students','title','job_id'));
+        $message = Message::where('user_id',Auth::id())->where('read',false)->get();
+        $counter = count($message);
+        return view('employer.studentsByCategory',compact('students','title','job_id','counter'));
          }
       public function destroy($id)
     {
@@ -90,7 +97,8 @@ class JobController extends Controller
         }
         $profile['id'] = $id;
         $profile['job_id'] = $request->job_id;
-
+        $message = Message::where('user_id',Auth::id())->where('read',false)->get();
+        $counter = count($message);
         return view('employer.StudentByCategory',$profile);
     }
 

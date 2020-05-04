@@ -21,8 +21,8 @@
                 @csrf
                 <input type="hidden" name="id" value="{{Auth::id()}}">
 
-                    <div class="custom-file">
-                      <input type="file" name="image" class="custom-file-input" id="inputGroupFile04">
+                    <div class="custom-file" style="font-size: .7rem">
+                      <input  type="file" name="image" class="custom-file-input" id="inputGroupFile04">
                       <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
                       <div class="btn-change"><button style="color:red" class="button-change third ">add photo</button> </div>
                     </div>
@@ -35,7 +35,7 @@
            <div class="default">my category</div>
            <div class="category_name ">{{$cat_name ?? 'Your category'}}</div>
             </div>
-                <select name="category_id" id="" class="cat form-control col-6 form-control-sm"  style="display:none">
+                <select name="category_id" id="" class="cat form-control col-6 form-control-sm"  style="display:none;font-size: 1.7rem">
                     <option value="">choose your category</option>
                        @foreach($categories as $category)
                           <option value="{{$category['id']}}">{{$category['cat_name']}}</option>
@@ -137,7 +137,7 @@
             <div data-color = "rgba(255, 0, 0, 0.7)" class="links item">links</div>
             <div data-color = "rgba(255, 0, 0, 0.8)" class="work_experience item" >works</div>
             <div  data-color = "rgba(255, 0, 0, 0.9)" class="image item">image</div>
-            <div class="present item">present</div>
+            <div style="font-size: 1.7rem"  class="present item">0%</div>
         </div>
     </div>
 

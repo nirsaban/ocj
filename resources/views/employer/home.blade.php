@@ -8,22 +8,42 @@
             <select class="form-control col-md-5 form-control-lg custom-select" id="sortJobs" onchange="sortJobs(this)">
                 <option>show all jobs</option>
                 @foreach($courses as $course)
-                    <option value="{{$course['id']}}">{{$course['name']}}</option>
+                    <option value="{{$course['course_id']}}">{{$course['name']}}</option>
                 @endforeach
             </select>
         </div>
     </div>
         <div id="jobsDiv"></div>
     </div>
-    <script>
+    @if($newMatches)
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title float-lg-left">Well done {{Auth::user()->name}} </h4><i  style="padding-left:0.5rem; color: #1d643b" class="fas fa-check"></i>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="location.reload()">x</button>
 
+                    </div>
+                    <div class="modal-body" style="font-size: 1.1rem">
+                        <?php $count = 0;?>
+                        @foreach($newMatches as $match)
+                            <?php $count ++;?>
+                            <p>{{$count. '-' .$match['message']}}</p>
 
-    </script>
+                        @endforeach            </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" onclick="location.reload()">Close</button>
+                        <button type="button" onclick="confirmMessages('{{Auth::id()}}','matches')" class="btn btn-primary">confirm all messages</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+    @endif
+
         <script src="{{url('js/employer.js')}}"></script>
         <script>
             window.onload = function(){
               getData(courseId = null);
-
 
             }
             function getData(courseId = null){
@@ -99,7 +119,6 @@
                         }
                     });
                 }
-
         </script>
 @endsection
 

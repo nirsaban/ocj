@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Course;
+use App\Message;
 use App\Profile;
 use App\User;
 use http\Exception;
@@ -14,7 +15,9 @@ class ProfileController extends Controller
 {
     public function show($id)
     {
-
+        if($id != Auth::id()){
+            return  redirect('/');
+        }
         $profile = [];
         $profile['name'] = User::find($id)->name;
         $profile['cat_name'] = Category::select('cat_name')->where('id',User::find($id)->profile()->value('category_id'))->value('cat_name');
@@ -30,7 +33,7 @@ class ProfileController extends Controller
          $profile['present'] = $present;
         }
 
-
+        $profile['newMatches'] = Message::where('user_id',Auth::id())->whereNotNull('student_id')->where('read',false)->get()->toArray();
         return view('student.profile',$profile);
     }
     public function update(Request $request){
@@ -69,5 +72,7 @@ class ProfileController extends Controller
             return response('something failed', 500)->header('Content-Type', 'text/plain');
         }
     }
-
+public function showWizardProfile($id){
+        return view('student.buildProfile');
+}
 }

@@ -1,11 +1,11 @@
 @extends('masters.studentMaster')
 @section('content')
-
+<input type="hidden" id="userId" value="{{Auth::id()}}">
 <link rel="stylesheet" href="{{ URL::asset('css/student.css') }}">
     <div class="container" style="margin-bottom: 8rem">
 
-        <h1 class="display-3">Hello, {{Auth::user()->name}} {{$title}}</h1>
-        <h3 class="display-4">{{$second_title}}</h3>
+        <h1 class="display-3 text-center">Hello, {{Auth::user()->name}} {{$title}}</h1>
+        <h3 class="display-4 text-center">{{$second_title}}</h3>
     </div>
     </div>
 
@@ -40,6 +40,7 @@
             <div class="Overlayer">
             </div>
     </div>
+<!--modals!!!!-->
 
-     @endsection
+@endsection
 

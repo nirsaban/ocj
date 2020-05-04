@@ -43,4 +43,48 @@ class MessageController extends Controller
            }
        }
     }
+
+
+
+    public function getMessages($id,$type){
+        if($type == 'old'){
+            $messages = Message::where('user_id',$id)->where('read',true)->get('message')->toArray();
+            if($messages){
+                return $messages;
+            }else{
+                return 'dont found any message';
+            }
+        }else if($type == 'profile'){
+            $messages = Message::where('user_id',$id)->where('read',false)->whereNull('student_id')->get('message')->toArray();
+            if($messages){
+                return $messages;
+            }else{
+                return 'dont found any message';
+            }
+        }
+
+    }
+
+    public function confirmMessages(Request $request){
+        if($request->type === 'matches'){
+            $confirm = Message::where('user_id',$request->id)->whereNotNull('student_id')->update(['read'=>true]);
+            if($confirm > 0 ){
+                return response('your matches messages is confirm now',201);
+            }else{
+                return response('something faild',200);
+            }
+        }else if($request->type === 'notes'){
+            $confirm = Message::where('user_id',$request->id)->whereNull('student_id')->update(['read'=>true]);
+            if($confirm > 0 ){
+                return response('your notes messages is confirm now',201);
+            }else{
+                return response('something faild',200);
+            }
+        }
+    }
+     public function getCountMessages($id){
+        $messages = Message::where('user_id',$id)->where('read',false)->get();
+        $count = count($messages);
+        return $count;
+    }
 }

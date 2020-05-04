@@ -1,19 +1,12 @@
 
 body {
-    font-family: 'Montserrat';
-    font-style: Italic;
-
+  font-family:"Sitka Text";
     font-size: 1.7rem;
 
-
-}
-html {
-    scroll-behavior:smooth;
 }
 
 .card-footer{
     display: flex;
-
     justify-content: space-evenly;
 }
 
@@ -25,7 +18,6 @@ html {
     opacity: 0.8;
     filter: alpha(opacity=60);
     max-width: 100%;
-
     display: flex;
     justify-content: center;
     flex-wrap: nowrap;
@@ -68,29 +60,20 @@ html {
     text-align: justify;
 }
 
-.modal-header {
-    background-image: linear-gradient(#7FDBFF,white);
-}
-.modal-footer {
-    background-image: linear-gradient(white,#7FDBFF);
-}
+
 #left-panel-link {
     position: relative;
     left: 5%;
-    background-color: #555;
+    background-color: #262626;
     color: white;
-    font-size: 16px;
-    padding: 12px 20px;
+    font-size: 1rem;
+    /*padding: 12px 20px;*/
+    padding: 0.4rem;
     border: none;
     cursor: pointer;
     border-radius: 5px;
 }
-#left-panel-link:first-child{
-    background-color: #f19d9d;
-}
-#left-panel-link:last-child{
-    background-color: #737ee5;
-}
+
 .fas{
     margin-right:0.8rem
 }
@@ -106,7 +89,7 @@ html {
     width: 100%;
     z-index: 1;
     overflow: hidden;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: #BFBFBF;
 }
 
 .Overlayer-active {
@@ -140,7 +123,7 @@ html {
     width: 100%;
     z-index: 1;
     overflow: hidden;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color:#595959;
 }
 
 .Overlayer-active {

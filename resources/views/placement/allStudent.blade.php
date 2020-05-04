@@ -1,7 +1,7 @@
 @extends('masters.placementMaster')
 @section('content')
     <link rel="stylesheet" href="{{ URL::asset('css/placementHome.css') }}">
-      <div class="container">
+      <div class="container ">
             <div class="row">
             <h2>All student</h2>
             <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for match.." title="Type in a name">

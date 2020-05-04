@@ -1,208 +1,82 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OnClickJob</title>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-{{--    <script src="http://malsup.github.com/jquery.form.js"></script>--}}
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha256-KsRuvuRtUVvobe66OFtOQfjP8WA2SzYsmm4VPfMnxms=" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{mix('css/app.css')}}">
-
 </head>
-<style>
-    .navbar-icon-top .navbar-nav .nav-link > .fa {
-        position: relative;
-        width: 36px;
-        font-size: 24px;
-    }
 
-    .navbar-icon-top .navbar-nav .nav-link > .fa > .badge {
-        font-size: 0.75rem;
-        position: absolute;
-        right: 0;
-        font-family: sans-serif;
-    }
 
-    .navbar-icon-top .navbar-nav .nav-link > .fa {
-        top: 3px;
-        line-height: 12px;
-    }
-
-    .navbar-icon-top .navbar-nav .nav-link > .fa > .badge {
-        top: -10px;
-    }
-    @media (min-width: 576px) {
-        .navbar-icon-top.navbar-expand-sm .navbar-nav .nav-link {
-            text-align: center;
-            display: table-cell;
-            height: 70px;
-            vertical-align: middle;
-            padding-top: 0;
-            padding-bottom: 0;
-        }
-
-        .navbar-icon-top.navbar-expand-sm .navbar-nav .nav-link > .fa {
-            display: block;
-            width: 48px;
-            margin: 2px auto 4px auto;
-            top: 0;
-            line-height: 24px;
-        }
-
-        .navbar-icon-top.navbar-expand-sm .navbar-nav .nav-link > .fa > .badge {
-            top: -7px;
-        }
-    }
-
-    @media (min-width: 768px) {
-        .navbar-icon-top.navbar-expand-md .navbar-nav .nav-link {
-            text-align: center;
-            display: table-cell;
-            height: 70px;
-            vertical-align: middle;
-            padding-top: 0;
-            padding-bottom: 0;
-        }
-
-        .navbar-icon-top.navbar-expand-md .navbar-nav .nav-link > .fa {
-            display: block;
-            width: 48px;
-            margin: 2px auto 4px auto;
-            top: 0;
-            line-height: 24px;
-        }
-
-        .navbar-icon-top.navbar-expand-md .navbar-nav .nav-link > .fa > .badge {
-            top: -7px;
-        }
-    }
-
-    @media (min-width: 992px) {
-        .navbar-icon-top.navbar-expand-lg .navbar-nav .nav-link {
-            text-align: center;
-            display: table-cell;
-            height: 70px;
-            vertical-align: middle;
-            padding-top: 0;
-            padding-bottom: 0;
-        }
-
-        .navbar-icon-top.navbar-expand-lg .navbar-nav .nav-link > .fa {
-            display: block;
-            width: 48px;
-            margin: 2px auto 4px auto;
-            top: 0;
-            line-height: 24px;
-        }
-
-        .navbar-icon-top.navbar-expand-lg .navbar-nav .nav-link > .fa > .badge {
-            top: -7px;
-        }
-    }
-
-    @media (min-width: 1200px) {
-        .navbar-icon-top.navbar-expand-xl .navbar-nav .nav-link {
-            text-align: center;
-            display: table-cell;
-            height: 70px;
-            vertical-align: middle;
-            padding-top: 0;
-            padding-bottom: 0;
-        }
-
-        .navbar-icon-top.navbar-expand-xl .navbar-nav .nav-link > .fa {
-            display: block;
-            width: 48px;
-            margin: 2px auto 4px auto;
-            top: 0;
-            line-height: 24px;
-        }
-
-        .navbar-icon-top.navbar-expand-xl .navbar-nav .nav-link > .fa > .badge {
-            top: -7px;
-        }
-    }
-
-</style>
 <body>
-<nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">ON CLICK JOB</a>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="{{url('/student')}}">
-                    <i class="fa fa-home"></i>
-                    Home
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" onclick="window.location='{{url('profile').'/'.Auth::id()}}'">
-                    <i class="fa fa-user"></i>
-                    My profile
-                </a>
-            </li>
-
-            <li class="nav-item dropdown">
-                <a class="nav-link " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fas-envelope-o">
-                        <span class="badge badge-primary">11</span>
-                    </i>
-                    Your message
-                </a>
-
-            </li>
-        </ul>
-        <ul class="navbar-nav ">
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fas fa-newspaper fa-2x"></i>
-                    <span class="badge badge-info">11</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="far fa-handshake fa-2x"> </i>
-                    <span class="badge badge-success">11</span>
-
-
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fas fa-user-graduate fa-2x">   </i>
-                    <span class="badge badge-danger">11</span>
-                </a>
-            </li>
-
-        </ul>
+<section class="top-nav">
+    <div>
+      OnClickJOb
     </div>
-    <li class="nav-item dropdown">
-        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-            {{ Auth::user()->name }} <span class="caret"></span>
-        </a>
-
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="{{ route('logout') }}"
-               onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                {{ __('Logout') }}
+    <input id="menu-toggle" type="checkbox" />
+    <label class='menu-button-container' for="menu-toggle">
+        <div class='menu-button'></div>
+    </label>
+    <ul class="menu">
+        <li>
+            <a class="nav-link" href="{{url('/student')}}">
+                Home
+            </a>
+        </li>
+        <li>
+            <a class="nav-link" onclick="window.location='{{url('profile').'/'.Auth::id()}}'">
+                Profile
+            </a>
+        </li>
+        <li>
+        <li class="nav-item dropdown">
+            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre><span style="padding: 0" class="badge badge-info" id="countMessage"></span><i class="fas fa-comments"></i>
+                <span class="caret"></span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-lg-left" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" onclick="showMessages('{{Auth::id()}}','old')">
+                    old message
+                </a>
+                <a class="dropdown-item" onclick="showMessages('{{Auth::id()}}','profile')">
+                    messages about profile
+                </a>
+            </div>
+        </li>
+        </li>
+        <li><li class="nav-item dropdown">
+            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                {{ Auth::user()->name }} <span class="caret"></span>
             </a>
 
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                @csrf
-            </form>
-        </div>
-    </li>
-</nav>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{{ route('logout') }}"
+                   onclick="event.preventDefault();
+                                                         document.getElementById('logout-form').submit();">
+                    {{ __('Logout') }}
+                </a>
 
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+            </div>
+        </li></li>
+
+    </ul>
+</section>
+<input type="hidden" id="idToMessages" value="{{Auth::id()}}">
+<link rel="stylesheet" href="{{ URL::asset('css/master.css') }}">
+@include('student.partials.modal')
 @yield('content')
+
 <script src="{{mix('js/app.js')}}"></script>
-<script src="{{asset('js/main.js')}}"></script>
+<script src="{{asset('js/messages.js')}}"></script>
+<script src="{{asset('js/student.js')}}"></script>
 <script src="{{asset('js/profile.js')}}"></script>
 </body>
 </html>
-

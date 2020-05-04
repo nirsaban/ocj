@@ -19,35 +19,47 @@ Route::get('/', function () {
 
 Auth::routes();
 
+//student routes
 
-Route::get('/student','PagesController@studentHome');
-Route::get('/placement','PagesController@placementHome');
-Route::get('/employer','PagesController@employerHome');
-
+Route::get('/student','PagesController@studentHome')->middleware('StudentRole');
 Route::post('profile/update','ProfileController@update');
-Route::get('/profile/{id}','ProfileController@show');
+Route::get('/profile/{id}','ProfileController@show')->name('myProfile')->middleware('StudentRole');
 Route::delete('/profile/reset','ProfileController@reset');
 Route::post('image-upload', 'ProfileController@imageUploadPost')->name('image.upload.post');
-Route::post('/addLike','LikeController@insert');
-Route::get('/job/create','JobController@showForm');
+
+//employer routes
+Route::get('/employer','PagesController@employerHome')->middleware('EmployerRole');
+Route::get('/job/create','JobController@showForm')->middleware('EmployerRole');;
 Route::post('/job/create','JobController@create');
 Route::post('/courseId','JobController@getCategory');
 Route::post('/getJobs','JobController@getAllJobs');
-Route::get('/editJob/{id}/course/{course_id}','JobController@editJob');
+Route::get('/editJob/{id}/course/{course_id}','JobController@editJob')->middleware('EmployerRole');;
 Route::put('/job/update','JobController@updateJob');
 Route::post('/studentCategory','JobController@studentByCategory');
-Route::get('job/delete/{id}', 'JobController@destroy');
+Route::get('job/delete/{id}', 'JobController@destroy')->middleware('EmployerRole');;
 Route::post('/profileStudent','JobController@showStudent');
+
+//placement routes
+Route::get('/placement','PagesController@placementHome')->middleware('PlacementRole');
 Route::post('/sendMessage','MessageController@sendMessage');
-Route::get('/allStudent','EditController@allStudent');
-Route::get('/allJobs','EditController@allJobs');
-Route::get('/allCourses','EditController@allCourses');
+Route::get('/allStudent','EditController@allStudent')->middleware('PlacementRole');;
+Route::get('/allJobs','EditController@allJobs')->middleware('PlacementRole');;
+Route::get('/allCourses','EditController@allCourses')->middleware('PlacementRole');;
 Route::post('/getCategory','EditController@getCategory');
 Route::post('/confirm','MessageController@confirm');
 Route::post('/editCourse','EditController@editCourse');
 Route::post('/editCategory','EditController@editCategory');
 Route::delete('/deleteCourse','EditController@deleteCourse');
 Route::delete('/deleteCategory','EditController@deleteCategory');
-Route::get('/createCourse','EditController@createCourseIndex');
+Route::get('/createCourse','EditController@createCourseIndex')->middleware('PlacementRole');;
 Route::post('/createCourse','EditController@createCourse');
+
+
+
+//global routes
+Route::post('/addLike','LikeController@insert');
+Route::get('/buildProfile/{id}','ProfileController@showWizardProfile');
+Route::get('/getMessage/{id}/{type}','MessageController@getMessages');
+Route::get('/getMessageCount/{id}','MessageController@getCountMessages');
+Route::post('/confirmMessages','MessageController@confirmMessages');
 

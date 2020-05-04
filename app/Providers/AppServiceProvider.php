@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App\Course;
+use App\Message;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
@@ -40,5 +42,6 @@ class AppServiceProvider extends ServiceProvider
         Blade::if('checkCourses',function (){
            return Course::with('category','user','job')->get()->toArray() != null;
         });
+
     }
 }
