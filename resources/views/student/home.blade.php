@@ -10,7 +10,7 @@
     </div>
 
 
-    <div class="JobsCard">
+    <div class="JobsCard" >
         @foreach($allJobs as $job)
             <div class="card list-group-item-dark" >
                 <div class="card-body">
@@ -37,7 +37,7 @@
             </div>
 
             @endforeach
-            <div class="Overlayer">
+            <div class="Overlayer" >
             </div>
     </div>
 <!--modals!!!!-->

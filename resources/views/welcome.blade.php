@@ -29,7 +29,7 @@
                             <div class="card-header">
                                 <h4 class="my-0 font-weight-normal">Student</h4>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body" style="font-size: 1.3rem">
                                 {{-- <h1 class="card-title pricing-card-title">$0 <small class="text-muted">/ mo</small></h1> --}}
                                 <ul class="list-unstyled mt-3 mb-4">
                                     <li>Build your best profile   <img src="{{asset('images/vstu.png')}}" width="15px" height="20px"></li>
@@ -44,7 +44,7 @@
                             <div class="card-header">
                                 <h4 class="my-0 font-weight-normal">Department</h4>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body" style="font-size: 1.3rem">
                                 {{-- <h1 class="card-title pricing-card-title">$15 <small class="text-muted">/ mo</small></h1> --}}
                                 <ul class="list-unstyled mt-3 mb-4">
                                     <li>We did half the work for you  <img src="{{asset('images/vdep.png')}}" width="15px" height="20px"></li>
@@ -59,7 +59,7 @@
                             <div class="card-header">
                                 <h4 class="my-0 font-weight-normal">Employer</h4>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body" style="font-size: 1.3rem">
 
                                 <ul class="list-unstyled mt-3 mb-4">
                                     <li>Create a new job <img src="{{asset('images/vemp.png')}}" width="15px" height="20px"></li>
@@ -71,7 +71,7 @@
                             </div>
 
                         </div>
-                        <h5 class="display-5 text-center">You have an account ? please   <a href="">Login</a></h5>
+{{--                        <h5 class="display-5 text-center">You have an account ? please   <a href="">Login</a></h5>--}}
                         <div class="row text-center">
 
                         </div>

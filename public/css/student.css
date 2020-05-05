@@ -80,20 +80,11 @@ body {
 .sep {
     height: 25px;
 }
-.Overlayer {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    z-index: 1;
-    overflow: hidden;
-    background-color: #BFBFBF;
-}
+
 
 .Overlayer-active {
     display: inherit;
+    font-size: 1.2rem;
 }
 
 .none{
@@ -108,7 +99,7 @@ body {
     width: 50%;
     max-width: 100%;
     position: fixed;
-    top: 25%;
+    top: 10%;
     left: 25%;
     z-index: 2;
 
@@ -123,7 +114,8 @@ body {
     width: 100%;
     z-index: 1;
     overflow: hidden;
-    background-color:#595959;
+    background-color: #050505;
+
 }
 
 .Overlayer-active {
