@@ -1,28 +1,62 @@
 
-function sortMatches(data) {
-let allMatches = document.querySelectorAll('.row');
-allMatches.forEach(match => {
- if(match.dataset.course != data.options[data.selectedIndex].text){
-     match.classList.toggle('d-none')
- }else if(match.classList == 'row d-none'){
-     match.classList.remove('d-none')
- }else if(data.options[data.selectedIndex].text == 'show all Matches'){
-     match.classList.remove('d-none')
- }
-})
+function updateStatus(id,count){
+  let url = location.origin + '/status'
+    let status = document.getElementById(`statusSelect_${count}`).value
+    if(status.length > 1){
+        document.getElementById(`errorStatus_${count}`).innerText += 'you must choose valid status';
+    }
+    let message = document.getElementById(`statusMessage_${count}`).value ?? null;
+    console.log(message)
+    axios({method:'post',
+        url:url,
+        data:{
+            id:id,
+            status:status,
+            message:message
+        }
+    }).then(({data})=>{
+        const icon = document.getElementById(`statusIcon_${count}`)
+       if(data == '0'){
+           icon.classList = 'fas fa-times fa-2x'
+           icon.parentNode.style.color  = 'rgba(240,20,60,0.7)'
+       }else{
+          icon.classList = 'fas fa-check fa-2x'
+           icon.parentNode.style.color  = 'rgba(50,240,80,0.7)'
+
+       }
+        // document.getElementById(`dateOfInterview_${count}`).classList += 'text-pop-up-bottom ';
+    })
 }
 
-function sendMessageToEmployer(name,title,student,userSend,id,student_id,job_id) {
-    // const te = `Hey ${name} The job you love ${title} from ${company} company is interested in continuing with you. Please contact the placement department , welcome:${userSend} `;
+function SaveTheDate(matchId,count){
+  let url = location.origin + '/SaveTheDate'
+  let date = document.getElementById(`dateOfInterview_${count}`).value;
+axios({method:'post',
+    url:url,
+    data:{
+     id:matchId,
+     date:date
+     }
+}).then(({data})=>{
+  document.getElementById(`dateOfInterview_${count}`).classList += 'text-pop-up-bottom ';
+})
+}
+function setTextAreaToStudent(name,title,company,job_id,student_id,userSend,count){
+    const message = `Hey ${name} The job you love ${title} from ${company} company is interested in continuing with you. Please contact the placement department , welcome:${userSend} `;
+    let textArea = document.getElementById(`errorMessageToStudent_${count}`) ;
+    textArea.innerText = message
+    console.log(textArea)
+}
+function setTextAreaToEmployer(name,title,student,userSend,id,student_id,job_id,count){
     const message = ` Hi ${name} the student ${student}, who suited up for the job ${title}, also liked the job. contact me and move forward , welcome:${userSend}`;
-    Swal.fire({
-        title: `send message to ${name}`,
-        text: message,
-        showCancelButton: true,
-        confirmButtonText: 'Send',
-        showLoaderOnConfirm: true,
-    }).then(function (isConfirm) {
-        if (isConfirm) {
+    let textArea = document.getElementById(`errorMessageToEmployer_${count}`) ;
+    textArea.innerText = message
+    console.log(textArea)
+}
+
+
+function sendMessageToEmployer(id,student_id,job_id,count) {
+    const message = document.getElementById(`errorMessageToEmployer_${count}`).value
             let url = location.origin + '/sendMessage';
             axios({
                 method: 'post', url: url,
@@ -44,22 +78,11 @@ function sendMessageToEmployer(name,title,student,userSend,id,student_id,job_id)
                     location.reload()
                 }
             });
-        } else {
-            Swal.fire("Cancelled", "You dont send any like:)", "error");
-        }
-    });
+
 }
-function sendMessageToStudent(name,title,company,job_id,student_id,userSend) {
-    const message = `Hey ${name} The job you love ${title} from ${company} company is interested in continuing with you. Please contact the placement department , welcome:${userSend} `;
-    Swal.fire({
-        title: `send message to ${name}`,
-        text: message,
-        showCancelButton: true,
-        confirmButtonText: 'Send',
-        showLoaderOnConfirm: true,
-    }).then(function (isConfirm) {
-        if (isConfirm) {
-            let url = location.origin + '/sendMessage';
+function sendMessageToStudent(job_id,student_id,count) {
+    const message = document.getElementById(`errorMessageToStudent_${count}`).value
+    let url = location.origin + '/sendMessage';
             axios({
                 method: 'post', url: url,
                 data: {
@@ -76,15 +99,11 @@ function sendMessageToStudent(name,title,company,job_id,student_id,userSend) {
                         icon: 'error'
                     })
                 } else {
-                    Swal.fire({title: 'Shortlisted!', text: `${data}!`, icon: 'success'}).then(()=>{
+                    Swal.fire({title: 'message Send Successfully!', text: `${data}!`, icon: 'success'}).then(()=>{
                         location.reload()
                     });
                 }
             });
-        } else {
-            Swal.fire("Cancelled", "You dont send any message:)", "error");
-        }
-    });
 }
 function checkProfileAndGetCategory(id,div){
     let url = location.origin + '/getCategory'
@@ -104,7 +123,7 @@ function sendErrorMessage(id,count){
 function confirm(id,elem) {
     let url = location.origin + '/confirm'
     axios({method:'post',url:url,data:{id:id,type:elem['type'],bool:elem['bool']}}).then(({data})=>{
-        Swal.fire({title: 'this profile confirmed now!', text: `${data}!`, icon: 'success', position: 'center'}).then(()=>{
+        Swal.fire({title: ' confirmed success!', text: `${data}!`, icon: 'success', position: 'center'}).then(()=>{
             location.reload()
         });
     })

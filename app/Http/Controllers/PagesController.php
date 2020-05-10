@@ -36,24 +36,34 @@ class PagesController extends Controller
   }
   public function placementHome(){
       $title = "Hey ". Auth::user()->name ." see all match and send messages ";
-      $matches = DB::select(' SELECT s.love,s.beloved AS \'studentLike\', j.love ,j.beloved AS \'jobLike\' FROM likes s ,likes j WHERE s.rilation <> j.rilation AND  j.love = s.beloved AND s.love = j.beloved ORDER BY `studentLike`');
+      $matches = DB::select(' SELECT  s.love,s.beloved  AS \'studentLike\',j.status,j.status_message,j.interview_date, j.id, j.love ,j.beloved AS \'jobLike\' FROM likes s ,likes j WHERE s.rilation <> j.rilation AND  j.love = s.beloved AND s.love = j.beloved ORDER BY `studentLike`');
       $allMatches = [];
         for($i = 0; $i < count($matches)/2; $i++ ){
            array_push($allMatches,$matches[$i]);
         }
         $perfectMatches = [];
+
         foreach ($allMatches as $index => $item){
             $jobArr = Job::with('user','course','category')->where('id',$item->jobLike)->get()->toArray();
             $stuArr = User::with('profile')->where('id',$item->studentLike)->get()->toArray();
+
             $merge = array_merge($jobArr,$stuArr);
             $perfectMatches[$index]  = $merge ;
+            $perfectMatches[$index]['matchId'] = $item->id;
+            $perfectMatches[$index]['interview_date'] = $item->interview_date;
+            $perfectMatches[$index]['status'] = $item->status;
+            $perfectMatches[$index]['status_message'] = $item->status_message;
         }
-       $courses = [];
-       foreach ($perfectMatches  as $course){
-           array_push($courses,$course[0]['course']);
 
-       }
-      $courses = array_unique($courses,SORT_REGULAR);
+
+
+
+//       $courses = [];
+//       foreach ($perfectMatches  as $course){
+//           array_push($courses,$course[0]['course']);
+//
+//       }
+//      $courses = array_unique($courses,SORT_REGULAR);
        for ($i = 0;  $i < count($perfectMatches);  $i++){
            $message =  Message::where('student_id',$perfectMatches[$i][1]['id'])->where('job_id',$perfectMatches[$i][0]['id'])->get();
            if(count($message) == 2){
@@ -65,8 +75,14 @@ class PagesController extends Controller
            }
 
        }
+
        $checkCourses = Course::with('category','user','job')->get()->toArray();
-        return view('placement.placementHome',compact('perfectMatches','title','courses','checkCourses'));
+        return view('placement.placementHome',compact('perfectMatches','title','checkCourses'));
+  }
+  public function adminHome(){
+      $courses = Course::with('job','user')->get()->toArray();
+       $success = Like::with('user')->where('status',true)->get()->toArray();
+      return view('admin.adminHome',compact('courses','success'));
   }
 }
 

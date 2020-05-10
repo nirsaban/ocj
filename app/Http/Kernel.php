@@ -57,6 +57,7 @@ class Kernel extends HttpKernel
         'StudentRole' => \App\Http\Middleware\checkAuthStudent::class,
         'EmployerRole' => \App\Http\Middleware\checkAuthEmploer::class,
         'PlacementRole' => \App\Http\Middleware\checkAuthPlacement::class,
+        'AdminRole' => \App\Http\Middleware\AdminMiddleware::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
@@ -66,5 +67,6 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'cors'=>\App\Http\Middleware\CorsController::class,
     ];
 }

@@ -1,82 +1,116 @@
 @extends('masters.placementMaster')
 @section('content')
     <link rel="stylesheet" href="{{ URL::asset('css/placementHome.css') }}">
-{{--    <div class="container text-center">--}}
-{{--        <div class="main_title">--}}
-{{--            <div class="titlePage">{{$title}}</div>--}}
-{{--            <select class="form-control col-md-5 form-control-lg custom-select" id="sortJobs" onchange="sortMatches(this)">--}}
-{{--                <option value="show">show all Matches</option>--}}
-{{--                @foreach($courses as $course)--}}
-{{--                    <option value="{{$course['id']}}">{{$course['name']}}</option>--}}
-{{--                @endforeach--}}
-{{--            </select>--}}
-{{--        </div>--}}
-{{--    <div class="studentsContainer container">--}}
-{{--        @foreach($perfectMatches as $match)--}}
-{{--<div data-course = "{{$match[0]['course']['name']}}"  class="row" >--}}
-{{--            <div class="card cardStudent">--}}
-{{--                <header>--}}
-{{--                    <h1>{{$match[1]['name']}}</h1>--}}
-{{--                    <h2>{{$match[0]['course']['name']}}</h2>--}}
-{{--                    <h4>{{$match[0]['category']['cat_name']}}</h4>--}}
-{{--                    <img  @if(isset($match[1]['profile']['image'])) src="{{asset('images/_'.$match[1]['id'].'/'.$match[1]['profile']['image'])}}" @else src="{{asset('images/avatar.jpg')}}"   @endif class="avatar" />--}}
-{{--                </header>--}}
-{{--                <footer>--}}
-{{--                    <p class="cf">--}}
-{{--                    <button onclick="sendMessageToStudent('{{$match[1]['name']}}','{{$match[0]['title']}}','{{$match[0]['company']}}','{{$match[0]['id']}}','{{$match[1]['id']}}','{{Auth::user()->name}}',)"  class="align-left share" ><i class="far fa-paper-plane"></i> Send Me a Message </button>--}}
-{{--                    </p>--}}
-{{--                </footer>--}}
-{{--            </div>--}}
-{{--    <div class="heart"><img   width="80px" height="70px"  src="{{asset('images/heart.svg')}}"></div>--}}
-{{--            <div class="card carJob" >--}}
-{{--                <header>--}}
-{{--                    <h1>{{$match[0]['title']}}</h1>--}}
-{{--                    <h2>{{$match[0]['company']}}</h2>--}}
-{{--                </header>--}}
-{{--                                <article style="text-align: center;overflow: auto">--}}
-{{--                                    <p>{{$match[0]['description']}}</p>--}}
-{{--                                </article>--}}
-{{--                <footer>--}}
-{{--                    <p class="cf">--}}
-{{--                        <button  class="align-left share" onclick="sendMessageToEmployer('{{$match[0]['user']['name']}}','{{$match[0]['title']}}','{{$match[1]['name']}}','{{Auth::user()->name}}','{{$match[0]['user']['id']}}','{{$match[1]['id']}}',{{$match[0]['id']}})" ><i class="far fa-paper-plane"></i> Send Me a Message </button>--}}
-{{--                    </p>--}}
-{{--                </footer>--}}
-{{--            </div>--}}
-{{--</div>--}}
-{{--        @endforeach--}}
-{{--    </div>--}}
-
-<div class="container">
-        <div class="row">
-            <h2>My match</h2>
+<div class="container ">
+        <div class="row ">
+            <h2 style="margin:20px auto;" >All matches                   </h2>
             <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for match.." title="Type in a name">
-            <table id="myTable">
-                <tr class="header">
+            <table id="myTable" border="1px solid black"  >
+                <tr class="header text-center"  >
                     <th>#</th>
-                    <th style="width:20%;">course</th>
-                    <th style="width:20%;"> job</th>
-                    <th style="width:10%;">send message</th>
-                    <th style="width:10%;"><3</th>
-                    <th style="width:20%;">student</th>
-                    <th style="width:10%;">send message</th>
-                    <th style="width: 10%">status</th>
+                    <th class="text-center" style="width:20%;">course</th>
+                    <th class="text-center" style="width:20%;"> job</th>
+                    <th class="text-center" style="width:10%;">send message</th>
+                    <th class="text-center" style="width:10%;"><3</th>
+                    <th class="text-center" style="width:20%;">student</th>
+                    <th class="text-center" style="width:10%;">send message</th>
+                    <th class="text-center" style="width: 10%"> message status</th>
+                    <th class="text-center" style="width: 10%">Job interview date</th>
+                    <th class="text-center" style="width: 10%"> Start of transaction</th>
                 </tr>
                 <?php $count  = 0;?>
                 @foreach($perfectMatches as $match)
                 <?php $count++ ?>
                 <tr>
                     <td><?= $count ?></td>
-                    <td>{{$match[0]['course']['name']}}</td>
-                    <td>{{$match[0]['title']}}<br><small>{{$match[0]['company']}}</small></td>
-                    <td> <button  class="align-left share" onclick="sendMessageToEmployer('{{$match[0]['user']['name']}}','{{$match[0]['title']}}','{{$match[1]['name']}}','{{Auth::user()->name}}','{{$match[0]['user']['id']}}','{{$match[1]['id']}}',{{$match[0]['id']}})" ><i class="far fa-paper-plane"></i>  </button>
-                    </td>
-                    <td><img   width="80px" height="70px"  src="{{asset('images/heart.svg')}}"></td>
-                    <td>{{$match[1]['name']}}</td>
-                    <td><button onclick="sendMessageToStudent('{{$match[1]['name']}}','{{$match[0]['title']}}','{{$match[0]['company']}}','{{$match[0]['id']}}','{{$match[1]['id']}}','{{Auth::user()->name}}',)"  class="align-left share" ><i class="far fa-paper-plane"></i> </button></td>
-                    <td><i class="fas fa-thermometer-{{$match[0]['message']}} fa-2x" ></i></td>
-                </tr>
-                @endforeach
-            </table>
+                    <td  class="text-center">{{$match[0]['course']['name']}}</td>
+                    <td class="text-center">{{$match[0]['title']}}<br><small>{{$match[0]['company']}}</small></td>
+                    <td class="text-center"> <i class="far fa-paper-plane share fa-2x"  data-dismiss="modal" value="Decline"   data-toggle="modal"  data-target="#declineModalToEmployer_{{$count}}"  onclick="setTextAreaToEmployer('{{$match[0]['user']['name']}}','{{$match[0]['title']}}','{{$match[1]['name']}}','{{Auth::user()->name}}','{{$match[0]['user']['id']}}','{{$match[1]['id']}}',{{$match[0]['id']}},'{{$count}}')"></i></td>
+                    <td class="text-center"><img   width="80px" height="70px"  src="{{asset('images/heart.svg')}}"></td>
+                    <td class="text-center">{{$match[1]['name']}}</td>
+                    <td class="text-center"> <i class="far fa-paper-plane share fa-2x" data-dismiss="modal" value="Decline"   data-toggle="modal"  data-target="#declineModalToStudent_{{$count}}"  onclick="setTextAreaToStudent('{{$match[1]['name']}}','{{$match[0]['title']}}','{{$match[0]['company']}}','{{$match[0]['id']}}','{{$match[1]['id']}}','{{Auth::user()->name}}','{{$count}}')"  ></i> </td>
+                    <td class="text-center"><i class="fas fa-thermometer-{{$match[0]['message']}} fa-2x" ></i></td>
+                    <td class="text-center"><div   style="display: inline" class="ui calendar" id="example_{{$count}}"><div class="ui input left icon"><i class="calendar icon"></i><input type="date" @if($match['interview_date'] !=null) style="border: none;background-color:rgba(125,224,135,0.1); padding:1rem" @endif value="{{$match['interview_date']}}" id="dateOfInterview_{{$count}}" placeholder="Date/Time" onfocusout="SaveTheDate('{{$match['matchId']}}','{{$count}}')"></div> </div></td>
+                    @if($match['status'] == '0')
+                    <td class="text-center"  style="color: rgba(240,20,60,0.7)"><i id="statusIcon_{{$count}}"  class="fas fa-times fa-2x" data-toggle="modal" data-target="#status_{{$count}}"></i></td>
+                   @elseif($match['status'] == '1')
+                        <td class="text-center"  style="color: rgba(50,240,80,0.7)"><i id="statusIcon_{{$count}}"  class="fas fa-check fa-2x" data-toggle="modal" data-target="#status_{{$count}}"></i></td>
+                    @else
+                        <td class="text-center"><i id="statusIcon_{{$count}}"  class="fas fa-edit fa-2x" data-toggle="modal" data-target="#status_{{$count}}"></i></td>
+                    @endif
+                        <div class="modal fade" id="status_{{$count}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header text-center">
+                                    <h4 class="modal-title w-100 font-weight-bold">Update status</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body mx-3">
+                                    <div class="md-form mb-5">
+                                        <select class="form-control" id="statusSelect_{{$count}}" >
+                                            <option selected="true" disabled="disabled" >--choose status--</option>
+                                            <option value="0">Fails</option>
+                                            <option value ="1">Succeeded</option>
+                                        </select>
+                                        <span style="font-size: .8rem;color: red;" id="errorStatus_{{$count}}"></span>
+                                    </div>
+
+                                    <div class="md-form mb-4">
+                                        <i class="fas fa-pen-alt"></i>
+                                        <label for="exampleFormControlTextarea1">add more info about this status</label>
+                                        <span style="font-size: .9rem;display: block"  class="text-danger">*Optional</span>
+                                        <textarea class="form-control"  id="statusMessage_{{$count}}" rows="3"></textarea>
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer d-flex justify-content-center">
+
+                                    <button  type="button" class="btn btn-success " data-dismiss="modal" aria-label="Close" aria-hidden="true"  onclick="updateStatus('{{$match['matchId']}}','{{$count}}')">Update Status</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="modal fade" id="declineModalToStudent_{{$count}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                              <div class="modal-header">
+                                  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                  <h4 class="modal-title float-md-left" id="myModalLabel">Write notes to the Employer for  her ad</h4>
+                              </div>
+                              <div class="modal-body">
+                                  <textarea id="errorMessageToStudent_{{$count}}" class="form-control"  rows="5" style="min-width: 100%"></textarea>
+                              </div>
+                              <div class="modal-footer">
+                                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary" onclick="sendMessageToStudent('{{$match[0]['id']}}','{{$match[1]['id']}}','{{$count}}')">send</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="declineModalToEmployer_{{$count}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                       <div class="modal-header">
+                           <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                           <h4 class="modal-title float-md-left" id="myModalLabel">Write notes to the Employer for  her ad</h4>
+                       </div>
+                       <div class="modal-body">
+                           <textarea id="errorMessageToEmployer_{{$count}}" class="form-control"  rows="5" style="min-width: 100%"></textarea>
+                       </div>
+                       <div class="modal-footer">
+                           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" onclick="sendMessageToEmployer('{{$match[0]['user']['id']}}','{{$match[1]['id']}}','{{$match[0]['id']}}','{{$count}}')">send</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </table>
 
         </div>
     </div>
@@ -109,6 +143,7 @@
 
 
     </script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
         <script src="{{asset('js/sweet.js')}}"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script src="{{asset('js/placement.js')}}"></script>

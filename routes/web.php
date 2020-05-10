@@ -51,9 +51,13 @@ Route::post('/editCourse','EditController@editCourse');
 Route::post('/editCategory','EditController@editCategory');
 Route::delete('/deleteCourse','EditController@deleteCourse');
 Route::delete('/deleteCategory','EditController@deleteCategory');
-Route::get('/createCourse','EditController@createCourseIndex')->middleware('PlacementRole');;
-Route::post('/createCourse','EditController@createCourse');
 
+
+
+//admin routes
+Route::get('/admin','PagesController@adminHome')->middleware('AdminRole');
+Route::get('/createCourse','EditController@createCourseIndex')->middleware('AdminRole');;
+Route::post('/createCourse','EditController@createCourse');
 
 
 //global routes
@@ -62,4 +66,6 @@ Route::get('/buildProfile/{id}','ProfileController@showWizardProfile');
 Route::get('/getMessage/{id}/{type}','MessageController@getMessages');
 Route::get('/getMessageCount/{id}','MessageController@getCountMessages');
 Route::post('/confirmMessages','MessageController@confirmMessages');
-
+Route::get('/status','StatusController@getStatus')->middleware('cors');;
+Route::post('/SaveTheDate','LikeController@saveThedate');
+Route::post('/status','LikeController@updateStatus');

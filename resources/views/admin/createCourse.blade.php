@@ -1,4 +1,4 @@
-@extends('masters.placementMaster')
+@extends('masters.adminMaster')
 @section('content')
     <link rel="stylesheet" href="{{ URL::asset('css/createCourse.css') }}">
     <div class="form_wrapper">
@@ -20,7 +20,7 @@
             </div>
         </div>
     </div>
-    <p class="credit">Developed by <a href="http://www.designtheway.com" target="_blank">Design the way</a></p>
 
-    <script src="{{asset('js/placement.js')}}"></script>
+
+{{--    <script src="{{asset('js/placement.js')}}"></script>--}}
 @endsection

@@ -78,7 +78,7 @@ class EditController extends Controller
     }
     public function createCourseIndex(){
         $checkCourses = Course::with('category','user','job')->get()->toArray();
-        return view('placement.createCourse');
+        return view('admin.createCourse');
     }
     public function createCourse(Request $request){
         $course = new Course ;

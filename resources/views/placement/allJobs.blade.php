@@ -5,7 +5,7 @@
         <div class="row">
             <h2>All jobs</h2>
             <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for match.." title="Type in a name">
-            <table id="myTable">
+            <table id="myTable" border="1px solid black">
                 <tr  class="header">
                     <th style="width:10%">#</th>
           <th style="width:20%;">course</th>
@@ -80,9 +80,9 @@
        <hr>
             <div class="modal-footer">
                 @if($job['confirm'] == false)
-                    <button class="btn btn-success" data-type="job" data-bool = true onclick="confirm('{{$job['id']}}',this.dataset)">Confirm this Profile</button>
+                    <button class="btn btn-success" data-type="job" data-bool = true onclick="confirm('{{$job['id']}}',this.dataset)">Confirm this Job</button>
                 @else
-                    <button class="btn btn-danger" data-type="job" data-bool = false onclick="confirm('{{$job['id']}}',this.dataset)">Block this profile</button>
+                    <button class="btn btn-danger" data-type="job" data-bool = false onclick="confirm('{{$job['id']}}',this.dataset)">Block this Job</button>
                 @endif
                 <button type="button" data-dismiss="modal" value="Decline" class="btn btn-warning"  data-toggle="modal"  data-target="#declineModal_{{$count}}">Send message</button>
                                       </div>

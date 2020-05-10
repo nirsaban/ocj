@@ -46,6 +46,8 @@ class LoginController extends Controller
             return '/employer';
         }else if(auth()->user()->role == 'placement'){
             return '/placement';
+        }else if(auth()->user()->role == 'admin'){
+            return '/admin';
         }
 
     }

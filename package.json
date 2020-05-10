@@ -22,7 +22,11 @@
         "vue-template-compiler": "^2.6.11"
     },
     "dependencies": {
+        "@amcharts/amcharts4": "^4.9.19",
+        "@amcharts/amcharts4-fonts": "^4.0.1",
+        "@amcharts/amcharts4-geodata": "^4.1.15",
         "@fortawesome/fontawesome-free": "^5.13.0",
+        "chartjs-plugin-datalabels": "^0.7.0",
         "sweetalert": "^2.1.2"
     }
 }

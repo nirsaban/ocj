@@ -5,7 +5,7 @@
             <div class="row">
             <h2>All student</h2>
             <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for match.." title="Type in a name">
-                <table id="myTable">
+                <table id="myTable" border="1px solid black">
                     <tr  class="header">
                     <th style="width:10%">#</th>
                     <th style="width:30%;">course</th>

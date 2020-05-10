@@ -6,6 +6,7 @@ use App\Job;
 use App\Message;
 use App\Profile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class MessageController extends Controller
 {
