@@ -17,7 +17,7 @@ var chart = AmCharts.makeChart('chartdiv00',
 		"panEventsEnabled": false,
 		"percentPrecision": 1,
 		"theme": "dark",
-		"color": "#000000",
+		"color": "rgba(17,17,15,0.81)",
 		"colors": [
 				"#000000"
 			],
@@ -28,7 +28,7 @@ var chart = AmCharts.makeChart('chartdiv00',
 			"labelColorField": "",
 			"axisAlpha": 0.31,
 			"dashLength": 0,
-			"fontSize": 12,
+			"fontSize": 15,
 			"gridCount": 0,
 			"gridThickness": 0,
 			"labelOffset": 5,
@@ -74,7 +74,7 @@ var chart = AmCharts.makeChart('chartdiv00',
 		"titles": [
 			{
 				"id": "Title-1",
-				"text": "Chart Title"
+				"text": "General status by course"
 			}
 		],
 		"chartCursor": [
@@ -174,4 +174,44 @@ function createNewCourse() {
         })
     }
 
+}
+function disabled(userId,jobId){
+    const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+            confirmButton: 'btn btn-success',
+            cancelButton: 'btn btn-danger'
+        },
+        buttonsStyling: false
+    })
+
+    swalWithBootstrapButtons.fire({
+        title: `Are you sure ?`,
+        text:  'disabled this profile student and job post?:( ! ',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, Disabled it!',
+        cancelButtonText: 'No, cancel!',
+        reverseButtons: true
+    }).then((result) => {
+        if (result.value) {
+            let url = location.origin + '/disabled';
+            axios({method:'post',url: url,
+                data:{
+                    userId:userId,
+                    jobId:jobId,
+                }}).then(({data})=>{
+                Swal.fire({title: 'success Updated!',text: `${data}!`,icon: 'success'})
+                location.reload()
+            });
+        } else if (
+            /* Read more about handling dismissals below */
+            result.dismiss === Swal.DismissReason.cancel
+        ) {
+            swalWithBootstrapButtons.fire(
+                'Cancelled',
+                'Your category is safe :)',
+                'error'
+            )
+        }
+    })
 }

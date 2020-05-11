@@ -42,9 +42,9 @@ Route::post('/profileStudent','JobController@showStudent');
 //placement routes
 Route::get('/placement','PagesController@placementHome')->middleware('PlacementRole');
 Route::post('/sendMessage','MessageController@sendMessage');
-Route::get('/allStudent','EditController@allStudent')->middleware('PlacementRole');;
+Route::get('/allStudent','EditController@allStudent')->middleware('PlacementRole');
 Route::get('/allJobs','EditController@allJobs')->middleware('PlacementRole');;
-Route::get('/allCourses','EditController@allCourses')->middleware('PlacementRole');;
+Route::get('/allCourses','EditController@allCourses')->middleware('PlacementRole');
 Route::post('/getCategory','EditController@getCategory');
 Route::post('/confirm','MessageController@confirm');
 Route::post('/editCourse','EditController@editCourse');
@@ -57,8 +57,11 @@ Route::delete('/deleteCategory','EditController@deleteCategory');
 //admin routes
 Route::get('/admin','PagesController@adminHome')->middleware('AdminRole');
 Route::get('/createCourse','EditController@createCourseIndex')->middleware('AdminRole');;
+Route::get('/allStudents','EditController@allStudent')->middleware('AdminRole');
+Route::get('/allJobPosts','EditController@allJobs')->middleware('AdminRole');;
+Route::get('/Courses','EditController@allCourses')->middleware('AdminRole');
 Route::post('/createCourse','EditController@createCourse');
-
+Route::post('/disabled','EditController@disabled');
 
 //global routes
 Route::post('/addLike','LikeController@insert');

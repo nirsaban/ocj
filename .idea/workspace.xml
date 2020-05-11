@@ -2,31 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0d944f9b-4fc0-455e-aec5-221c9fef8bc9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/css/dashboard.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/admin.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/adminHome.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/masters/adminMaster.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Course.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Course.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EditController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EditController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LikeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LikeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MessageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MessageController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PagesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PagesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Job.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Job.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Like.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Like.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/mail.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/mail.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/placementHome.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/placementHome.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/placement.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/placement.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/masters/placementMaster.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/masters/placementMaster.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/placement/allJobs.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/placement/allJobs.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/placement/allStudent.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/placement/allStudent.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/placement/createCourse.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/createCourse.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/placement/placementHome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/placement/placementHome.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/dashboard.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/admin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/adminHome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/adminHome.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/masters/adminMaster.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/masters/adminMaster.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -205,7 +190,7 @@
       <workItem from="1588951235780" duration="1559000" />
       <workItem from="1589054876233" duration="109000" />
       <workItem from="1589055068091" duration="42955000" />
-      <workItem from="1589151166938" duration="2387000" />
+      <workItem from="1589151166938" duration="16953000" />
     </task>
     <servers />
   </component>

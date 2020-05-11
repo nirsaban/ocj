@@ -9,10 +9,20 @@ use App\Profile;
 use App\User;
 use Dotenv\Validator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class EditController extends Controller
 {
 
+    public function disabled(Request $request){
+        $job = Job::where('id',$request->jobId)->update(['confirm'=>false]);
+        $student = Profile::where('user_id',$request->userId)->update(['confirm'=>false]);
+        if($student && $job) {
+            return response('updated successfully', 201);
+        }else{
+            return response('something falid',200);
+        }
+    }
     public function allCourses(){
         $checkCourses = Course::with('category','user','job')->get()->toArray();
         if(!$checkCourses){
@@ -28,15 +38,30 @@ class EditController extends Controller
             $countCategoryUser[$category['cat_name']] = count($category['profile']) ;
             $countCategoryJob[$category['cat_name']] = count($category['job'])  ;
         }
-        return view('placement.allCourses',compact('categories','courses','countCourseJob','countCourseUser','countCategoryUser','countCategoryJob','checkCourses'));
+        if(Auth::user()->role == 'admin'){
+            return view('admin.allCourses',compact('categories','courses','countCourseJob','countCourseUser','countCategoryUser','countCategoryJob','checkCourses'));
+        }else{
+            return view('placement.allCourses',compact('categories','courses','countCourseJob','countCourseUser','countCategoryUser','countCategoryJob','checkCourses'));
+        }
+
     }
     public function allJobs(){
         $jobs = Job::with('user','course','category')->get()->toArray();
-        return view('placement.allJobs',compact('jobs'));
+        if(Auth::user()->role == 'admin'){
+            return view('admin.allJobs',compact('jobs'));
+        }else{
+            return view('placement.allJobs',compact('jobs'));
+        }
+
     }
     public function allStudent(){
         $allStudent = User::with('course','profile')->where('role','student')->get()->toArray();
-        return view('placement.allStudent',compact('allStudent'));
+        if(Auth::user()->role == 'admin'){
+            return view('admin.allStudent',compact('allStudent'));
+        }else{
+            return view('placement.allStudent',compact('allStudent'));
+        }
+
 
     }
     public function getCategory(Request $request){

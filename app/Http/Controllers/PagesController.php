@@ -80,8 +80,9 @@ class PagesController extends Controller
         return view('placement.placementHome',compact('perfectMatches','title','checkCourses'));
   }
   public function adminHome(){
-      $courses = Course::with('job','user')->get()->toArray();
-       $success = Like::with('user')->where('status',true)->get()->toArray();
+       $courses = Course::with('job','user')->get()->toArray();
+       $success = Like::with('user','job')->where('status',true)->get()->toArray();
+
       return view('admin.adminHome',compact('courses','success'));
   }
 }

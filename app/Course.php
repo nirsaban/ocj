@@ -19,4 +19,5 @@ class Course extends Model
     {
         return $this->hasMany(Job::class);
     }
+
 }
