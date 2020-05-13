@@ -16,7 +16,7 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
-    <!-- Styles -->
+    <!-- Styles --><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link href="{{ asset('css/app.css')}}" rel="stylesheet">
     <link href="{{asset('css/welcome.css')}}" rel="stylesheet">
     <style>
@@ -70,22 +70,10 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                            <li class="nav-item">
-                                <a class="nav-link btn btn-outline-danger" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
+
                             @if (Route::has('register'))
                             <!-- Example single danger button -->
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-outline-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                       Register
-                                    </button>
-                                    <div class="dropdown-menu">
-                                        <a class="dropdown-item color-warning" href="{{url('register?role=placement')}}">Placement register</a>
-                                        <a class="dropdown-item" href="{{url('register?role=student')}}">Student register</a>
-                                        <a class="dropdown-item" href="{{url('register?role=employer')}}">Employer register</a>
 
-                                    </div>
-                                </div>
                             @endif
                         @else
                             <li class="nav-item dropdown">

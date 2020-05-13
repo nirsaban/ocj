@@ -1,4 +1,4 @@
-@if($newMatches)
+@if($newMatches ?? '')
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -9,7 +9,7 @@
                 </div>
                 <div class="modal-body" style="font-size: 1.1rem">
                     <?php $count = 0;?>
-                    @foreach($newMatches as $match)
+                    @foreach($newMatches ?? '' as $match)
                         <?php $count ++;?>
                         <p class="border-bottom">{{$count. '-' .$match['message']}}</p>
 

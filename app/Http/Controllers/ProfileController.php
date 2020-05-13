@@ -13,6 +13,13 @@ use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
+
+    public function cvFormat(){
+        $cvFile = Course::where('id',Auth::user()->course_id)->value('cvFormat');
+
+       return view('student/cvFormat',compact('cvFile'));
+
+    }
     public function show($id)
     {
         if($id != Auth::id()){

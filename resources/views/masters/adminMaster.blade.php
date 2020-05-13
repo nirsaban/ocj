@@ -208,6 +208,12 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="{{url('/createCourse')}}">
+                            <span data-feather="users"></span>
+                            Create course
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="{{url('/allStudents')}}">
                             <span data-feather="shopping-cart"></span>
                             All student
@@ -217,6 +223,12 @@
                         <a class="nav-link" href="{{url('/allJobPosts')}}">
                             <span data-feather="users"></span>
                             All jobs
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url('/addPlacement')}}">
+                            <span data-feather="users"></span>
+                           Add new placement User
                         </a>
                     </li>
                 </ul>

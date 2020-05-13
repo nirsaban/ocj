@@ -1,3 +1,7 @@
+function addCv(){
+  let file =  $('input[type=file]').val().replace(/C:\\fakepath\\/i, '')
+    console.log(file)
+}
 
 function updateStatus(id,count){
   let url = location.origin + '/status'
@@ -289,3 +293,4 @@ function deleteCategory(id,name){
         }
     })
 }
+

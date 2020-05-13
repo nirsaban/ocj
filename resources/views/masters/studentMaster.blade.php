@@ -35,6 +35,11 @@
             </a>
         </li>
         <li>
+            <a class="nav-link" onclick="window.location='{{url('/formatCv')}}'">
+                Cv format
+            </a>
+        </li>
+        <li>
         <li class="nav-item dropdown">
             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre><span style="padding: 0" class="badge badge-info" id="countMessage"></span><i class="fas fa-comments"></i>
                 <span class="caret"></span>

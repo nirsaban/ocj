@@ -20,7 +20,6 @@
             <form  action="{{ route('image.upload.post') }}"  method="POST" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" name="id" value="{{Auth::id()}}">
-
                     <div class="custom-file" style="font-size: .7rem">
                       <input  type="file" name="image" class="custom-file-input" id="inputGroupFile04">
                       <label class="custom-file-label" for="inputGroupFile04">Choose file</label>

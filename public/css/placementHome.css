@@ -61,26 +61,8 @@ hr {
     color: rgba(33, 150, 243, 0.75);
 }
 
-.card {
-    margin: 1rem;
-    border: 1px solid rgba(52, 49, 49, 0.4);
-    background: rgba(220, 207, 12, 0.48);
-    transition: all 150ms ease-in-out;
-}
-.cardStudent{
-    -webkit-animation:slide-out-elliptic-bottom-fwd .7s cubic-bezier(.55,.085,.68,.53) reverse both;animation:slide-out-elliptic-bottom-fwd .7s cubic-bezier(.55,.085,.68,.53) reverse both
 
-}
-.cardStudent:hover {
-    background: rgba(212, 192, 12, 0.86);
-    border-color: rgba(210, 185, 16, 0.78);
-    box-shadow: 0 1px 40px rgba(0, 0, 0, 0.15);
-}
-.cardJob:hover {
-    background: rgba(16, 130, 4, 0.86);
-    border-color: rgba(12, 5, 5, 0.78);
-    box-shadow: 0 1px 40px rgba(0, 0, 0, 0.15);
-}
+
 .card header {
     text-align: center;
     padding: .5em;
@@ -211,3 +193,54 @@ display: flex;
 
 }
 
+[type="file"] {
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute !important;
+    white-space: nowrap;
+    width: 3px;
+}
+
+[type="file"] + label {
+    background-color: #000;
+    border-radius: 2rem;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    padding-left: 2rem 4rem;
+}
+
+[type="file"]:focus + label,
+[type="file"] + label:hover {
+    background-color: #c20a27;
+}
+#file:hover{
+    background-color: rgba(194, 10, 39, 0.45);
+    border-radius: 5px;
+}
+
+[type="file"]:focus + label {
+    outline: 1px dotted #000;
+}
+#course_id {
+    text-align: center;
+    margin: 0 auto;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    border: 5px ridge rgba(124, 127, 128, 0.32);
+    border-radius: 40px 39px 40px 40px;
+    text-align-last:center;
+
+}
+#course_id > option{
+    text-align: center;
+    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.blur-out-expand-fwd {
+    -webkit-animation: blur-out-expand-fwd 5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: blur-out-expand-fwd 10s cubic-bezier(0.250, 0.460, 0.450, 0.500) both;
+}
+@-webkit-keyframes blur-out-expand-fwd{0%{-webkit-transform:translateZ(0);transform:translateZ(0);-webkit-filter:blur(.01);filter:blur(.01)}100%{letter-spacing:1em;-webkit-transform:translateZ(300px);transform:translateZ(300px);-webkit-filter:blur(12px) opacity(0);filter:blur(12px) opacity(0)}}@keyframes blur-out-expand-fwd{0%{-webkit-transform:translateZ(0);transform:translateZ(0);-webkit-filter:blur(.01);filter:blur(.01)}100%{letter-spacing:1em;-webkit-transform:translateZ(300px);transform:translateZ(300px);-webkit-filter:blur(12px) opacity(0);filter:blur(12px) opacity(0)}}

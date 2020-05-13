@@ -20,12 +20,12 @@ Route::get('/', function () {
 Auth::routes();
 
 //student routes
-
 Route::get('/student','PagesController@studentHome')->middleware('StudentRole');
 Route::post('profile/update','ProfileController@update');
 Route::get('/profile/{id}','ProfileController@show')->name('myProfile')->middleware('StudentRole');
 Route::delete('/profile/reset','ProfileController@reset');
 Route::post('image-upload', 'ProfileController@imageUploadPost')->name('image.upload.post');
+Route::get('/formatCv','ProfileController@cvFormat')->middleware('StudentRole');;
 
 //employer routes
 Route::get('/employer','PagesController@employerHome')->middleware('EmployerRole');
@@ -40,17 +40,26 @@ Route::get('job/delete/{id}', 'JobController@destroy')->middleware('EmployerRole
 Route::post('/profileStudent','JobController@showStudent');
 
 //placement routes
-Route::get('/placement','PagesController@placementHome')->middleware('PlacementRole');
-Route::post('/sendMessage','MessageController@sendMessage');
-Route::get('/allStudent','EditController@allStudent')->middleware('PlacementRole');
-Route::get('/allJobs','EditController@allJobs')->middleware('PlacementRole');;
-Route::get('/allCourses','EditController@allCourses')->middleware('PlacementRole');
-Route::post('/getCategory','EditController@getCategory');
-Route::post('/confirm','MessageController@confirm');
-Route::post('/editCourse','EditController@editCourse');
-Route::post('/editCategory','EditController@editCategory');
-Route::delete('/deleteCourse','EditController@deleteCourse');
-Route::delete('/deleteCategory','EditController@deleteCategory');
+Route::group(['middleware' => 'PlacementRole'],function(){
+    Route::get('/placement','PagesController@placementHome');
+    Route::post('/sendMessage','MessageController@sendMessage');
+    Route::get('/allStudent','EditController@allStudent');
+    Route::get('/allJobs','EditController@allJobs');
+    Route::get('/allCourses','EditController@allCourses');
+    Route::get('/cv','EditController@addCvFormat');
+    Route::get('/addStudents','EditController@addStudents');
+    Route::get('/addEmployers','EditController@addEmployers');
+    Route::post('/CreateStudent','EditController@createStudents')->name('upload.students');
+    Route::post('/CreateEmployers','EditController@createEmployers')->name('upload.employers');
+    Route::post('/getCategory','EditController@getCategory');
+    Route::post('/confirm','MessageController@confirm');
+    Route::post('/editCourse','EditController@editCourse');
+    Route::post('/editCategory','EditController@editCategory');
+    Route::delete('/deleteCourse','EditController@deleteCourse');
+    Route::delete('/deleteCategory','EditController@deleteCategory');
+    Route::post('/cv-upload','EditController@uploadCvFormat')->name('upload.cvFormat');;
+});
+
 
 
 
@@ -60,8 +69,13 @@ Route::get('/createCourse','EditController@createCourseIndex')->middleware('Admi
 Route::get('/allStudents','EditController@allStudent')->middleware('AdminRole');
 Route::get('/allJobPosts','EditController@allJobs')->middleware('AdminRole');;
 Route::get('/Courses','EditController@allCourses')->middleware('AdminRole');
-Route::post('/createCourse','EditController@createCourse');
+Route::post('/createCourse','EditController@createCourse')->middleware('AdminRole');
 Route::post('/disabled','EditController@disabled');
+Route::get('/addPlacement','EditController@addPlacementIndex')->middleware('AdminRole');
+Route::post('/CreatePlacement','EditController@createPlacement')->name('upload.placement');
+
+
+
 
 //global routes
 Route::post('/addLike','LikeController@insert');

@@ -25,7 +25,9 @@
 <body >
 <section class="top-nav" >
     <div>
-        OnClickJOb
+        <a class="nav-link text-dark" href="{{url('/placement')}}">
+            OnClickJOb
+        </a>
     </div>
     <input id="menu-toggle" type="checkbox" />
     <label class='menu-button-container' for="menu-toggle">
@@ -33,41 +35,46 @@
     </label>
     <ul class="menu">
         <li>
-            <a class="nav-link" href="{{url('/placement')}}">
-                Home
-            </a>
-
-        </li>
-        <li>
             <a class="nav-link" href='{{url('/allStudent')}}'>
                 All student
             </a>
 
         </li>
         @checkCourses
-        <li>
+        {{-- <li>
             <a class="nav-link" href='{{url('/allCourses')}}'>
 
                 all courses
             </a>
-        </li>
+        </li> --}}
         @endcheckCourses
-        <li>
-            <a class="nav-link" href='{{url('/createCourse')}}'>
 
-                create new Course
-            </a>
-        </li>
         <li>
             <a class="nav-link" href="{{url('/allJobs')}}">
-
                 All Jobs
             </a>
         </li>
 
-        <li><li class="nav-item dropdown">
+        <li>
+        <li class="nav-item dropdown">
             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                {{ Auth::user()->name }} <span class="caret"></span>
+                Add new
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href='{{url('/cv')}}'>
+                    add Format Cv
+                </a>
+                <a class="dropdown-item" href='{{url('/addEmployers')}}'>
+                    Add New Employers
+                </a>
+                <a class="dropdown-item" href='{{url('/addStudents')}}'>
+                    Add New Students
+                </a>
+            </div>
+        </li>
+        <li class="nav-item dropdown">
+            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                {{ Auth::user()->name }}
             </a>
 
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -81,7 +88,10 @@
                     @csrf
                 </form>
             </div>
-        </li></li>
+        </li>
+
+
+
 
     </ul>
 </section>
