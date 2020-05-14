@@ -2,31 +2,38 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0d944f9b-4fc0-455e-aec5-221c9fef8bc9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/createPlacement.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/placement/addEmployer.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/placement/addStudent.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/student/cvFormat.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/onClickJob.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/onClickJob.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/profileTest.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/student/partials/about_me.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/student/partials/category.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/student/partials/educations.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/student/partials/inputEducation.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/student/partials/links.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/student/partials/skills.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/student/partials/works.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/student/profileTest.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Course.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Course.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EditController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EditController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/JobController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/JobController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PagesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PagesController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProfileController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/ welcome.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/ welcome.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/UpdateJobRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/UpdateJobRequest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/dashboard.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/editJob.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/editJob.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/employer.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/employer.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/homeEmployer.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/homeEmployer.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/placementHome.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/placementHome.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/welcome.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/welcome.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/placement.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/placement.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/masters/adminMaster.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/masters/adminMaster.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/masters/placementMaster.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/masters/placementMaster.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/profile.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/student.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/student.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/cvFormat/_31/sample-file (1).pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/cvFormat/_31/sample-file (6).pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/cvFormat/_31/sample-file.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/cvFormat/_31/אפיון אפליקציה מחלקת השמה .pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/cvFormat/_32/sample-file (6).pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/profile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/employer/editJob.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employer/editJob.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/employer/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employer/home.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/masters/studentMaster.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/masters/studentMaster.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/student/partials/modal.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/partials/modal.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/student/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/profile.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/placement/allStudent.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/placement/allStudent.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/placement/placementHome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/placement/placementHome.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/cvFormat.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/cvFormat.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
@@ -162,13 +169,13 @@
     <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\nirsa\Desktop\ocjSap\onClickJob\resources\views\admin" />
-      <recent name="C:\Users\nirsa\onClickJob\resources\views\student" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\nirsa\onClickJob\public" />
       <recent name="C:\Users\nirsa\onClickJob\public\images" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\nirsa\Desktop\ocjSap\onClickJob\resources\views\admin" />
+      <recent name="C:\Users\nirsa\onClickJob\resources\views\student" />
     </key>
   </component>
   <component name="RunManager">
@@ -217,7 +224,9 @@
       <workItem from="1589213899423" duration="1223000" />
       <workItem from="1589215749109" duration="2000" />
       <workItem from="1589215960359" duration="36000" />
-      <workItem from="1589220472805" duration="36421000" />
+      <workItem from="1589220472805" duration="56924000" />
+      <workItem from="1589396743668" duration="17494000" />
+      <workItem from="1589465493546" duration="6310000" />
     </task>
     <servers />
   </component>
@@ -237,18 +246,19 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="209" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1588590202772" />
-    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1589127874086">
+    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1589445068117">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1589127874086" />
+    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1589445068117" />
     <state x="516" y="257" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1589208115310">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="516" y="257" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1589208115310" />
-    <state x="592" y="218" key="FileChooserDialogImpl" timestamp="1589360960863">
+    <state x="592" y="218" key="FileChooserDialogImpl" timestamp="1589466314996">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="592" y="218" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1589360960863" />
+    <state x="592" y="218" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1589466314996" />
     <state x="2660" y="275" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1587408073525" />
     <state x="597" y="135" key="NewPhpClassDialog" timestamp="1587553743324">
       <screen x="0" y="0" width="1536" height="824" />
@@ -278,6 +288,10 @@
           <url>file://$PROJECT_DIR$/resources/views/masters/adminMaster.blade.php</url>
           <line>11</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/student/partials/inputEducation.blade.php</url>
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -83,5 +83,6 @@
 <script src="{{asset('js/messages.js')}}"></script>
 <script src="{{asset('js/student.js')}}"></script>
 <script src="{{asset('js/profile.js')}}"></script>
+<script src="{{asset('js/profileTest.js')}}"></script>
 </body>
 </html>

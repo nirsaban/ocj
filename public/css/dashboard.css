@@ -237,3 +237,8 @@ table td {
 [type="file"]:focus + label {
     outline: 1px dotted #000;
 }
+.blur-out-expand-fwd {
+    -webkit-animation: blur-out-expand-fwd 5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: blur-out-expand-fwd 7s cubic-bezier(0.250, 0.460, 0.450, 0.500) both;
+}
+@-webkit-keyframes blur-out-expand-fwd{0%{-webkit-transform:translateZ(0);transform:translateZ(0);-webkit-filter:blur(.01);filter:blur(.01)}100%{letter-spacing:1em;-webkit-transform:translateZ(300px);transform:translateZ(300px);-webkit-filter:blur(12px) opacity(0);filter:blur(12px) opacity(0)}}@keyframes blur-out-expand-fwd{0%{-webkit-transform:translateZ(0);transform:translateZ(0);-webkit-filter:blur(.01);filter:blur(.01)}100%{letter-spacing:1em;-webkit-transform:translateZ(300px);transform:translateZ(300px);-webkit-filter:blur(12px) opacity(0);filter:blur(12px) opacity(0)}}

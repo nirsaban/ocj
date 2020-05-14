@@ -24,24 +24,22 @@ class UpdateJobRequest extends FormRequest
     public function rules()
     {
         return [
-            "course_id" => "required|numeric",
-            "category_id" => "required|numeric",
+            "course_id" => "required",
+            "category_id" => "required",
             "company" =>"required|min:2|max:50",
             "title" => "required|min:2|max:50",
             "description" => "required|min:10|max:5000",
             "requirements" => "required|min:2|max:5000",
-            "salary"=>"required|min:2|max:10",
+            "salary"=>"required|min:2|max:15",
             "location"=>"required|min:5|max:50",
-            "phone" =>"required|numeric|min:9",
-            "email" => "required|email",
+            "contact_email" => "required|email",
+            'phone'=> 'required',
             "id" => "required"
         ];
     }
     public function messages()
     {
         return [
-            'course_id.numeric' => 'select the main subject',
-            'category_id.numeric'  => 'select the sub category',
             'course_id.required' => 'select the main subject',
             'category_id.required'  => 'select the sub category',
             'company.required' => 'fill the company input',
@@ -58,9 +56,8 @@ class UpdateJobRequest extends FormRequest
             'location.min' => 'the location input must be minimum 2 chars',
             'phone.required' => 'fill the phone input',
             'phone.min' => 'the location input must be minimum 9 chars',
-            'phone.numeric'=>'the phone input must be numeric , string given',
-            "email.email" => 'this is no valid email',
-            "email.required"=>'fill the email input'
+            "contact_email.email" => 'this is no valid email',
+            "contact_email.required"=>'fill the email input'
         ];
     }
 }

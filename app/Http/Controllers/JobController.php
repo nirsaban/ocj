@@ -25,8 +25,10 @@ class JobController extends Controller
     public function create(JobRequest $request){
         json_decode($request->category_id);
         json_decode($request->course_id);
-       Job::create(['user_id'=>Auth::id()] +  $request->all());
-       return redirect('/employer');
+        $create = Job::create(['user_id'=>Auth::id()] +  $request->all());
+        if($create){
+            return redirect('/employer')->with('message', 'the job as created !!');
+        }
     }
     public function getCategory(Request $request){
         $id = json_decode($request->id);
@@ -51,13 +53,13 @@ class JobController extends Controller
         $counter = count($message);
         return view('employer.editJob',compact('job','categories','counter'));
     }
-    public  function updateJob(UpdateJobRequest $request){
+    public  function updateJob(Request $request){
              $updated =  Job::where('id',json_decode($request->id))->update(['category_id' => json_decode($request->category_id),
             'company'=> $request->company,'title'=> $request->title,'description'=>$request->description,
             'requirements'=> $request->requirements,'salary'=>$request->salary,'location'=>$request->location,
-            'email'=>$request->email,'phone'=> $request->phone]);
+            'contact_email'=>$request->contact_email,'phone'=> $request->phone]);
             if($updated){
-                return redirect('/employer');
+                return redirect('/employer')->with('message', 'the job updated!!');
             }
     }
     public function studentByCategory(Request $request){

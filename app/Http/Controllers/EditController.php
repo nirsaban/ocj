@@ -262,7 +262,7 @@ class EditController extends Controller
         if(Course::where('id',$id)->update(["cvFormat" => $fileName])){
             return redirect()->back()->with('message', 'Cv add!!');
         }else{
-            return redirect('welcome');
+            return redirect('/placement');
         }
     }
 

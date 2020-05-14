@@ -5,6 +5,11 @@
         <div class="header">
             <div class="mainTitle">Hello {{Auth::user()->name}}, {{$title}}</div>
             <h3 class="">{{$second_title}}-</h3>
+            @if(session()->has('message'))
+                <div class="blur-out-expand-fwd">
+                    {{ session()->get('message') }}
+                </div>
+            @endif
             <select class="form-control col-md-5 form-control-lg custom-select" id="sortJobs" onchange="sortJobs(this)">
                 <option>show all jobs</option>
                 @foreach($courses as $course)
@@ -66,7 +71,8 @@
                         const csrfToken=  '<?php print_r(@csrf_token());?>';
                         let div = document.createElement('div')
                         div.classList ='JobsCard'
-                        div.innerHTML +=  ` <div class="card list-group-item-dark text-dark">`+
+
+                        div.innerHTML +=  ` <div  class="card list-group-item-dark text-dark">`+
                             `<div class="card-body">`+
                             `<h1 class="card-title">${item.course["name"]}</h1>`+
                             `<h2 class="card-title">${item.category['cat_name']}</h2>`+

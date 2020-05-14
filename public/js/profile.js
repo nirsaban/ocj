@@ -236,7 +236,6 @@ class Profile{
 
     update(id,item,value){
         let url = location.origin + '/profile/update';
-
         axios({method:'post',url: url,
             data:{
                 item:item,

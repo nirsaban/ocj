@@ -145,6 +145,8 @@
     </script>
     <script src="https://smtpjs.com/v3/smtp.js"></script>
         <script src="{{asset('js/sweet.js')}}"></script>
+
+    </body>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script src="{{asset('js/placement.js')}}"></script>
 @endsection

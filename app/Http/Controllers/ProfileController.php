@@ -10,13 +10,37 @@ use App\User;
 use http\Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class ProfileController extends Controller
 {
+    public function CvUploadPost(Request $request){
+        $validator = Validator::make($request->all(),[
+            'cv'=> 'required',
+
+        ],
+            [
+                'cv.required'=>'you must choose Pdf file before sending',
+            ]);
+        if($validator->fails()){
+            return redirect()->back()->withErrors($validator);
+        }
+        $fileName =   $_FILES['cv']['name'];
+        $request->cv->move(public_path('cvStudent/_'.Auth::id()), $fileName);
+        $id = Auth::id();
+        if(Profile::updateOrCreate(['user_id' => $id],["cv" => $fileName])){
+            return redirect()->back()->with('message', 'Cv add!!');
+        }else{
+            return redirect('/placement');
+        }
+    }
+    public function getInput($item){
+        return view("student.partials.input$item");
+    }
 
     public function cvFormat(){
-        $cvFile = Course::where('id',Auth::user()->course_id)->value('cvFormat');
 
+        $cvFile = Course::where('id',Auth::user()->course_id)->value('cvFormat');
        return view('student/cvFormat',compact('cvFile'));
 
     }
@@ -25,6 +49,18 @@ class ProfileController extends Controller
         if($id != Auth::id()){
             return  redirect('/');
         }
+        $profile['categories'] = Category::where('course_id',Auth::user()->course_id)->get()->toArray();
+        $profile['profile'] = Profile::with('category')->where('user_id',$id)->get()->toArray();
+        $presentAll = Profile::where('user_id',$id)->get(['category_id','about_me', 'education', 'my_skills', 'links','work_experience','image'])->toArray();
+        if (isset($presentAll[0])){
+            foreach ($presentAll[0] as $key => $value){
+                if($value != null){
+                    $presents[$key] = $value;
+                }
+            }
+            $profile['present'] = $presents ?? '';
+        }
+        return view('student.profileTest',$profile);
         $profile = [];
         $profile['name'] = User::find($id)->name;
         $profile['cat_name'] = Category::select('cat_name')->where('id',User::find($id)->profile()->value('category_id'))->value('cat_name');
@@ -44,14 +80,24 @@ class ProfileController extends Controller
         return view('student.profile',$profile);
     }
     public function update(Request $request){
-        $col = $request->item;
-        $val = $col == 'category_id' ? json_encode($request->value): $request->value;
         $id = json_decode($request->id);
+        $col = $request->item;
+        $val = $col == 'category_id' ? json_decode($request->value): $request->value;
+
         if(Profile::updateOrCreate(['user_id' => $id],["$col" => $val])){
             return response('success update', 201)->header('Content-Type', 'text/plain');
         }else{
             return response('something failed', 500)->header('Content-Type', 'text/plain');
         }
+
+//        $col = $request->item;
+//        $val = $col == 'category_id' ? json_encode($request->value): $request->value;
+//        $id = json_decode($request->id);
+//        if(Profile::updateOrCreate(['user_id' => $id],["$col" => $val])){
+//            return response('success update', 201)->header('Content-Type', 'text/plain');
+//        }else{
+//            return response('something failed', 500)->header('Content-Type', 'text/plain');
+//        }
     }
 
 

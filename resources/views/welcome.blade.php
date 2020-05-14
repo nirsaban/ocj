@@ -4,7 +4,7 @@
 
                 <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
                     <h1 class="display-4">About this app</h1>
-                    <p class="lead">Hi Dear Guest,<br>
+                    <p class="lead" style="font-size: .8rem">Hi Dear Guest,<br>
                         The purpose for which the app was created is for the graduates to find the right job for them immediately upon graduation, and on the other hand, to accept the graduates they chose according to the profile and degree of fit for the job they posted.
                         In order for everyone to be satisfied, trusted information must be uploaded for the student or job you are posting
                         Good luck job on click team</p>

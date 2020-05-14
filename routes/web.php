@@ -26,6 +26,9 @@ Route::get('/profile/{id}','ProfileController@show')->name('myProfile')->middlew
 Route::delete('/profile/reset','ProfileController@reset');
 Route::post('image-upload', 'ProfileController@imageUploadPost')->name('image.upload.post');
 Route::get('/formatCv','ProfileController@cvFormat')->middleware('StudentRole');;
+Route::get('/getInputs/{item}','ProfileController@getInput');
+Route::post('uploadCv', 'ProfileController@CvUploadPost')->name('upload.cvToCheck');
+
 
 //employer routes
 Route::get('/employer','PagesController@employerHome')->middleware('EmployerRole');
