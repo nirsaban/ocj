@@ -1,6 +1,11 @@
 @extends('masters.employerMaster')
 @section('content')
     <link rel="stylesheet" href="{{ URL::asset('css/studentCategory.css') }}">
+    <div class="titre-content">
+        <div>
+            <h1> {{$title}}</h1>
+        </div>
+    </div>
         <header class="headerPage">
             <h2 class="titlePage">{{$title}}</h2>
         </header>

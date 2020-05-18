@@ -24,6 +24,15 @@ class PagesController extends Controller
       return view('student.home', compact( 'allJobs',  'title','userCategory','second_title','newMatches'));
   }
   public function employerHome(){
+      $message = Message::where('user_id',Auth::id())->where('read',false)->get();
+      $counter = count($message);
+      $jobs = Job::with('category','course')->where('user_id',Auth::id())->get()->toArray();
+      $title = 'Find new student ';
+      $second_title = 'sort by course';
+      $courses = Job::join('courses', 'jobs.course_id', '=', 'courses.id')->where('user_id',Auth::id())->get(['name','course_id'])->toArray();
+      $courses = array_unique($courses,SORT_REGULAR);
+      $newMatches = Message::where('user_id',Auth::id())->whereNotNull('student_id')->where('read',false)->get()->toArray();
+      return view('employer.homeTest',compact('title','second_title','courses','newMatches','jobs'));
        $message = Message::where('user_id',Auth::id())->where('read',false)->get();
        $counter = count($message);
       $jobs = Job::with('category','course')->where('user_id',Auth::id())->get();

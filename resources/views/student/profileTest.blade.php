@@ -15,7 +15,7 @@
                 reset
                 <div class="reset2" ></div>
             </div>
-        <div class="main_title tracking-in-expand"> {{Auth::user()->name}}Profile</div>
+        <div class="main_title tracking-in-expand ribbon-title--b"> {{Auth::user()->name .' '}}Profile</div>
         <div class="image_area ">
             @if(isset($profile[0]['image']))
                 <img src="{{asset('images/_'.Auth::id().'/'.$profile[0]['image'])}}" class="profile_image"/>

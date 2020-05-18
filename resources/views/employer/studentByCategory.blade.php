@@ -3,7 +3,8 @@
     <link rel="stylesheet" href="{{ URL::asset('css/studentByCategory.css') }}">
     <div class="container">
         <div class="like">
-            <div class="titleLike">Did you like my profile? Mark like And maybe we'll meet soon -> <span class="LikeIcon"> <i class="far fa-thumbs-up fa-1x" style="color:#1b4b72;" onclick="addLikeToStudent(1,'{{$id}}','{{$job_id}}')"></i></span></div>
+            <h2 class="ribbon-title--b" >Did you like my profile? Mark like And maybe we'll meet soon<span class="LikeIcon"> <i class="far fa-thumbs-up fa-1x" style="color:#1b4b72;" onclick="addLikeToStudent(1,'{{$id}}','{{$job_id}}')"></i></span></h2>
+{{--            <div class="titleLike">Did you like my profile? Mark like And maybe we'll meet soon -> <span class="LikeIcon"> <i class="far fa-thumbs-up fa-1x" style="color:#1b4b72;" onclick="addLikeToStudent(1,'{{$id}}','{{$job_id}}')"></i></span></div>--}}
         </div>
         <div class="main_title tracking-in-expand">{{$name}} Profile</div>
         <div class="image_area ">

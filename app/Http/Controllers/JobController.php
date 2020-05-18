@@ -47,7 +47,10 @@ class JobController extends Controller
          }
     }
     public function editJob($id,$courseId){
-
+         $checkJob = Job::find($id);
+         if($checkJob->user_id != Auth::id()){
+          return redirect('/employer');
+         }
         $job = Job::find($id);
         $categories =  Category::where('course_id',json_decode($courseId))->get();
         $message = Message::where('user_id',Auth::id())->where('read',false)->get();
@@ -68,7 +71,10 @@ class JobController extends Controller
 
         $id = json_decode($request->category_id);
         $students = Profile::with('user','category')->where('category_id',$id)->where('confirm','=',true)->get();
-        $title = count($students) > 0 ? 'Find the best student for your job !' : 'Sorry, no students from this category have been found yet :( ';
+        if(count($students) == 0){
+            return redirect()->back()->withErrors('NO student found from this category :(');
+        }
+        $title =  'Find the best student for your job !' ;
         $job_id = json_decode($request->job_id);
         $message = Message::where('user_id',Auth::id())->where('read',false)->get();
         $counter = count($message);

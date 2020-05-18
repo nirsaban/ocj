@@ -85,6 +85,7 @@ html {
 }
 #left-panel-link:last-child{
 background-color: #737ee5;
+
 }
 .fas{
     margin-right:0.8rem
@@ -93,6 +94,7 @@ background-color: #737ee5;
     height: 25px;
 }
 .blur-out-expand-fwd {
+
     -webkit-animation: blur-out-expand-fwd 5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
     animation: blur-out-expand-fwd 7s cubic-bezier(0.250, 0.460, 0.450, 0.500) both;
 }

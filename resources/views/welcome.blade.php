@@ -13,9 +13,10 @@
                     <form action="{{ route('login') }}" method="POST">
                         @csrf
                         <div class="avatar"><i class="material-icons">&#xE7FF;</i></div>
+
                         <h4 class="modal-title">Login to Your Account</h4>
                         <div class="form-group">
-                            <input type="email" name="email" class="form-control" placeholder="Username" required="required">
+                            <input type="email" name="email" class="form-control" placeholder="Email" required="required">
                             @error('email')
                             <div class="validation text-danger text-center text-info small" style="font-size: .7rem">{{ $message }}</div>
                             @enderror
@@ -26,9 +27,11 @@
                             <div class="validation text-danger text-center text-info small" style="font-size: .7rem">{{ $message }}</div>
                             @enderror
                         </div>
-                        <button type="submit" class="btn btn-primary">
+                        <div class="text-center">
+                        <button type="submit" class="btn btn-primary ">
                             {{ __('Login') }}
                         </button>
+                        </div>
                     </form>
                 </div>
 {{--                <main class="py-4">--}}

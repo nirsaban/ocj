@@ -1,3 +1,51 @@
+.titre-content:after,
+.titre-content:before{
+    content:"";
+    background: rgba(33, 150, 243, 0.57);
+    position:absolute;
+    top:0;
+    bottom:0;
+    width:100px;
+    z-index:0;
+}
+.titre-content:before{
+    transform-origin : 0 0;
+    left:0;
+    transform : skew(0, 20deg);
+}
+.titre-content:after {
+    transform-origin : 100% 0;
+    transform : skew(0, 20deg);
+    right:0;
+}
+.titre-content {
+    transform : rotate(-2deg);
+    position:relative;
+    max-width:50%;
+    font-size:1.2em;
+    color:#fff;
+    text-align:center;
+    /* J'ai mis 50px au pif */
+    margin :70px auto 50px auto;
+    font-family : Verdana, Geneva, sans-serif;
+}
+.titre-content div {
+    background: #2196f3;
+    position:relative;
+    z-index:3;
+    padding:8px;
+}
+.titre-content h1,
+.titre-content h2{
+    padding:0;
+    margin:0;
+    transform : rotate(2deg);
+    text-transform : uppercase;
+}
+.titre-content h1{
+    font-size:1em;
+    font-weight:normal;
+}
 
 body {
     color: #373231;
