@@ -4,7 +4,6 @@
     <link rel="stylesheet" href="{{ URL::asset('css/profile.css') }}">
     <input type="hidden" id="idUser" value="{{Auth::id()}}" >
     <div class="container" >
-
         <i class="fas fa-cogs" data-toggle="modal" data-target="#myModal"></i>
             <div class="reset1" onclick="resetProfile({{Auth::id()}})">
 
@@ -102,7 +101,7 @@
                 @if(isset($profile[0]['links']))
                     @foreach(json_decode($profile[0]['links'])  as $link)
                         @if(strlen($link) > 7)
-                            <a class="linksA linkStyle" href="www.{{$link}}">{{$link}}</a><br>
+                            <a class="linksA linkStyle" onclick="window.location.href = 'https://{{$link}}'">{{$link}}</a><br>
                         @endif
                     @endforeach
                 @endif
