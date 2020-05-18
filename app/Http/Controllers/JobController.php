@@ -72,7 +72,7 @@ class JobController extends Controller
         $job_id = json_decode($request->job_id);
         $message = Message::where('user_id',Auth::id())->where('read',false)->get();
         $counter = count($message);
-        return view('employer.studentByCategory',compact('students','title','job_id','counter'));
+        return view('employer.studentsByCategory',compact('students','title','job_id','counter'));
          }
       public function destroy($id)
     {
@@ -108,7 +108,7 @@ class JobController extends Controller
         if(!$checkWatch){
            $watch =  Watch::create(['watch'=>json_decode($request->job_id),'watched'=>$id]);
         }
-        return view('employer.StudentByCategory',$profile);
+        return view('employer.studentByCategory',$profile);
     }
 
 }
