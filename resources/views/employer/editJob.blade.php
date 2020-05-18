@@ -4,8 +4,8 @@
     <h1 class="anim">edit your job post</h1>
 
 
-
-    {{ Form::open(['action' => 'JobController@updateJob', 'method' => 'PUT']) }}
+    <form action="{{url('updateJob')}}" method="POST">
+        @csrf
         <input type="hidden" value="{{$job->id}}" name="id" >
         <input type="hidden" value="{{$job->course_id}}" name="course_id" id="trickCat">
         <input type="hidden" name="requirements" value="{{$job->requirements}}" id="trickReq">
@@ -121,6 +121,9 @@
         </div>
 
         <button type="submit" class="bouton-contact">Update job</button>
-    {{ Form::close() }}
+    </form>
+{{--    {{ Form::open(['action' => 'JobController@updateJob', 'method' => 'PUT']) }}--}}
+{{--        --}}
+{{--    {{ Form::close() }}--}}
     <script src="{{url('js/editjob.js')}}"></script>
 @endsection

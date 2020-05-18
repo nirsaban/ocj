@@ -37,7 +37,7 @@ Route::post('/job/create','JobController@create');
 Route::post('/courseId','JobController@getCategory');
 Route::post('/getJobs','JobController@getAllJobs');
 Route::get('/editJob/{id}/course/{course_id}','JobController@editJob')->middleware('EmployerRole');;
-Route::put('/job/update','JobController@updateJob');
+Route::post('/updateJob','JobController@updateJob');
 Route::post('/studentCategory','JobController@studentByCategory');
 Route::get('job/delete/{id}', 'JobController@destroy')->middleware('EmployerRole');;
 Route::post('/profileStudent','JobController@showStudent');

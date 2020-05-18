@@ -55,6 +55,7 @@ class JobController extends Controller
         return view('employer.editJob',compact('job','categories','counter'));
     }
     public  function updateJob(Request $request){
+
              $updated =  Job::where('id',json_decode($request->id))->update(['category_id' => json_decode($request->category_id),
             'company'=> $request->company,'title'=> $request->title,'description'=>$request->description,
             'requirements'=> $request->requirements,'salary'=>$request->salary,'location'=>$request->location,
