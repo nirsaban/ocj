@@ -79,34 +79,34 @@
                                                 </center>
                                                 <center>
                                                     @if(isset($student['profile']['my_skills']))
-                                                        <p class="text-left"><strong>Education: </strong><br>
-                                                        @foreach(json_decode($student['profile']['education']) as $edu)
-                                                            @if(strlen($edu) > 2)
-                                                                {{$edu}}<br>
-                                                            @endif
-                                                        @endforeach
-                                                        </p>
-                                                    @endif
-                                                </center>
-                                                <hr>
-                                                </center>
-                                                <center>
-                                                    @if(isset($student['profile']['work_experience']))
-                                                        <p class="text-left"><strong>Works: </strong><br>
-                                                            @foreach(json_decode($student['profile']['work_experience']) as $work)
-                                                                @if(strlen($work) > 2)
-                                                                    {{$work}}<br>
-                                                    @endif
-                                                    @endforeach
-                                                        </p>
-                                                    @endif
-                                                </center>
-                                            <div class="modal-footer">
-                                                @if($student['profile']['confirm'] == false)
-                                                 <button class="btn btn-success" data-type ='student' data-bool = true onclick="confirm('{{$student['id']}}',this.dataset)">Confirm this Profile</button>
-                                                  @else
-                                                    <button class="btn btn-danger" data-type ='student' data-bool = false onclick="confirm('{{$student['id']}}',this.dataset)">Block this profile</button>
-                                                @endif
+                                        <p class="text-left"><strong>Education: </strong><br>
+                                        @foreach(json_decode($student['profile']['education']) as $edu)
+                                            @if(strlen($edu) > 2)
+                                                {{$edu}}<br>
+                                            @endif
+                                        @endforeach
+                                        </p>
+                                    @endif
+                                </center>
+                                <hr>
+                                </center>
+                                <center>
+                                    @if(isset($student['profile']['work_experience']))
+                                        <p class="text-left"><strong>Works: </strong><br>
+                                            @foreach(json_decode($student['profile']['work_experience']) as $work)
+                                                @if(strlen($work) > 2)
+                                                    {{$work}}<br>
+                                    @endif
+                                    @endforeach
+                                        </p>
+                                    @endif
+                                </center>
+                            <div class="modal-footer">
+                                @if($student['profile']['confirm'] == false)
+                                 <button class="btn btn-success" data-type ='student' data-bool = true onclick="confirm('{{$student['id']}}',this.dataset)">Confirm this Profile</button>
+                                  @else
+                                    <button class="btn btn-danger" data-type ='student' data-bool = false onclick="confirm('{{$student['id']}}',this.dataset)">Block this profile</button>
+                                @endif
                                                 <button type="button" data-dismiss="modal" value="Decline" class="btn btn-warning"  data-toggle="modal"  data-target="#declineModal_{{$count}}">Send message</button>
                                             </div>
                                         </div>

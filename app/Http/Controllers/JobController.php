@@ -10,6 +10,7 @@ use App\Job;
 use App\Message;
 use App\Profile;
 use App\User;
+use App\Watch;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -85,6 +86,7 @@ class JobController extends Controller
         $profile = [];
         $id = json_decode($request->id);
         $profile['name'] = User::find($id)->name;
+
         $profile['cat_name'] = Category::select('cat_name')->where('id',User::find($id)->profile()->value('category_id'))->value('cat_name');
         $profile['categories'] = Category::all()->toArray();
         $profile['allData'] = Profile::where('user_id',$id)->get();
@@ -101,6 +103,10 @@ class JobController extends Controller
         $profile['job_id'] = $request->job_id;
         $message = Message::where('user_id',Auth::id())->where('read',false)->get();
         $counter = count($message);
+        $checkWatch = Watch::where('watch',json_decode($request->job_id))->where('watched',$id)->value('id');
+        if(!$checkWatch){
+           $watch =  Watch::create(['watch'=>json_decode($request->job_id),'watched'=>$id]);
+        }
         return view('employer.StudentByCategory',$profile);
     }
 

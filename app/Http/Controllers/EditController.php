@@ -31,6 +31,10 @@ class EditController extends Controller
        $rows = array_map('str_getcsv',explode("\n",$csvData));
        $header = array_shift($rows);
        foreach ($rows as $row){
+           if(count($row) != count($header)){
+
+               return Redirect::back()->withErrors(["Your csv file not valid"]);
+           }
            $row = array_combine($header,$row);
            if(User::where('email',$row['email'])->first() != null){
                $name = $row['name'];
@@ -70,9 +74,15 @@ class EditController extends Controller
           $file = $request->file('fileStudent');
           $csvData = file_get_contents($file);
           $rows = array_map('str_getcsv',explode("\n",$csvData));
+
+
             $header = array_shift($rows);
             foreach ($rows as $row){
+                if(count($row) != count($header)){
+                    return Redirect::back()->withErrors(["Your csv file not valid"]);
+                }
                 $row = array_combine($header,$row);
+
                 if(User::where('email',$row['email'])->first() != null){
                     $name = $row['name'];
                     return Redirect::back()->withErrors(["$name have an account please remove from exel file"]);
@@ -105,7 +115,11 @@ class EditController extends Controller
         $rows = array_map('str_getcsv',explode("\n",$csvData));
         $header = array_shift($rows);
         foreach ($rows as $row){
+            if(count($row) != count($header)){
+                return Redirect::back()->withErrors(["Your csv file not valid"]);
+            }
             $row = array_combine($header,$row);
+
             if(User::where('email',$row['email'])->first() != null){
                 $name = $row['name'];
                 return Redirect::back()->withErrors(["$name have an account please remove from exel file"]);
@@ -136,7 +150,7 @@ class EditController extends Controller
     public function allCourses(){
         $checkCourses = Course::with('category','user','job')->get()->toArray();
         if(!$checkCourses){
-            return redirect('/placement');
+            return redirect('/admin');
         }
         $courses = Course::with('category','user','job')->get()->toArray();
         $categories = Category::with('profile','job')->get()->toArray();
@@ -148,11 +162,9 @@ class EditController extends Controller
             $countCategoryUser[$category['cat_name']] = count($category['profile']) ;
             $countCategoryJob[$category['cat_name']] = count($category['job'])  ;
         }
-        if(Auth::user()->role == 'admin'){
+
             return view('admin.allCourses',compact('categories','courses','countCourseJob','countCourseUser','countCategoryUser','countCategoryJob','checkCourses'));
-        }else{
-            return view('placement.allCourses',compact('categories','courses','countCourseJob','countCourseUser','countCategoryUser','countCategoryJob','checkCourses'));
-        }
+
 
     }
     public function allJobs(){

@@ -25,7 +25,7 @@
                         <td><?= $count ?></td>
                         <td>{{$student['course']['name']}}</td>
                         <td>{{$student['name']}}</td>
-                        <td> <a href="#" class="btn btn-default" data-toggle="modal" data-target="#basicModal_{{$count}}">Click to open my Cv</a></td>
+                        <td> <a href="#"  data-toggle="modal" data-target="#basicModal_{{$count}}">Click to open my Cv</a></td>
                         <td><div class="col-1" ><center> <a onclick="checkProfileAndGetCategory('{{$student['id']}}','{{$count}}')" href="#aboutModal" data-toggle="modal" data-target="#myModal_{{$count}}"><img @if($student['profile']['confirm'] == false) style="border:2px solid red" @endif @if(isset($student['profile']['image'])) src="{{asset('images/_'.$student['id'].'/'.$student['profile']['image'])}}" @else src="{{asset('images/avatar.jpg')}}" @endif name="aboutme" width="140" height="140" class="img-circle"></a></center></div>
                         </td>
                         @include('placement.partials.profileModal')

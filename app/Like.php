@@ -8,10 +8,10 @@ class Like extends Model
 {
     public $guarded = [];
     public function user(){
-        return $this->belongsTo(User::class,'love','id');
+        return $this->belongsTo(User::class,'beloved','id');
     }
     public function job(){
-        return $this->belongsTo(Job::class,'beloved','id');
+        return $this->belongsTo(Job::class,'love','id');
     }
 
 

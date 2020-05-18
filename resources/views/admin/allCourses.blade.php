@@ -1,7 +1,6 @@
 @extends('masters.adminMaster')
 @section('content')
     <main style="margin-top: 5rem" role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-
     <link rel="stylesheet" href="{{ URL::asset('css/placementHome.css') }}">
     <div class="container ">
         <div class="row">
@@ -21,11 +20,10 @@
                     <?php $count++ ?>
                     <tr>
                         <td class="text-center font-weight-bold"><?= $count ?></td>
-                        <td class="text-center font-weight-bolder ">{{$course['name']}} <i data-toggle="modal"
-                                                                                           data-target="#exampleModal_{{$count}}"
-                                                                                           class="far fa-edit"></i>
-                            <i class="fas fa-trash-alt" onclick="deleteCourse('{{$course['id']}}',this.dataset)"
-                               data-courseName='{{$course['name']}}'></i></td>
+                        <td class="text-center font-weight-bolder ">{{$course['name']}}
+                            <i data-toggle="modal" data-target="#exampleModal_{{$count}}" class="far fa-edit"></i>
+                            <i class="fas fa-trash-alt" onclick="deleteCourse('{{$course['id']}}',this.dataset)" data-courseName='{{$course['name']}}'></i>
+                        </td>
                         <td class="text-center " id="flexText">
                             <?php $countCat = 0;?>
                             @foreach($course['category'] as $category)
@@ -33,43 +31,13 @@
                                     @foreach($countCategoryJob as $name => $num)
                                         @if($key ==  $category['cat_name'] && $name ==  $category['cat_name'] )
                                             <?php $countCat++; ?>
-                                            {{$category['cat_name'].' '}}<i data-toggle="modal"
-                                                                            data-target="#exampleModalCategory_{{$countCat}}"
-                                                                            class="far fa-edit"></i> <i
-                                                class="fas fa-trash-alt"
-                                                onclick="deleteCategory('{{$category['id']}}','{{$category['cat_name']}}')"></i>
-                                            <div class="tags"><i class="fas fa-user-graduate "></i>{{$counter}} ,<i
-                                                    class="fas fa-briefcase "></i> {{$num}}</div><br>
-                                            <div class="modal fade" id="exampleModalCategory_{{$countCat}}"
-                                                 tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                                                 aria-hidden="true">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLabel">edit</h5>
-                                                            <button type="button" class="close" data-dismiss="modal"
-                                                                    aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <input type="text" class="form-control"
-                                                                   value="{{$category['cat_name']}}"
-                                                                   id="inputEditCategory_{{$countCat}}">
-                                                            <input type="hidden" value="{{$category['id']}}"
-                                                                   id="idCategory{{$countCat}}">
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary"
-                                                                    data-dismiss="modal">Close
-                                                            </button>
-                                                            <button type="button" class="btn btn-primary"
-                                                                    onclick="editCategory('{{$countCat}}')">Save changes
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            {{$category['cat_name'].' '}}
+                                     <i data-toggle="modal" data-target="#exampleModalCategory_{{$category['id']}}" class="far fa-edit"></i>
+                                     <i class="fas fa-trash-alt" onclick="deleteCategory('{{$category['id']}}','{{$category['cat_name']}}')"></i>
+                                            <div class="tags">
+                                                <i class="fas fa-user-graduate "></i>{{$counter}} ,
+                                                <i class="fas fa-briefcase "></i> {{$num}}</div><br>
+                                            @include('admin.partials.EditCategory')
                                         @endif
                                     @endforeach
                                 @endforeach
@@ -86,32 +54,7 @@
 
 
                     <!-- Modal -->
-                    <div class="modal fade" id="exampleModal_{{$count}}" tabindex="-1" role="dialog"
-                         aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">edit</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <input type="text" class="form-control" value="{{$course['name']}}"
-                                           id="inputEditCourse_{{$count}}">
-                                    <input type="hidden" value="{{$course['id']}}" id="idCourse{{$count}}">
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary" onclick="editCourse('{{$count}}')">
-                                        Save changes
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                        <!-- Modal -->
-
+                    @include('admin.partials.EditCourse')
                 @endforeach
             </table>
         </div>

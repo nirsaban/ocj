@@ -149,7 +149,8 @@ function editCourse(count){
     })
 }
 function editCategory(count) {
-    let id = document.getElementById(`idCategory${count}`).value;
+
+    let id = count;
     let inputEditCategory  = document.getElementById(`inputEditCategory_${count}`).value
     let url = location.origin + '/editCategory';
     axios({method:'post',url:url,data:{category:inputEditCategory,id:id}}).then(({data})=>{

@@ -26,7 +26,7 @@
                <td>
                    <div class="col-1" >
                        <center>
-                           <a  href="#aboutModal" data-toggle="modal" data-target="#myModal_{{$count}}">show more</a>
+                           <a  href="#aboutModal" data-toggle="modal" data-target="#myModal_{{$count}}"><button class="btn btn-outline-default">show more</button></a>
                        </center>
                    </div>
                    <!-- Modal -->

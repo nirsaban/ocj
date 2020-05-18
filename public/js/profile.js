@@ -260,7 +260,8 @@ window.onload = function init(){
     axios({method:'get',url:location.origin+ `/getMessageCount/${id}`}).then(({data})=>{
         document.getElementById('countMessage').innerText += data
     })
-    $('#myModal').modal('show');
+    $('#myModalMatch').modal('show');
+    $('#myModalCv').modal('show');
 
     function present(PRESENT) {
         let count = []

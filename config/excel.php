@@ -87,7 +87,7 @@ return [
     | based on the extension alone.
     |
     */
-    'extension_detector' => [
+    'Maatwebsite\Excel\Concerns\FromCollection' => [
         'xlsx'     => Excel::XLSX,
         'xlsm'     => Excel::XLSX,
         'xltx'     => Excel::XLSX,

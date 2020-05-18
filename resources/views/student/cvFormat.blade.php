@@ -1,9 +1,10 @@
 @extends('masters.studentMaster')
 @section('content')
     @if($cvFile)
+
         <link rel="stylesheet" href="{{ URL::asset('css/student.css') }}">
 
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+        <div class="modal fade" id="myModalCv" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
 
         <div class="modal-dialog modal-lg">
             <div class="modal-content">

@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Course;
+use App\Job;
+use App\Like;
 use App\Message;
 use App\Profile;
 use App\User;
+use App\Watch;
 use http\Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -46,11 +49,22 @@ class ProfileController extends Controller
     }
     public function show($id)
     {
+
         if($id != Auth::id()){
             return  redirect('/');
         }
+        $catId = Profile::where('user_id',$id)->value('category_id');
+        $profile['StudentCategory'] =$catId != null ? Profile::where('category_id',$catId)->get()->count(): 0;
+        $profile['allJobCat'] = $catId != null ?  Job::where('category_id',$catId)->get()->count() : 0;
+//        $profile['allStart'] = $catId != null ?
+
+        $profile['watches'] = Watch::where('watched',$id)->get()->count();
         $profile['categories'] = Category::where('course_id',Auth::user()->course_id)->get()->toArray();
         $profile['profile'] = Profile::with('category')->where('user_id',$id)->get()->toArray();
+        $course = User::with('course')->where('id',$id)->get()->toArray();
+        $profile['courseName'] = $course[0]['course']['name'];
+        $profile['studentCourse'] = User::where('course_id',Auth::user()->course_id)->get()->count();
+        $profile['jobsCourse'] = Job::where('course_id',Auth::user()->course_id)->get()->count();
         $presentAll = Profile::where('user_id',$id)->get(['category_id','about_me', 'education', 'my_skills', 'links','work_experience','image'])->toArray();
         if (isset($presentAll[0])){
             foreach ($presentAll[0] as $key => $value){
@@ -119,7 +133,9 @@ class ProfileController extends Controller
     }
     public function reset(Request $request){
         $id = json_decode($request->id);
-        if(Profile::where('user_id', $id)->delete()){
+        $reset = Profile::where('user_id', $id)->update(['category_id'=>null,'about_me'=>null,'education'=>null,
+            'my_skills'=>null,'links'=>null,'work_experience'=>null,'image'=>null,'confirm'=>0]);
+        if($reset){
           return response('success reset', 201)->header('Content-Type', 'text/plain');
         }else{
             return response('something failed', 500)->header('Content-Type', 'text/plain');

@@ -2,39 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0d944f9b-4fc0-455e-aec5-221c9fef8bc9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/js/profileTest.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/student/partials/about_me.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/student/partials/category.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/student/partials/educations.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/student/partials/inputEducation.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/student/partials/links.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/student/partials/skills.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/student/partials/works.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/student/profileTest.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/partials/EditCategory.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/partials/EditCourse.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EditController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EditController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/JobController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/JobController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PagesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PagesController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProfileController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/UpdateJobRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/UpdateJobRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/dashboard.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/homeEmployer.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/homeEmployer.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/placementHome.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/placementHome.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Like.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Like.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/excel.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/excel.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/profile.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/student.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/student.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/cvFormat/_31/sample-file (1).pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/cvFormat/_31/sample-file (6).pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/cvFormat/_31/sample-file.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/cvFormat/_31/אפיון אפליקציה מחלקת השמה .pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/cvFormat/_32/sample-file (6).pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/placement.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/placement.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/profile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/employer/editJob.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employer/editJob.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/employer/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employer/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/masters/studentMaster.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/masters/studentMaster.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/profileTest.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/profileTest.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/allCourses.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/allCourses.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/allStudent.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/allStudent.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/placement/allJobs.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/placement/allJobs.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/placement/allStudent.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/placement/allStudent.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/placement/placementHome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/placement/placementHome.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/student/cvFormat.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/cvFormat.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/partials/modal.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/partials/modal.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/profileTest.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/profileTest.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -169,20 +157,28 @@
     <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\nirsa\onClickJob\public" />
-      <recent name="C:\Users\nirsa\onClickJob\public\images" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\nirsa\Desktop\ocjSap\onClickJob\resources\views\admin" />
       <recent name="C:\Users\nirsa\onClickJob\resources\views\student" />
     </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\nirsa\onClickJob\public" />
+      <recent name="C:\Users\nirsa\onClickJob\public\images" />
+    </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JavaScript Debug.JobController.php">
+    <configuration name="JobController.php" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/onClickJob/Http/Controllers/JobController.php" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner scope="XML" />
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript Debug.JobController.php" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -227,6 +223,8 @@
       <workItem from="1589220472805" duration="56924000" />
       <workItem from="1589396743668" duration="17494000" />
       <workItem from="1589465493546" duration="6310000" />
+      <workItem from="1589477202978" duration="34286000" />
+      <workItem from="1589724248916" duration="614000" />
     </task>
     <servers />
   </component>
@@ -246,10 +244,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="209" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1588590202772" />
-    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1589445068117">
+    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1589716620835">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1589127874086" />
+    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1589716620835" />
     <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1589445068117" />
     <state x="516" y="257" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1589208115310">
       <screen x="0" y="0" width="1536" height="824" />
@@ -268,18 +266,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="277" y="56" key="SettingsEditor/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1588514703458" />
+    <state x="583" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1589654964113">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="583" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1589654964113" />
     <state x="478" y="0" width="579" height="824" key="find.popup" timestamp="1589296204475">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="478" y="0" width="579" height="824" key="find.popup/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1589296204475" />
-    <state x="425" y="187" key="run.anything.popup" timestamp="1589298325851">
+    <state x="425" y="187" key="run.anything.popup" timestamp="1589723199008">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="425" y="187" key="run.anything.popup/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1589298325851" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1589129880983">
+    <state x="425" y="187" key="run.anything.popup/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1589723199008" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1589714273907">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1589129880983" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1589714273907" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
