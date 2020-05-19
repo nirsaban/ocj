@@ -45,7 +45,7 @@
                             <div class="form-group  ">
                                 <label for="file" class="col-md-4 col-form-label text-sm-right">{{ __('Choose File') }}</label>
                                 <label  for="file" class="file-input btn btn-dark btn-file" />Browse...</label>
-                                <input type="file" id="file" name="cv" style="display: block" />
+                                <input type="file" id="file" name="cv" style="display: none" />
                                 @error('cv')
                                 <br>
                                 <div class="validation text-danger text-center text-info small" style="font-size: .7rem">{{ $message }}</div>

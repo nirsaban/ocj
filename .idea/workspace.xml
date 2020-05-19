@@ -2,23 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0d944f9b-4fc0-455e-aec5-221c9fef8bc9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/css/homeEmployerTest.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/homeStudentNew.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/employer/homeTest.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/JobController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/JobController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PagesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PagesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/homeEmployer.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/homeEmployer.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/profile.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/student.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/student.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/studentByCategory.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/studentByCategory.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/studentCategory.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/studentCategory.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/welcome.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/welcome.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/employer/studentByCategory.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employer/studentByCategory.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/employer/studentsByCategory.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employer/studentsByCategory.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/student/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/student/profileTest.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/profileTest.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/cvFormat.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/cvFormat.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -219,7 +204,8 @@
       <workItem from="1589396743668" duration="17494000" />
       <workItem from="1589465493546" duration="6310000" />
       <workItem from="1589477202978" duration="34286000" />
-      <workItem from="1589724248916" duration="19025000" />
+      <workItem from="1589724248916" duration="19624000" />
+      <workItem from="1589815958180" duration="1685000" />
     </task>
     <servers />
   </component>
