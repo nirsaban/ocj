@@ -61,6 +61,16 @@
             </div>
         </div>
         @endforeach
+            <div class="col-md-4">
+                <div class="box box-solid box-success">
+                    <div class="box-header">
+                        <h3 class="box-title">Success Solid Box</h3>
+                    </div><!-- /.box-header -->
+                    <div class="box-body">
+                        The body of the box
+                    </div><!-- /.box-body -->
+                </div><!-- /.box -->
+            </div>
     </div>
 <script>
     function deleteJob(data) {

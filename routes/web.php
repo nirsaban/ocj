@@ -50,11 +50,13 @@ Route::group(['middleware' => 'PlacementRole'],function(){
     Route::get('/cv','EditController@addCvFormat');
     Route::get('/addStudents','EditController@addStudents');
     Route::get('/addEmployers','EditController@addEmployers');
+    Route::get('/addGrades','EditController@addGrades');
 
 });
 Route::post('/sendMessage','MessageController@sendMessage');
 Route::post('/CreateStudent','EditController@createStudents')->name('upload.students');
 Route::post('/CreateEmployers','EditController@createEmployers')->name('upload.employers');
+Route::post('/CreateGrades','EditController@createGrades')->name('upload.grades');
 Route::post('/getCategory','EditController@getCategory');
 Route::post('/confirm','MessageController@confirm');
 

@@ -1,7 +1,12 @@
 @extends('masters.employerMaster')
 @section('content')
+
     <link rel="stylesheet" href="{{ URL::asset('css/studentByCategory.css') }}">
+
+
+
     <div class="container">
+
         <div class="like">
             <h2 class="ribbon-title--b" >Did you like my profile? Mark like And maybe we'll meet soon<span class="LikeIcon"> <i class="far fa-thumbs-up fa-1x" style="color:#1b4b72;" onclick="addLikeToStudent(1,'{{$id}}','{{$job_id}}')"></i></span></h2>
 {{--            <div class="titleLike">Did you like my profile? Mark like And maybe we'll meet soon -> <span class="LikeIcon"> <i class="far fa-thumbs-up fa-1x" style="color:#1b4b72;" onclick="addLikeToStudent(1,'{{$id}}','{{$job_id}}')"></i></span></div>--}}
@@ -109,8 +114,18 @@
                 @endif
 
             </div>
-
         </div>
+        <div class="card">
+            <div class="card-block">
+                @if($grade[0]['grade']['outstanding'] == 1 )
+                    <i class="fas fa-medal text-success fa-2x"></i>
+                    @endif
+                <h1 class="card-text good-review-score float-left "><div class="grade">{{$grade[0]['grade']['grade'] / 10}}</div></h1>
+                <h1 class="card-title">	Lecturer Evaluation</h1>
+                <p class="card-text tt text-wrap">{{$grade[0]['grade']['valuation']}}</p>
+            </div>
+        </div>
+    </div>
         <script src="{{asset('js/employer.js')}}"></script>
 @endsection
 

@@ -2,35 +2,42 @@
     @extends('layouts.app')
     @section('content')
 
-                <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-                    <h1 class="display-4">About this app</h1>
-                    <p class="lead" style="font-size: .8rem">Hi Dear Guest,<br>
-                        The purpose for which the app was created is for the graduates to find the right job for them immediately upon graduation, and on the other hand, to accept the graduates they chose according to the profile and degree of fit for the job they posted.
-                        In order for everyone to be satisfied, trusted information must be uploaded for the student or job you are posting
-                        Good luck job on click team</p>
+
+
+        <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+                    <h1 class="display-4">Welcome To OnClickJob</h1>
                 </div>
                 <div class="login-form">
-                    <form action="{{ route('login') }}" method="POST">
+                    <form action="{{ route('login') }}" method="POST" class="form_container">
                         @csrf
-                        <div class="avatar"><i class="material-icons">&#xE7FF;</i></div>
+                        <div class="avatar  blue lighten-4"><i class="material-icons">&#xE7FF;</i></div>
+                        <h2 class="text-center display-5">Login to Your Account</h2>
 
-                        <h4 class="modal-title">Login to Your Account</h4>
                         <div class="form-group">
-                            <input type="email" name="email" class="form-control" placeholder="Email" required="required">
-                            @error('email')
-                            <div class="validation text-danger text-center text-info small" style="font-size: .7rem">{{ $message }}</div>
-                            @enderror
-                        </div>
+                                <div class="input-field col ">
+                                    <i class="material-icons prefix ">mail_outline</i>
+                                    <input id="email" type="email" name="email" class="validate" required="required">
+                                    @error('email')
+                                    <div class="text-danger text-center text-info " style="font-size: 1rem">{{ $message }}</div>
+                                    @enderror
+                                    <label for="email">Email</label>
+                                </div>
+                            </div>
                         <div class="form-group">
-                            <input type="password" name="password" class="form-control" placeholder="Password" required="required">
-                            @error('password')
-                            <div class="validation text-danger text-center text-info small" style="font-size: .7rem">{{ $message }}</div>
-                            @enderror
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix">lock_outline</i>
+                                    <input id="password" name="password" type="password" class="validate">
+                                    @error('password')
+                                    <div class="validation text-danger text-center text-info small" style="font-size: .7rem">{{ $message }}</div>
+                                    @enderror
+                                    <label for="password">Password</label>
+                                </div>
                         </div>
+
                         <div class="text-center">
-                        <button type="submit" class="btn btn-primary ">
-                            {{ __('Login') }}
-                        </button>
+                            <button class="btn waves-effect waves-light blue lighten-4" type="submit" name="action">Login
+                                <i class="material-icons right blue lighten-4">send</i>
+                            </button>
                         </div>
                     </form>
                 </div>

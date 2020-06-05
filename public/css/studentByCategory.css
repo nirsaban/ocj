@@ -170,7 +170,7 @@ span.tags
     width: 100%;
     display: grid;
     grid-template-columns: minmax(8rem,1fr) minmax(20rem,2.5fr) minmax(20rem,2.5fr);
-    grid-template-rows: repeat(13 ,minmax(2rem ,min-content));
+    grid-template-rows: repeat(12 ,minmax(2rem ,min-content));
     grid-gap: 40px 40px;
     background-color: #fff;
     border-radius: 10px;
@@ -453,10 +453,43 @@ span.tags
     width: 100%;
     word-wrap: break-word;
 }
-.compliteProf{
-    grid-row:8/9;
+.card{
+    grid-row:9/10;
+    grid-column: 2/4;
+    padding: -5px;
+    justify-self: center;
+    margin-right: 5rem;
+}
+.card-block{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr 2fr;
+    grid-gap: 2rem;
+}
+.card-title{
+    grid-row: 1/2;
+    justify-self: center;
+    grid-column: 2/-1;
+    align-items: center;
+}
+.fa-medal{
+    position: absolute;
+    top: 10px;
+    left: 5px;
+}
+.good-review-score{
+    grid-row: 1/-1;
+    justify-self:stretch;
+    grid-column: 1/2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.tt{
+    grid-row: 2/-1;
     grid-column: 2/-1;
 }
+
 .item{
     border: 2px groove rgba(28, 110, 164, 0.062);
     border-radius: 2px 26px 28px 18px;
@@ -516,7 +549,16 @@ span.tags
     filter: blur(30px);
     opacity :0.6;
 }
-
+.good-review-score{
+    background-color:#66CC33;
+    color:white;
+    text-align: center;
+    padding: 10px;
+    margin-right: 5px
+    /*width: 50px;
+        height: 30px;
+        line-height: 30px*/
+}
 
 @keyframes anime{
     0%{
