@@ -2,8 +2,34 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0d944f9b-4fc0-455e-aec5-221c9fef8bc9" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/views/placement/addGrade.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/student/cvFormat.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/cvFormat.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EditController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EditController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/JobController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/JobController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProfileController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/ welcome.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/homeStudentNew.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/homeStudentNew.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/profile.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/studentByCategory.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/studentByCategory.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/welcome.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/welcome.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/messages.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/messages.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/profileTest.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/profileTest.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/student.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/student.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/employer/homeTest.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employer/homeTest.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/employer/studentByCategory.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/employer/studentByCategory.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/masters/adminMaster.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/masters/adminMaster.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/masters/employerMaster.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/masters/employerMaster.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/masters/placementMaster.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/masters/placementMaster.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/masters/studentMaster.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/masters/studentMaster.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/placement/allStudent.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/placement/allStudent.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/profileTest.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/profileTest.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,13 +163,13 @@
     <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\nirsa\onClickJob\public" />
-      <recent name="C:\Users\nirsa\onClickJob\public\images" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\nirsa\Desktop\ocjSap\onClickJob\resources\views\admin" />
       <recent name="C:\Users\nirsa\onClickJob\resources\views\student" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\nirsa\onClickJob\public" />
+      <recent name="C:\Users\nirsa\onClickJob\public\images" />
     </key>
   </component>
   <component name="RunManager" selected="JavaScript Debug.JobController.php">
@@ -206,6 +232,11 @@
       <workItem from="1589477202978" duration="34286000" />
       <workItem from="1589724248916" duration="19624000" />
       <workItem from="1589815958180" duration="1685000" />
+      <workItem from="1589900962271" duration="17627000" />
+      <workItem from="1590060822447" duration="202000" />
+      <workItem from="1590080949633" duration="5000" />
+      <workItem from="1590081135466" duration="14000" />
+      <workItem from="1590309133239" duration="301000" />
     </task>
     <servers />
   </component>
@@ -234,10 +265,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="516" y="257" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1589208115310" />
-    <state x="592" y="218" key="FileChooserDialogImpl" timestamp="1589466314996">
+    <state x="592" y="218" key="FileChooserDialogImpl" timestamp="1589955415705">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="592" y="218" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1589466314996" />
+    <state x="592" y="218" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1589955415705" />
     <state x="2660" y="275" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1587408073525" />
     <state x="597" y="135" key="NewPhpClassDialog" timestamp="1587553743324">
       <screen x="0" y="0" width="1536" height="824" />
@@ -269,7 +300,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/resources/views/masters/adminMaster.blade.php</url>
-          <line>11</line>
+          <line>17</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">

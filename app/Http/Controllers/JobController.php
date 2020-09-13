@@ -93,6 +93,7 @@ class JobController extends Controller
         $profile = [];
         $id = json_decode($request->id);
         $profile['name'] = User::find($id)->name;
+         $profile['grade'] = User::with('grade')->where('id',$id)->get()->toArray();
 
         $profile['cat_name'] = Category::select('cat_name')->where('id',User::find($id)->profile()->value('category_id'))->value('cat_name');
         $profile['categories'] = Category::all()->toArray();

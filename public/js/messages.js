@@ -1,10 +1,10 @@
-window.onload = function () {
-    $('#myModal').modal('show');
-    let id  = document.getElementById('idToMessages').value;
-    axios({method:'get',url:location.origin+ `/getMessageCount/${id}`}).then(({data})=>{
-        document.getElementById('countMessage').innerText += data
-    })
-}
+// window.onload = function () {
+//     $('#myModal').modal('show');
+//     let id  = document.getElementById('idToMessages').value;
+//     axios({method:'get',url:location.origin+ `/getMessageCount/${id}`}).then(({data})=>{
+//         document.getElementById('countMessage').innerText += data
+//     })
+// }
 
 
 class Messages{

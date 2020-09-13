@@ -13,6 +13,8 @@
                     <th style="width:30%;">course</th>
                     <th style="width:30%;">name</th>
                     <th style="width:10%;"> My Cv File </th>
+                        <th>Grade</th>
+                        <th>Outstanding</th>
                     <th style="width:10%;">go To my Profile</th>
                 </tr>
                 <?php $count  = 0;?>
@@ -26,6 +28,8 @@
                         <td>{{$student['course']['name']}}</td>
                         <td>{{$student['name']}}</td>
                         <td> <a href="#"  data-toggle="modal" data-target="#basicModal_{{$count}}">Click to open my Cv</a></td>
+                        <td>{{$student['grade']['grade']}}</td>
+                        <td>@if($student['grade']['outstanding'] == 1)<i class="fas fa-medal fa-3x"></i>@else<i class="fas fa-times fa-3x"></i>@endif</td>
                         <td><div class="col-1" ><center> <a onclick="checkProfileAndGetCategory('{{$student['id']}}','{{$count}}')" href="#aboutModal" data-toggle="modal" data-target="#myModal_{{$count}}"><img @if($student['profile']['confirm'] == false) style="border:2px solid red" @endif @if(isset($student['profile']['image'])) src="{{asset('images/_'.$student['id'].'/'.$student['profile']['image'])}}" @else src="{{asset('images/avatar.jpg')}}" @endif name="aboutme" width="140" height="140" class="img-circle"></a></center></div>
                         </td>
                         @include('placement.partials.profileModal')

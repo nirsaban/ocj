@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','role','course_id'
+        'name', 'email', 'password','role','course_id','sku'
     ];
 
     /**
@@ -48,6 +48,9 @@ class User extends Authenticatable
     }
     public function job(){
         return $this->hasMany(Job::class);
+    }
+    public function grade(){
+        return $this->hasOne(Grade::class,'sku','sku');
     }
 
 }

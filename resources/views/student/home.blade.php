@@ -1,114 +1,83 @@
 @extends('masters.studentMaster')
 @section('content')
     <link rel="stylesheet" href="{{ URL::asset('css/homeStudentNew.css') }}">
-<div class="titre-content">
-    <div>
-        <h1>Hello {{Auth::user()->name}}</h1>
-        <h2> {{$title}}</h2>
-    </div>
-</div>
-@if(session()->has('message'))
-    <div class="text-center">
-        <div class="blur-out-expand-fwd">
-            {{ session()->get('message') }}
+    <section class="container ">
+        <div class="page-header">
+        <h1 class="center">Welcome Back {{Auth::user()->name}}<br>
+        <small>{{$title}}  <i class="small material-icons ">search</i> </h1>
         </div>
-    </div>
-@endif
-@if($errors->any())
-    @foreach ($errors->all() as $error)
-        <div class="text-center">
-            <div class="  bounce-top ">
-                {{$error}}
-            </div>
-        </div>
-    @endforeach
-@endif
-<div class="container">
+        @foreach($allJobs as $job)
+        <div class="row active-with-click">
+            <div class="col l4 col m3 col s12">
+                <article class="material-card Red">
+                    <h2>
+                        <span>  {{$job['title']}}</span>
+                        <strong>
+                            <i class="fa fa-fw fa-star"></i>
+                         {{$job['company']}}
+                        </strong>
+                    </h2>
+                    <div class="mc-content">
+                        <div class="img-container">
+                        <img class="img-responsive"  width="100%" src="{{asset('images/job.png')}}" alt="Design" title="Design">
+                        </div>
+                        <div class="mc-description">
+                            <ul class="collection">
+                                <li class="collection-item avatar">
+                                 <i class="material-icons circle">info_outline</i>
+                                  <span class="title">Description</span>
+                                  <p>
+                                      {{$job['description']}}
+                                  </p>
+                                </li>
+                                <li class="collection-item avatar">
+                                  <i class="material-icons circle">computer</i>
+                                  <span class="title">requirements</span>
+                                  <ol>
+                                    @foreach(json_decode($job->requirements) as $require)
+                                   <li>{{$require}}</li>
+                                    @endforeach
+                                </ol>
+                                </li>
+                                <li class="collection-item avatar">
+                                  <i class="material-icons circle grey">location_on</i>
+                                  <span class="title">Location</span>
+                                <p>{{$job['location']}}<br>
 
-    @foreach($allJobs as $job)
-        <div class="card">
-            <div class="img-box">
-                <img src="https://image.flaticon.com/icons/svg/681/681611.svg" alt="Design" title="Design">
-                <h3> {{$job['category']['cat_name']}}
+                                  </p>
 
-                </h3>
-            </div>
-
-            <div class="content">
-                <p>
-                    <i class="fas fa-heading"></i>
-                    {{$job['title']}}
-                </p>
-                <p>
-                    <i class="fa fa-briefcase"></i>
-                    {{$job['company']}}
-                </p>
-                <p>
-                    <i class="fa fa-map-marker"></i>
-                    {{$job['location']}}
-                </p>
-                <div class="card-footers">
-                    <a @if($userCategory == null) onclick="checkCategory({{Auth::id()}})" @else href="#aboutModal" data-toggle="modal" data-target="#myModal_{{$job['id']}}" @endif  type="button" class="btn col-5" id="left-panel-link" >View more</a>
-                    <div style="color: black" class="modal fade " id="myModal_{{$job['id']}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <center>
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">x</button>
-                                    </center>
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                                    <h3 class="modal-titles" id="myModalLabel">More About {{$job['title']}}</h3>
-
-                                </div>
-                                <div class="modal-body">
-                                    <center>
-{{--                                        <img  src="{{asset('images/jobImg.jpg')}}"  name="aboutme" width="140" height="140" class="img-circle">--}}
-                                        <h2 class="media-heading" >{{$job['category']['cat_name']}}</h2>
-                                        <h3 class="media-heading"> {{$job['title']}}</h3>
-                                        <h5  class="media-heading"> {{$job['company']}}</h5>
-                                        <hr>
-                                    </center>
-                                    <center>
-                                        <p class="text-left"><strong>description: </strong><br>
-                                            {{$job['description']}}</p>
-                                        <br>
-                                    </center>
-                                    <hr>
-                                    <center>
-                                        <p class="text-left"><strong>requirements: </strong><br>
-                                            @foreach(json_decode($job['requirements']) as $require)
-                                                @if(strlen($require) > 2)
-                                                    {{$require}}<br>
-                                                @endif
-                                            @endforeach
-                                        </p>
-                                    </center>
-                                    <hr>
-                                    <center>
-                                        <p class="text-left"><strong>Location: </strong><br>
-                                            {{$job['location']}}<br>
-                                        </p>
-                                    </center>
-                                    <hr>
-                                    <center>
-                                        <p class="text-left"><strong>salary: </strong><br>
-                                            {{$job['salary']}}<br>
-                                        </p>
-                                    </center>
-
-                                    <hr>
-                                    <div class="text-center">
-                                        <a class="none like" onClick="addLikeTojob(0,'{{$job->id}}','{{Auth::id()}}')"><i class="far fa-thumbs-up fa-lg"></i></a>
-                                    </div>
-                                </div>
-                            </div>
+                                </li>
+                                <li class="collection-item avatar">
+                                  <i class="material-icons circle grey">monetization_on</i>
+                                  <span class="title">Salary:</span>
+                                  <p>{{$job['salary']}}
+                                  </p>
+                                </li>
+                              </ul>
                         </div>
                     </div>
-                </div>
+                    <a @if($userCategory == null) class="mc-btn-action" onclick="checkCategory({{Auth::id()}})" @else class="mc-btn-action"   @endif>
+                        <i class="fa fa-bars"></i>
+                    </a>
+                    <div class="mc-footer">
+                        <h4  class ="white"style="z-index: 50;">
+                           {{$job['user']['name']}}
+                        </h4>
+                    <a class="col l10 s10 center">#{{$job['course']['name']}}#{{$job['category']['cat_name']}}</a>
+                    <a href="#" class="btn btn-floating pulse ">
+
+                        <i class="material-icons   col  s2 large text-red center"  onClick="addLikeTojob(0,'{{$job->id}}','{{Auth::id()}}')">thumb_up</i>
+                    </a>
+                    </div>
+                </article>
             </div>
-        </div>
-    @endforeach
+            @endforeach
+        <section>
+
+
 </div>
+
+
 <script>
     function deleteJob(data) {
         const url = data.href
@@ -144,7 +113,7 @@
 {{--        <h1 class="display-3 text-center">Hello, {{Auth::user()->name}} {{$title}}</h1>--}}
 {{--        <h3 class="display-4 text-center">{{$second_title}}</h3>--}}
 {{--    </div>--}}
-{{--    </div>--}}
+{{--    </>--}}
 
 
 {{--    <div class="JobsCard" >--}}

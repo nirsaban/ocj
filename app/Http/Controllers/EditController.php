@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Course;
+use App\Grade;
 use App\Job;
 use App\Profile;
 use App\User;
@@ -15,6 +16,38 @@ class EditController extends Controller
 {
     public function addPlacementIndex(){
         return view('admin.createPlacement');
+    }
+    public function createGrades(Request $request){
+        $validator = Validator::make($request->all(),[
+            'file'=> 'required',
+        ],
+            [
+                'file.required'=>'you must choose Exel file before sending',
+            ]);
+        if($validator->fails()){
+            return redirect()->back()->withErrors($validator);
+        }
+        $file = $request->file('file');
+        $csvData = file_get_contents($file);
+        $rows = array_map('str_getcsv',explode("\n",$csvData));
+        $header = array_shift($rows);
+        foreach ($rows as $row){
+            if(count($row) != count($header)){
+                return Redirect::back()->withErrors(["Your csv file not valid"]);
+            }
+            $row = array_combine($header,$row);
+            if(Grade::where('sku',$row['sku'])->first() != null){
+                $name = $row['name'];
+                return Redirect::back()->withErrors(["$name have an valuation and grade please remove from exel file"]);
+            }
+            Grade::create([
+                'grade'=> json_decode($row['grade']),
+                'outstanding'=> $row['outstanding'],
+                'valuation'=>$row['valuation'],
+                'sku'=>json_decode($row['sku']),
+            ]);
+        }
+        return redirect()->back()->with('message', 'Grades add!!');
     }
    public function createPlacement(Request $request){
        $validator = Validator::make($request->all(),[
@@ -87,11 +120,13 @@ class EditController extends Controller
                     $name = $row['name'];
                     return Redirect::back()->withErrors(["$name have an account please remove from exel file"]);
                 }
+
                 User::create([
                     'name'=>$row['name'],
                     'email'=> $row['email'],
                     'password'=>bcrypt($row['password']),
                     'role'=>'student',
+                    'sku'=>json_decode($row['sku']),
                     'course_id' =>   $request->course_id
                 ]);
             }
@@ -147,6 +182,10 @@ class EditController extends Controller
             return response('something falid',200);
         }
     }
+
+    public function addGrades(){
+        return view('placement.addGrade');
+    }
     public function allCourses(){
         $checkCourses = Course::with('category','user','job')->get()->toArray();
         if(!$checkCourses){
@@ -177,7 +216,7 @@ class EditController extends Controller
 
     }
     public function allStudent(){
-        $allStudents = User::with('course','profile')->where('role','student')->get()->toArray();
+        $allStudents = User::with('course','profile','grade')->where('role','student')->get()->toArray();
         $allStudent = [];
         foreach ($allStudents as $student){
             if($student['profile']){
@@ -222,6 +261,7 @@ class EditController extends Controller
         }
 
     }
+
     public function deleteCourse(Request $request){
         Course::where('id',json_decode($request->id))->delete();
         Job::where('course_id',json_decode($request->id))->delete();
