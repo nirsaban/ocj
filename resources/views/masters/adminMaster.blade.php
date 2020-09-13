@@ -9,10 +9,14 @@
     <meta name="generator" content="Jekyll v3.8.6">
     <title></title>
     <!-- Compiled and minified CSS -->
+<<<<<<< HEAD
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+=======
+
+>>>>>>> c1219e8b44a669314950a7a8a81168655f46a3c6
 
 
     <!--<link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/dashboard/">-->
