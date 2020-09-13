@@ -4,7 +4,7 @@
     <div class="container" style="margin-bottom: 8rem">
         <div class="header">
             <div class="mainTitle">Hello {{Auth::user()->name}}, {{$title}}</div>
-            <h3 class="">{{$second_title}}-</h3>
+            <h3 class="">{{$second_title}}-test</h3>
             @if(session()->has('message'))
                 <div class="blur-out-expand-fwd">
                     {{ session()->get('message') }}
