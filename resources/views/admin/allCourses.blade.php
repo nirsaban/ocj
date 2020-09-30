@@ -1,6 +1,6 @@
 @extends('masters.adminMaster')
 @section('content')
-    <main style="margin-top: 5rem" role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+    <main style="margin-top: 5rem" role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4 ">
     <link rel="stylesheet" href="{{ URL::asset('css/placementHome.css') }}">
     <div class="container ">
         <div class="row">
