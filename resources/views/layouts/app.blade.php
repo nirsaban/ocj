@@ -21,36 +21,13 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
-    <!-- Styles --><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!-- Styles -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link href="{{ asset('css/app.css')}}" rel="stylesheet">
     <link href="{{asset('css/welcome.css')}}" rel="stylesheet">
     <style>
 
-        html {
-            font-size: 14px;
-        }
-        @media (min-width: 768px) {
-            html {
-                font-size: 16px;
-            }
-        }
 
-        .container {
-            max-width: 960px;
-        }
-
-        .pricing-header {
-            max-width: 700px;
-        }
-
-        .card-deck .card {
-            min-width: 220px;
-        }
-
-        .border-top { border-top: 1px solid #e5e5e5; }
-        .border-bottom { border-bottom: 1px solid #e5e5e5; }
-
-        .box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
     </style>
 </head>
 <body>

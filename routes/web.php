@@ -28,7 +28,7 @@ Route::post('image-upload', 'ProfileController@imageUploadPost')->name('image.up
 Route::get('/formatCv','ProfileController@cvFormat')->middleware('StudentRole');;
 Route::get('/getInputs/{item}','ProfileController@getInput');
 Route::post('uploadCv', 'ProfileController@CvUploadPost')->name('upload.cvToCheck');
-
+Route::get('profileData/{id}','ProfileController@getProfileData');
 
 //employer routes
 Route::get('/employer','PagesController@employerHome')->middleware('EmployerRole');

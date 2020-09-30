@@ -17,6 +17,31 @@ use Illuminate\Support\Facades\Validator;
 
 class ProfileController extends Controller
 {
+    public function getProfileData($id){
+
+        $catId = Profile::where('user_id',$id)->value('category_id');
+        $profile['StudentCategory'] =$catId != null ? Profile::where('category_id',$catId)->get()->count(): 0;
+        $profile['allJobCat'] = $catId != null ?  Job::where('category_id',$catId)->get()->count() : 0;
+//        $profile['allStart'] = $catId != null ?
+        $profile['watches'] = Watch::where('watched',$id)->get()->count();
+        $profile['categories'] = Category::where('course_id',Auth::user()->course_id)->get()->toArray();
+        $profile['profile'] = Profile::with('category')->where('user_id',$id)->get()->toArray();
+        $course = User::with('course')->where('id',$id)->get()->toArray();
+        $profile['courseName'] = $course[0]['course']['name'];
+        $profile['studentCourse'] = User::where('course_id',Auth::user()->course_id)->get()->count();
+        $profile['jobsCourse'] = Job::where('course_id',Auth::user()->course_id)->get()->count();
+        $presentAll = Profile::where('user_id',$id)->get(['category_id','about_me', 'education', 'my_skills', 'links','work_experience','image'])->toArray();
+        if (isset($presentAll[0])){
+            foreach ($presentAll[0] as $key => $value){
+                if($value != null){
+                    $presents[$key] = $value;
+                }
+            }
+            $profile['present'] = $presents ?? '';
+        }
+        $profileJson = json_encode($profile);
+        print_r($profileJson);
+    }
     public function CvUploadPost(Request $request){
         $validator = Validator::make($request->all(),[
             'cv'=> 'required',
@@ -49,49 +74,13 @@ class ProfileController extends Controller
     }
     public function show($id)
     {
-
         if($id != Auth::id()){
             return  redirect('/');
         }
-        $catId = Profile::where('user_id',$id)->value('category_id');
-        $profile['StudentCategory'] =$catId != null ? Profile::where('category_id',$catId)->get()->count(): 0;
-        $profile['allJobCat'] = $catId != null ?  Job::where('category_id',$catId)->get()->count() : 0;
-//        $profile['allStart'] = $catId != null ?
-
-        $profile['watches'] = Watch::where('watched',$id)->get()->count();
-        $profile['categories'] = Category::where('course_id',Auth::user()->course_id)->get()->toArray();
         $profile['profile'] = Profile::with('category')->where('user_id',$id)->get()->toArray();
-        $course = User::with('course')->where('id',$id)->get()->toArray();
-        $profile['courseName'] = $course[0]['course']['name'];
-        $profile['studentCourse'] = User::where('course_id',Auth::user()->course_id)->get()->count();
-        $profile['jobsCourse'] = Job::where('course_id',Auth::user()->course_id)->get()->count();
-        $presentAll = Profile::where('user_id',$id)->get(['category_id','about_me', 'education', 'my_skills', 'links','work_experience','image'])->toArray();
-        if (isset($presentAll[0])){
-            foreach ($presentAll[0] as $key => $value){
-                if($value != null){
-                    $presents[$key] = $value;
-                }
-            }
-            $profile['present'] = $presents ?? '';
-        }
-        return view('student.profileTest',$profile);
-        $profile = [];
-        $profile['name'] = User::find($id)->name;
-        $profile['cat_name'] = Category::select('cat_name')->where('id',User::find($id)->profile()->value('category_id'))->value('cat_name');
         $profile['categories'] = Category::where('course_id',Auth::user()->course_id)->get()->toArray();
-        $profile['allData'] = Profile::where('user_id',$id)->get();
-        $presentAll = Profile::where('user_id',$id)->get(['category_id','about_me', 'education', 'my_skills', 'links','work_experience','image'])->toArray();
-        if (isset($presentAll[0])){
-            foreach ($presentAll[0] as $key => $value){
-                if($value != null){
-                    $present[$key] = $value;
-                }
-            }
-         $profile['present'] = $present;
-        }
-
-        $profile['newMatches'] = Message::where('user_id',Auth::id())->whereNotNull('student_id')->where('read',false)->get()->toArray();
-        return view('student.profile',$profile);
+        $profile['courseName'] = Course::find(Auth::user()->course_id)->value('name');
+        return view('student.profileTest',$profile);
     }
     public function update(Request $request){
         $id = json_decode($request->id);

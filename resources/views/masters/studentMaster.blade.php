@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OnClickJob</title>
+<<<<<<< HEAD
+
+    {{-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" /> --}}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+      <!--materilaize-->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+=======
     <!-- Compiled and minified CSS -->
    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
@@ -11,84 +21,84 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> --}}
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+>>>>>>> c1219e8b44a669314950a7a8a81168655f46a3c6
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha256-KsRuvuRtUVvobe66OFtOQfjP8WA2SzYsmm4VPfMnxms=" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{mix('css/app.css')}}">
+
 </head>
 
 
-<body>
-<section class="top-nav">
-    <div>
-      OnClickJOb
-    </div>
-    <input id="menu-toggle" type="checkbox" />
-    <label class='menu-button-container' for="menu-toggle">
-        <div class='menu-button'></div>
-    </label>
-    <ul class="menu">
+<body class="grey lighten-2">
+    <ul id="dropdown1" class="dropdown-content">
+        <li><a onclick="showMessages('{{Auth::id()}}','old')"> old message</a></li>
+        <li class="divider"></li>
+        <li><a onclick="showMessages('{{Auth::id()}}','profile')">profile message</a></li>
+      </ul>
+      <ul id="dropdown2" class="dropdown-content">
         <li>
-            <a class="nav-link" href="{{url('/student')}}">
-                Home
-            </a>
+            <a  href="{{ route('logout') }}"
+            onclick="event.preventDefault();
+             document.getElementById('logout-form').submit();">
+             {{ __('Logout') }}
+         </a>
+         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+             @csrf
+         </form>
         </li>
-        <li>
-            <a class="nav-link" onclick="window.location='{{url('profile').'/'.Auth::id()}}'">
-                Profile
-            </a>
-        </li>
-        <li>
-            <a class="nav-link" onclick="window.location='{{url('/formatCv')}}'">
-                Cv format
-            </a>
-        </li>
-        <li>
-        <li class="nav-item dropdown">
-            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre><span style="padding: 0" class="badge badge-info" id="countMessage"></span><i class="fas fa-comments"></i>
-                <span class="caret"></span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-lg-left" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" onclick="showMessages('{{Auth::id()}}','old')">
-                    old message
-                </a>
-                <a class="dropdown-item" onclick="showMessages('{{Auth::id()}}','profile')">
-                    messages about profile
-                </a>
-            </div>
-        </li>
-        </li>
-        <li><li class="nav-item dropdown">
-            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                {{ Auth::user()->name }} <span class="caret"></span>
-            </a>
 
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="{{ route('logout') }}"
-                   onclick="event.preventDefault();
-                                                         document.getElementById('logout-form').submit();">
-                    {{ __('Logout') }}
-                </a>
+      </ul>
+    <nav class="red lighten-1 " >
+        <div class="nav-wrapper">
+            <a href="{{url('/student')}}" class="m brand-logo">OnClickJob</a>
+            <a href="#" class="sidenav-trigger" data-target="mobile-nav">
+                <i class="material-icons">menu</i>
+            </a>
+            <ul class="right hide-on-med-and-down "  >
+                <li><a  class="flow-text" onclick="window.location='{{url('profile').'/'.Auth::id()}}'" >Profile</a></li>
+                <li><a class="flow-text" onclick="window.location='{{url('/formatCv')}}'">Send Cv</a></li>
+                <li>
+                    <a  class="dropdown-trigger" href="#!" data-target="dropdown1">
+                        <i class="material-icons" style="font-size: 2.4rem">message<i class="material-icons right">arrow_drop_down</i></i>
+                    </a>
+                </li>
+                <span style="position: absolute;top:12px;right:165px;color:#0a0909" id ='countMessage' class="flow-text navbar-toggler-bar navbar-kebab  "></span>
+                <li>
+                    <a class="dropdown-trigger flow-text" href="#!" data-target="dropdown2">
+                        <i class="material-icons right">arrow_drop_down</i>
+                        {{ Auth::user()->name }}
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    @csrf
-                </form>
-            </div>
-        </li></li>
 
+    <ul class="sidenav" id="mobile-nav">
+            <li><a href="#">Home</a></li>
+                <li><a onclick="window.location='{{url('profile').'/'.Auth::id()}}'" >Profile</a></li>
+                <li><a onclick="window.location='{{url('/formatCv')}}'">Send Cv</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
     </ul>
-</section>
 <input type="hidden" id="idToMessages" value="{{Auth::id()}}">
-<link rel="stylesheet" href="{{ URL::asset('css/master.css') }}">
+
 @include('student.partials.modal')
 @yield('content')
 
-<script src="{{mix('js/app.js')}}"></script>
-<script src="{{asset('js/messages.js')}}"></script>
+{{-- <script src="{{mix('js/app.js')}}"></script> --}}
+
+ <script src="{{asset('js/messages.js')}}"></script>
 <script src="{{asset('js/student.js')}}"></script>
-<script src="{{asset('js/profile.js')}}"></script>
 <script src="{{asset('js/profileTest.js')}}"></script>
+<script>
+    $(document).ready(function(){
+     $('.sidenav').sidenav();
+     $(".dropdown-trigger").dropdown();
+ });
+
+</script>
 </body>
 </html>
